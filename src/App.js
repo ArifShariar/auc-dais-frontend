@@ -4,7 +4,10 @@ import NavBar from "./components/NavBar";
 import Container from "react-bootstrap/Container";
 import {Col, Row} from "react-bootstrap";
 import Carousels from "./components/Carousel";
-import searchResults from "./components/SearchResults";
+import Footer from "./components/Footer";
+import SearchResult from "./components/SearchResults";
+
+
 function App() {
     const marginTop = {
         marginTop: "10px"
@@ -20,7 +23,9 @@ function App() {
 
             </Row>
         </Container>
-        <searchResults />
+        <SearchResult />
+        <Footer />
+
 
     </div>
   );
