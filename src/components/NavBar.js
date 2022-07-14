@@ -13,17 +13,16 @@ class NavBar extends React.Component {
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
           <Container fluid>
-            <Navbar.Brand href="#home">AucDais</Navbar.Brand>
+            <Link to={""} className="navbar-brand">
+                AucDais
+            </Link>
+            {/*<Navbar.Brand href="#home">AucDais</Navbar.Brand>*/}
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="me-auto">
-                <Nav.Link href="#features">Live Auctions</Nav.Link>
-                <Nav.Link href="#pricing">Saved Auctions</Nav.Link>
-                <NavDropdown title="Inventory" id="collasible-nav-dropdown">
-                  <NavDropdown.Item href="#action/3.1">Inventory</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                </NavDropdown>
-                <Nav.Link href="#history">History</Nav.Link>
+                <Link to={"liveAuctions"} className={"nav-link"}>Live Auctions</Link>
+                <Link to={"savedAuctions"} className={"nav-link"}>Saved Auctions</Link>
+                <Link to={"history"} className={"nav-link"}>History</Link>
 
                 <Form className="d-flex">
                   <Form.Control
@@ -36,8 +35,8 @@ class NavBar extends React.Component {
                 </Form>
               </Nav>
                 <Nav className="ml-auto">
-                    <Nav.Link href="#login">Log In</Nav.Link>
-                    <Nav.Link href="#signup">Sign Up</Nav.Link>
+                    <Link to={"login"} className={"nav-link"}>Log In</Link>
+                    <Link to={"signup"} className={"nav-link"}>Sign Up</Link>
                 </Nav>
 
             </Navbar.Collapse>

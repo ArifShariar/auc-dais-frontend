@@ -6,7 +6,11 @@ import {Col, Row} from "react-bootstrap";
 import Carousels from "./components/Carousel";
 import Footer from "./components/Footer";
 import LogInPage from "./components/LogIn";
-
+import SignUp from "./components/SignUp";
+import History from "./components/History";
+import LiveAuctions from "./components/LiveAuctions";
+import SavedAuctions from "./components/SavedAuctions";
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 
 function App() {
     const marginTop = {
@@ -15,21 +19,24 @@ function App() {
 
 
   return (
-    <div className="App">
+    <Router>
         <NavBar />
-        <div>
-            <Container>
-                <Row>
-                    <Col lg={12} style={marginTop}>
-                        <Carousels />
-                        <LogInPage />
-                    </Col>
+        <Container>
+            <Row>
+                <Col lg={12} style={marginTop}>
+                    <Routes>
+                        <Route path="/" element={<Carousels />} />
+                        <Route path="/login" element={<LogInPage/>}/>
+                        <Route path="/signup" element={<SignUp/>}/>
+                        <Route path="/history" element={<History/>}/>
+                        <Route path="/liveAuctions" element={<LiveAuctions/>}/>
+                        <Route path="/savedAuctions" element={<SavedAuctions/>}/>
+                    </Routes>
+                </Col>
 
-                </Row>
-            </Container>
-        </div>
+            </Row>
+        </Container>
 
-        {/*<SearchResult />*/}
         <div>
             <Container>
                 <Row>
@@ -42,7 +49,7 @@ function App() {
 
 
 
-    </div>
+    </Router>
   );
 }
 
