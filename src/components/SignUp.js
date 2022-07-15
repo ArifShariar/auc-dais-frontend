@@ -50,7 +50,7 @@ class SignUp extends React.Component{
                     </div>
 
 
-                    <div className="form-group" style={marginTop}>
+                    <div className="form-group text-center" style={marginTop}>
                         <button type="submit" className="btn btn-primary">Submit</button>
                     </div>
 
