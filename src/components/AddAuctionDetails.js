@@ -26,28 +26,29 @@ class AddAuctionDetails extends React.Component{
                     <form>
                         <div className="form-group">
                             <label htmlFor="product_name">Product Name*</label>
-                            <input type="text" className="form-control" id="product_name" aria-describedby="product_name" placeholder="Product Name"
+                            <input type="text" className="form-control" id="product_name" aria-describedby="product_name"
+                                   placeholder="Product Name" name="product_name"
                             onChange={handleChange('product_name')} defaultValue={values.product_name} required={true}/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="product_description">Product Description*</label>
                             <input type="text" className="form-control" id="product_description" aria-describedby="product_description" placeholder="Product Description"
-                                   onChange={handleChange('product_description')} defaultValue={values.product_description} required={true}/>
+                                   name="product_description" onChange={handleChange('product_description')} defaultValue={values.product_description} required={true}/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="minimum_price">Minimum Price*</label>
                             <input type="number" className="form-control" id="minimum_price" aria-describedby="minimum_price" placeholder="000000"
-                                   onChange={handleChange('minimum_price')} defaultValue={values.minimum_price} required={true}/>
+                                   name="minimum_price" onChange={handleChange('minimum_price')} defaultValue={values.minimum_price} required={true}/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="address">Address*</label>
                             <input type="text" className="form-control" id="address" aria-describedby="address" placeholder="Address"
-                                   onChange={handleChange('address')} defaultValue={values.address} required={true}/>
+                                   name="address" onChange={handleChange('address')} defaultValue={values.address} required={true}/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="tags">Tags</label>
                             <input type="text" className="form-control" id="tags" aria-describedby="tags" placeholder="electronics, cars, etc"
-                                   onChange={handleChange('tags')} defaultValue={values.tags} required={false}/>
+                                   name="tags" onChange={handleChange('tags')} defaultValue={values.tags} required={false}/>
                         </div>
 
 

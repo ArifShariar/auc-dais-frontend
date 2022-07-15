@@ -1,5 +1,4 @@
 import React from "react";
-import {Card} from "react-bootstrap";
 import AddAuctionDetails from "./AddAuctionDetails";
 import AddAuctionDateTime from "./AddAuctionDateTime";
 import AddAuctionPhotos from "./AddAuctionPhotos";
