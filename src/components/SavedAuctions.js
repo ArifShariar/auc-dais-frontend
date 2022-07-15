@@ -2,10 +2,22 @@ import React from "react";
 import {Card} from "react-bootstrap";
 import Table from 'react-bootstrap/Table';
 import Button from "react-bootstrap/Button";
-
+import axios from "axios";
 // this class will show the saved auctions by a user
 
 class SavedAuctions extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            auctions: []
+        }
+    }
+
+    componentDidMount() {
+        axios.get("http://localhost:8080/auction_products/all").then(res => {
+            console.log(res.data);
+        })
+    }
 
     render() {
 
