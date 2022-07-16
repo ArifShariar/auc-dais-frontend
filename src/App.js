@@ -11,8 +11,9 @@ import History from "./components/History";
 import LiveAuctions from "./components/LiveAuctions";
 import SavedAuctions from "./components/SavedAuctions";
 import Location from './components/Location';
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import AddAuction from "./components/AddAuction";
+import Home from './components/pages/Home';
 
 function App() {
     const marginTop = {
@@ -20,41 +21,19 @@ function App() {
     };
 
   return (
-    <div>
-        <Router>
-            <NavBar/>
-            <Container>
-                <Row>
-                    <Col lg={12} style={marginTop}>
-                        <Routes>
-                            {/* <Route path="/" element={<Carousels />} /> */}
-                            <Route path="/login" element={<LogInPage/>}/>
-                            <Route path="/signup" element={<SignUp/>}/>
-                            <Route path="/history" element={<History/>}/>
-                            <Route path="/location" element={<Location/>}/>
-                            <Route path="/liveAuctions" element={<LiveAuctions/>}/>
-                            <Route path="/savedAuctions" element={<SavedAuctions/>}/>
-                            <Route path="/addAuction" element={<AddAuction/>}/>
-                        </Routes>
-                    </Col>
-
-                </Row>
-            </Container>
-            <Carousels />
-            <Footer />
-            {/* <div>
-                <Container >
-                    <Row>
-                        <Col lg={12}>
-                            <Footer />
-                        </Col>
-                    </Row>
-                </Container> 
-            </div>*/}
-        </Router>
-        
-    </div>
-
+    <Router>
+        <NavBar/> 
+        <Routes>  
+            <Route path="/login" element={<LogInPage/>}/>
+            <Route path="/signup" element={<SignUp/>}/>
+            <Route path="/history" element={<History/>}/>
+            <Route path="/location" element={<Location/>}/>
+            <Route path="/liveAuctions" element={<LiveAuctions/>}/>
+            <Route path="/savedAuctions" element={<SavedAuctions/>}/>
+            <Route path="/addAuction" element={<AddAuction/>}/>           
+            <Route path="/" element={<Home />} />
+        </Routes>
+    </Router>
   );
 }
 

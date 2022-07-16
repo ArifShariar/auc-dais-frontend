@@ -1,5 +1,4 @@
 import React from 'react';
-import {Col, Navbar} from "react-bootstrap";
 import './Footer.css';
 
 function Footer (){
@@ -7,6 +6,7 @@ function Footer (){
     let githubLink = "https://github.com/ArifShariar/";
     let gitHubIcon = "https://img.icons8.com/bubbles/50/000000/github.png";
     return(
+        <div>
         <div className="footer-container">
             <section className='footer-subscription'>
                 <p className="footer-subscription-heading">
@@ -23,7 +23,7 @@ function Footer (){
                 </div>
             </div>
             </section>
-        </div>
+        </div></div>
     );
 }
 
