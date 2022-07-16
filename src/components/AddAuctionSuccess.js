@@ -1,6 +1,7 @@
 import React from "react";
 import {Card, ListGroup} from "react-bootstrap";
 import {Link} from "react-router-dom";
+
 class AddAuctionSuccess extends React.Component{
     continue = e => {
        // go to homepage

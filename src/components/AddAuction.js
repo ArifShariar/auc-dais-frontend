@@ -87,7 +87,8 @@ class AddAuction extends React.Component{
                 return (
                     <AddAuctionSuccess/>
                 );
-
+            default:
+                break;
 
         }
     }

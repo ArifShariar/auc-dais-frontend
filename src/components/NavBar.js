@@ -10,7 +10,7 @@ import {Link} from "react-router-dom";
 class NavBar extends React.Component {
   render() {
     return (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top">
           <Container fluid>
             <Link to={""} className="navbar-brand">
                 AucDais
@@ -23,7 +23,7 @@ class NavBar extends React.Component {
                 <Link to={"liveAuctions"} className={"nav-link"}>Live Auctions</Link>
                 <Link to={"savedAuctions"} className={"nav-link"}>Saved Auctions</Link>
                 <Link to={"history"} className={"nav-link"}>History</Link>
-
+                <Link to={"location"} className={"nav-link"}>Location</Link>
                 <Form className="d-flex">
                   <Form.Control
                       type="search"

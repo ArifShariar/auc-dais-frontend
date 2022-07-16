@@ -1,4 +1,5 @@
 import React from "react";
+import {Card} from "react-bootstrap";
 
 class SignUp extends React.Component{
     render(){
@@ -6,9 +7,11 @@ class SignUp extends React.Component{
             marginTop: "10px"
         }
         return(
-            <div>
-                <h1>Sign Up</h1>
-                <form>
+            <Card className={"border border-dark bg-dark text-white"}>
+                <Card.Header className={"bg-dark text-white text-center"}>Sign Up</Card.Header>
+                <Card.Body>
+                    <div> 
+                    <form>
                     <div className="form-group">
                         <label htmlFor="inputFirstName">First Name</label>
                         <input type="text" className="form-control" id="inputFirstName" aria-describedby="firstName" placeholder="First Name"/>
@@ -55,7 +58,10 @@ class SignUp extends React.Component{
                     </div>
 
                 </form>
-            </div>
+                    </div>
+
+                </Card.Body>
+            </Card> 
         );
     }
 }

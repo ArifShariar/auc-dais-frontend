@@ -19,7 +19,7 @@ class Location extends  React.PureComponent {
         const { lng, lat, zoom } = this.state;
         const map = new mapboxgl.Map({
           container: this.mapContainer.current,
-          style: 'mapbox://styles/mapbox/streets-v11',
+          style: 'mapbox://styles',
           center: [lng, lat],
           zoom: zoom
         });
@@ -36,10 +36,10 @@ class Location extends  React.PureComponent {
         const { lng, lat, zoom } = this.state;
         return (
           <div>
+            <div ref={this.mapContainer} className="map-container" />
             <div className="sidebar">
               Longitude: {getReverseGeocodingData(lat, lng)} | Latitude: {lat} | Zoom: {zoom}
             </div>
-            <div ref={this.mapContainer} className="map-container" />
           </div>
         );
       }
