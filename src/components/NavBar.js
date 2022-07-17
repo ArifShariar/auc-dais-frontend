@@ -10,8 +10,8 @@ import {Link} from "react-router-dom";
 class NavBar extends React.Component {
   render() {
     return (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top">
-          <Container fluid>
+        <Navbar collapseOnSelect expand="lg" sticky="top" >
+          <Container fluid >
             <Link to={""} className="navbar-brand">
                 AucDais
             </Link>

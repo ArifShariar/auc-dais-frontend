@@ -7,7 +7,10 @@ import '../../App.css'
 export default function () {
   return (
     <>
-        <Carousels />
+       <Carousels /> 
+       <div>
+        
+       </div>
         <Footer />
     </>
   )

@@ -1,0 +1,13 @@
+.card-container{
+    background-color: #FEF9A7;
+    padding-top: 10px;
+    padding-left: 100px;
+    padding-right: 100px;
+    flex-direction: column;
+}
+.card-body-container{
+   
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 10px;
+}

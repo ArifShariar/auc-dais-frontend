@@ -1,5 +1,8 @@
+.container{
+    align-self: left;
+}
 .footer-container{
-    background-color: #242424;
+    background-color: #FF9F45;
     padding: 4rem 0 2rem 0;
     display: flex;
     flex-direction: column;

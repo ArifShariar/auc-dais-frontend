@@ -1,5 +1,6 @@
 import React from "react";
 import {Card} from "react-bootstrap";
+import './Card.css'
 class AddAuctionDetails extends React.Component{
     continue = e => {
         // check if all required fields are filled
@@ -20,9 +21,9 @@ class AddAuctionDetails extends React.Component{
         }
         const {values, handleChange} = this.props;
         return (
-            <Card className={"border border-dark bg-dark text-white"}>
-                <Card.Header className={"bg-dark text-white text-center"}>Add Auction Details</Card.Header>
-                <Card.Body>
+            <Card className="card-container">
+                <Card.Header className={"text-dark text-center"}>Add Auction Details</Card.Header>
+                <Card.Body className="card-body-container">
                     <form>
                         <div className="form-group">
                             <label htmlFor="product_name">Product Name*</label>

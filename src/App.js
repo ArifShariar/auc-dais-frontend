@@ -1,10 +1,6 @@
 import './App.css';
 import React from 'react';
 import NavBar from "./components/NavBar";
-import Container from "react-bootstrap/Container";
-import {Col, Row} from "react-bootstrap";
-import Carousels from "./components/Carousel";
-import Footer from "./components/Footer";
 import LogInPage from "./components/LogIn";
 import SignUp from "./components/SignUp";
 import History from "./components/History";
@@ -22,7 +18,10 @@ function App() {
 
   return (
     <Router>
-        <NavBar/> 
+        <div className='navbar-container'>
+            <NavBar/>
+        </div>
+         
         <Routes>  
             <Route path="/login" element={<LogInPage/>}/>
             <Route path="/signup" element={<SignUp/>}/>
