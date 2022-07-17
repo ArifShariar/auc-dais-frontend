@@ -21,8 +21,9 @@ class AddAuctionDetails extends React.Component{
         }
         const {values, handleChange} = this.props;
         return (
-            <Card className="card-container">
-                <Card.Header className={"text-dark text-center"}>Add Auction Details</Card.Header>
+            <div className="card-container">
+            <Card className=" bg-warning.bg-gradient">
+                <Card.Header className={" bg-warning text-dark text-center"}>Add Auction Details</Card.Header>
                 <Card.Body className="card-body-container">
                     <form>
                         <div className="form-group">
@@ -53,13 +54,14 @@ class AddAuctionDetails extends React.Component{
                         </div>
 
 
-                        <div className="form-group text-center" style={marginTop}>
+                        <div class="d-grid gap-2 col-6 mx-auto text-container">
                             <button type="submit" className="btn btn-primary" onClick={this.continue}>Next</button>
                         </div>
 
                     </form>
                 </Card.Body>
             </Card>
+            </div>
         );
     }
 }

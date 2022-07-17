@@ -1,5 +1,7 @@
 import './App.css';
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import NavBar from "./components/NavBar";
 import LogInPage from "./components/LogIn";
 import SignUp from "./components/SignUp";
@@ -10,6 +12,7 @@ import Location from './components/Location';
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import AddAuction from "./components/AddAuction";
 import Home from './components/pages/Home';
+import ShowAuctionDetails from './components/pages/ShowAuctionDetails';
 
 function App() {
     const marginTop = {
@@ -18,7 +21,7 @@ function App() {
 
   return (
     <Router>
-        <div className='navbar-container'>
+        <div className='navbar-container fixed-top'>
             <NavBar/>
         </div>
          
@@ -29,7 +32,8 @@ function App() {
             <Route path="/location" element={<Location/>}/>
             <Route path="/liveAuctions" element={<LiveAuctions/>}/>
             <Route path="/savedAuctions" element={<SavedAuctions/>}/>
-            <Route path="/addAuction" element={<AddAuction/>}/>           
+            <Route path="/addAuction" element={<AddAuction/>}/> 
+            <Route path="/auctionTitleWithId" element={<ShowAuctionDetails />} />          
             <Route path="/" element={<Home />} />
         </Routes>
     </Router>

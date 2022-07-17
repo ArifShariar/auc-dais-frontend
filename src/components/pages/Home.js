@@ -1,5 +1,5 @@
 import React from "react";
-import Carousels from "../Carousel";
+import Carousels from "../RecomendedAuctions";
 import Footer from "../Footer"; 
 
 import '../../App.css'
