@@ -46,11 +46,10 @@ class SignUp extends React.Component{
                     this.setState(this.initialstate);
                     alert("User Creation Successful");
                 }
-                else {
-                    alert("User Creation Failed");
-                }
             }
-        );
+        ).catch(error => {
+	    console.log(error.response)
+	});
     }
 
     userChange = event => {
