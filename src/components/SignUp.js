@@ -1,8 +1,65 @@
 import React from "react";
-import {Card} from "react-bootstrap";
+import {Card, Form, Button} from "react-bootstrap";
 import './Card.css'
+import axios from "axios";
 
 class SignUp extends React.Component{
+
+    constructor(props) {
+        super(props);
+        this.state = this.initialstate;
+        this.userChange = this.userChange.bind(this);
+        this.submitUser = this.submitUser.bind(this);
+    }
+
+    initialstate = {
+        firstName: '',
+        lastName: '',
+        email: '',
+        phoneNumber: '',
+        address: '',
+        password: '',
+        confirmpass: '',
+        dateOfBirth: ''
+    };
+
+    submitUser = event => {
+        event.preventDefault();
+        const user = {
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            email: this.state.email,
+            phoneNumber: this.state.phoneNumber, 
+            address: this.state.address,
+            password: this.state.password,
+            dateOfBirth: this.state.dateOfBirth
+        }
+
+        if (this.state.password !== this.state.confirmpass) {
+            alert("Passwords do not match");
+            return;
+        }
+
+        axios.post('http://localhost:8080/users/create', user).then(
+            response => {
+                if(response.data != null) {
+                    this.setState(this.initialstate);
+                    alert("User Creation Successful");
+                }
+                else {
+                    alert("User Creation Failed");
+                }
+            }
+        );
+    }
+
+    userChange = event => {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    }
+
+
     render(){
         const marginTop = {
             marginTop: "10px"
@@ -15,54 +72,51 @@ class SignUp extends React.Component{
                         <Card className=" bg-warning.bg-gradient">
                             <Card.Header className={"bg-warning text-white text-center"}> Sign Up</Card.Header>
                              <Card.Body>
-                                    <div> 
-                                    <form>
-                                    <div className="form-group">
-                                        <label htmlFor="inputFirstName">First Name</label>
-                                        <input type="text" className="form-control" id="inputFirstName" aria-describedby="firstName" placeholder="First Name"/>
-                                    </div>
+                                    <Form id="signupform" onSubmit={this.submitUser}>
+                                        <Form.Group className="mb-3" controlId="inputFirstName">
+                                            <Form.Label>First Name</Form.Label>
+                                            <Form.Control required value={this.state.firstName} onChange={this.userChange} type="text" name="firstName" placeholder="First Name" />
+                                        </Form.Group>
 
-                                    <div className="form-group">
-                                        <label htmlFor="inputLastName">Last Name</label>
-                                        <input type="text" className="form-control" id="inputLastName" aria-describedby="lastName" placeholder="Last Name"/>
-                                    </div>
+                                        <Form.Group className="mb-3" controlId="inputLastName">
+                                            <Form.Label>Last Name</Form.Label>
+                                            <Form.Control required value={this.state.lastName} onChange={this.userChange} type="text" name="lastName" placeholder="Last Name" />
+                                        </Form.Group>
 
-                                    <div className="form-group">
-                                        <label htmlFor="inputEmail">Email address</label>
-                                        <input type="email" className="form-control" id="inputEmail" aria-describedby="email" placeholder="Enter email"/>
-                                    </div>
+                                        <Form.Group className="mb-3" controlId="inputEmail">
+                                            <Form.Label>Email address</Form.Label>
+                                            <Form.Control required value={this.state.email} onChange={this.userChange} type="email" name="email" placeholder="Enter email" />
+                                        </Form.Group>
 
-                                    <div className="form-group">
-                                        <label htmlFor="inputPhone">Phone Number</label>
-                                        <input type="text" className="form-control" id="inputPhone" aria-describedby="phone" placeholder="Enter Phone"/>
-                                    </div>
+                                        <Form.Group className="mb-3" controlId="inputPhone">
+                                            <Form.Label>Phone Number</Form.Label>
+                                            <Form.Control required value={this.state.phoneNumber} onChange={this.userChange} type="text" name="phoneNumber" placeholder="Enter Phone" />
+                                        </Form.Group>
 
-                                    <div className="form-group">
-                                        <label htmlFor="inputAddress">Address</label>
-                                        <input type="text" className="form-control" id="inputAddress" aria-describedby="address" placeholder="Enter Address"/>
-                                    </div>
+                                        <Form.Group className="mb-3" controlId="inputAddress">
+                                            <Form.Label>Address</Form.Label>
+                                            <Form.Control required value={this.state.address} onChange={this.userChange} type="text" name="address" placeholder="Enter Address" />
+                                        </Form.Group>
 
-                                    <div className="form-group">
-                                        <label htmlFor="inputPassword">Password</label>
-                                        <input type="password" className="form-control" id="inputPassword" placeholder="Password"/>
-                                    </div>
+                                        <Form.Group className="mb-3" controlId="inputPassword">
+                                            <Form.Label>Password</Form.Label>
+                                            <Form.Control required value={this.state.password} onChange={this.userChange} type="password" name="password" placeholder="Password" />
+                                        </Form.Group>
 
-                                    <div className="form-group">
-                                        <label htmlFor="confirmPassword">Confirm Password</label>
-                                        <input type="password" className="form-control" id="confirmPassword" placeholder="Confirm password"/>
-                                    </div>
+                                        <Form.Group className="mb-3" controlId="confirmPassword">
+                                            <Form.Label>Confirm Password</Form.Label>
+                                            <Form.Control required value={this.state.confirmpass} onChange={this.userChange} type="password" name="confirmpass" placeholder="Confirm Password" />
+                                        </Form.Group>
 
-                                    <div className="form-group">
-                                        <label htmlFor="inputDOB">Date of Birth</label>
-                                        <input type="date" className="form-control" id="inputDOB" aria-describedby="dob" placeholder="Enter Date of Birth"/>
-                                    </div>
+                                        <Form.Group className="mb-3" controlId="inputDOB">
+                                            <Form.Label>Date of Birth</Form.Label>
+                                            <Form.Control required value={this.state.dateOfBirth} onChange={this.userChange} type="date" name="dateOfBirth" placeholder="Enter Date of Birth" />
+                                        </Form.Group>
 
-                                    <div class="form-group d-grid gap-2 col-6 mx-auto text-container">
-                                        <button type="submit" className="btn btn-secondary">Submit</button>
-                                    </div>
-
-                                </form>
-                                    </div>
+                                        <div class="form-group d-grid gap-2 col-6 mx-auto text-container">
+                                            <button type="submit" className="btn btn-secondary">Submit</button>
+                                        </div>
+                                    </Form>
 
                                 </Card.Body>
                             </Card> 
