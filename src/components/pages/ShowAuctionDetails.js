@@ -50,32 +50,35 @@ function ShowAuctionDetails(props) {
                             <Card className=" bg-warning.bg-gradient">
                                 <Card.Header className={"bg-dark text-white text-center "}> Bid Details</Card.Header>
                                 <Card.Body  > 
-                                    <div class="row rounded-pill">
-                                        <div class="col-md-4">
+                                    <div className="row rounded-pill">
+                                        <div className="col-md-4">
                                             <p className="bg-secondary bg-gradient text-white  rounded-pill  text-padding"> 
-                                                Bid Status  </p> </div> <div class="col-md-4"> </div>
-                                        <div class="col-md-4"> <p className="bg-secondary bg-gradient text-white  rounded-pill  text-padding"> 
-                                                Onging </p> </div>
+                                                Bid Status  </p> </div> <div className="col-md-4"> </div>
+                                        <div className="col-md-4">
+                                            <p className="bg-secondary bg-gradient text-white  rounded-pill  text-padding">
+                                                Onging
+                                            </p>
+                                        </div>
                                     </div>
 
-                                    <div class="row rounded-pill">
-                                        <div class="col-md-4"> <p className="bg-secondary bg-gradient text-white  rounded-pill  text-padding"> 
-                                                Minimum Price  </p> </div> <div class="col-md-4"> </div>
-                                        <div class="col-md-4"> <p className="bg-secondary bg-gradient text-white  rounded-pill  text-padding"> 
+                                    <div className="row rounded-pill">
+                                        <div className="col-md-4"> <p className="bg-secondary bg-gradient text-white  rounded-pill  text-padding">
+                                                Minimum Price  </p> </div> <div className="col-md-4"> </div>
+                                        <div className="col-md-4"> <p className="bg-secondary bg-gradient text-white  rounded-pill  text-padding">
                                                 500$  </p> </div>
                                     </div>
 
-                                    <div class="row  rounded-pill " >
-                                        <div class="col-md-4"> <p className="bg-secondary bg-gradient text-white  rounded-pill  text-padding"> 
-                                                Current Bid  </p> </div> <div class="col-md-4"> </div>
-                                        <div class="col-md-4"> <p className="bg-secondary bg-gradient text-white  rounded-pill  text-padding"> 
+                                    <div className="row  rounded-pill " >
+                                        <div className="col-md-4"> <p className="bg-secondary bg-gradient text-white  rounded-pill  text-padding">
+                                                Current Bid  </p> </div> <div className="col-md-4"> </div>
+                                        <div className="col-md-4"> <p className="bg-secondary bg-gradient text-white  rounded-pill  text-padding">
                                                 50000$  </p> </div>
                                     </div>
 
-                                    <div class="row  rounded-pill " >
-                                        <div class="col-md-4"> <p className="bg-secondary bg-gradient text-white  rounded-pill  text-padding"> 
-                                                Time Left  </p> </div> <div class="col-md-4"> </div>
-                                        <div class="col-md-4"> <p className="bg-secondary bg-gradient text-white  rounded-pill  text-padding"> 
+                                    <div className="row  rounded-pill " >
+                                        <div className="col-md-4"> <p className="bg-secondary bg-gradient text-white  rounded-pill  text-padding">
+                                                Time Left  </p> </div> <div className="col-md-4"> </div>
+                                        <div className="col-md-4"> <p className="bg-secondary bg-gradient text-white  rounded-pill  text-padding">
                                                 5hr  </p> </div>
                                     </div>
                                     <Card className=" card-container">
@@ -88,7 +91,7 @@ function ShowAuctionDetails(props) {
                                                         <input type="number" className="form-control" id="bidAmount" name="product_name" />
                                                         
                                                     </div>
-                                                    <div class="d-grid gap-2 col-6 mx-auto text-container">
+                                                    <div className="d-grid gap-2 col-6 mx-auto text-container">
                                                         <Button type="submit" className="btn btn-secondary btn-lg btn-block"> Bid</Button> 
                                                     </div>
                                                 </form>

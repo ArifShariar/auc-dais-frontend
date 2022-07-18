@@ -1,6 +1,5 @@
-import React,{Component} from 'react';
+import React from 'react';
 import './Footer.css';
-import Navbar from 'react-bootstrap/Navbar';
 
 function Footer (){
     let currentYear = new Date().getFullYear();

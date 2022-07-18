@@ -16,9 +16,6 @@ class AddAuctionDetails extends React.Component{
 
     }
     render() {
-        const marginTop = {
-            marginTop: "10px"
-        }
         const {values, handleChange} = this.props;
         return (
             <div className="card-container">
@@ -54,7 +51,7 @@ class AddAuctionDetails extends React.Component{
                         </div>
 
 
-                        <div class="d-grid gap-2 col-6 mx-auto text-container">
+                        <div className="d-grid gap-2 col-6 mx-auto text-container">
                             <button type="submit" className="btn btn-primary" onClick={this.continue}>Next</button>
                         </div>
 

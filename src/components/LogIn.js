@@ -2,9 +2,6 @@ import React from "react";
 import {Card} from "react-bootstrap";
 class LogInPage extends React.Component{
     render() {
-        const marginTop = {
-            marginTop: "10px"
-        }
         return (
             <div className="card-container">
                 <div className='container-fluid' >
@@ -23,7 +20,7 @@ class LogInPage extends React.Component{
                                                 <label htmlFor="exampleInputPassword1">Password</label>
                                                 <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password"/>
                                             </div>
-                                            <div class="form-group d-grid gap-2 col-6 mx-auto text-container">
+                                            <div className="form-group d-grid gap-2 col-6 mx-auto text-container">
                                                 <button type="submit" className="btn btn-secondary">Submit</button>
                                             </div>
 

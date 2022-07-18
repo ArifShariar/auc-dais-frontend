@@ -32,7 +32,7 @@ class NavBar extends React.Component {
                       className="me-2"
                       aria-label="Search"
                   />
-                  <div class="d-grid gap-2 col-6 mx-auto bg-danger text-white ">
+                  <div className="d-grid gap-2 col-6 mx-auto bg-danger text-white ">
                       <Button type="submit" className="btn btn-danger"> Search</Button> 
                   </div>
                   

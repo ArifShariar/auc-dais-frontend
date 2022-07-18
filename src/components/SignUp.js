@@ -1,5 +1,5 @@
 import React from "react";
-import {Card, Form, Button} from "react-bootstrap";
+import {Card, Form} from "react-bootstrap";
 import './Card.css'
 import axios from "axios";
 
@@ -61,9 +61,6 @@ class SignUp extends React.Component{
 
 
     render(){
-        const marginTop = {
-            marginTop: "10px"
-        }
         return(
             <div className="card-container">
                 <div className='container-fluid' >
@@ -113,7 +110,7 @@ class SignUp extends React.Component{
                                             <Form.Control required value={this.state.dateOfBirth} onChange={this.userChange} type="date" name="dateOfBirth" placeholder="Enter Date of Birth" />
                                         </Form.Group>
 
-                                        <div class="form-group d-grid gap-2 col-6 mx-auto text-container">
+                                        <div className="form-group d-grid gap-2 col-6 mx-auto text-container">
                                             <button type="submit" className="btn btn-secondary">Submit</button>
                                         </div>
                                     </Form>

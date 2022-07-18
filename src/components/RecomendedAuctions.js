@@ -31,7 +31,7 @@ function Carousels () {
                                             There are many variations of passages of Lorem Ipsum available.
                                         </p>
                                         <p> Max Bid : 100 </p>
-                                        <button type="button" class="btn btn-outline-secondary" onClick={navigateToDetails}>Show Details</button> 
+                                        <button type="button" className="btn btn-outline-secondary" onClick={navigateToDetails}>Show Details</button>
                                         <Routes>
                                             <Route path="/auctionTitleWithId" element={<ShowAuctionDetails />} />
                                         </Routes>
@@ -61,7 +61,7 @@ function Carousels () {
                                             There are many variations of passages of Lorem Ipsum available.
                                         </p>
                                         <p> Max Bid : 100 </p>
-                                        <button type="button" class="btn btn-outline-secondary" onClick={navigateToDetails}>Show Details</button> 
+                                        <button type="button" className="btn btn-outline-secondary" onClick={navigateToDetails}>Show Details</button>
                                         <Routes>
                                             <Route path="/AuctionTitleWithId" element={<ShowAuctionDetails />} />
                                         </Routes>
@@ -90,7 +90,7 @@ function Carousels () {
                                             There are many variations of passages of Lorem Ipsum available.
                                         </p>
                                         <p> Max Bid : 100 </p>
-                                        <button type="button" class="btn btn-outline-secondary" onClick={navigateToDetails}>Show Details</button> 
+                                        <button type="button" className="btn btn-outline-secondary" onClick={navigateToDetails}>Show Details</button>
                                         <Routes>
                                             <Route path="/AuctionTitleWithId" element={<ShowAuctionDetails />} />
                                         </Routes>

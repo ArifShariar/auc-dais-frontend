@@ -15,9 +15,6 @@ import Home from './components/pages/Home';
 import ShowAuctionDetails from './components/pages/ShowAuctionDetails';
 
 function App() {
-    const marginTop = {
-        marginTop: "10px"
-    };
 
   return (
     <Router>
