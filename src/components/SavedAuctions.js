@@ -10,13 +10,15 @@ class SavedAuctions extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            auctions: []
+            saved_auctions: []
         }
     }
 
     componentDidMount() {
-        axios.get("http://localhost:8080/auction_products/all").then(res => {
-            console.log(res.data);
+        axios.get("http://localhost:8080/savedAuctions/get/user/1")
+            .then(response =>response.data)
+            .then((data)=>{
+                this.setState({saved_auctions: data});
         })
     }
 
@@ -27,7 +29,7 @@ class SavedAuctions extends React.Component{
                     <div className="row">
                         <div className=" col-sm-12">
                         <Card className=" bg-warning.bg-gradient">
-                            <Card.Header className={"bg-warning text-white text-center"}> Vase picture</Card.Header>
+                            <Card.Header className={"bg-warning text-white text-center"}> Saved Auctions </Card.Header>
                                 <Card.Body>
                                     <Table bordered hover striped responsive>
                                         <thead>
@@ -42,47 +44,37 @@ class SavedAuctions extends React.Component{
                                         </tr>
                                         </thead>
                                         <tbody>
+                                        {this.state.saved_auctions.length === 0 ?
                                             <tr>
-                                                <td>1</td>
-                                                <td>Casio Calculator</td>
-                                                <td>John Doe</td>
-                                                <td>500</td>
-                                                <td>12/05/2022:12.00pm</td>
-                                                <td>14/05/2022:12.00pm</td>
-                                                <td><Button >View</Button></td>
-                                                <td><Button variant="danger">Delete</Button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Casio Calculator</td>
-                                                <td>John Doe</td>
-                                                <td>500</td>
-                                                <td>12/05/2022:12.00pm</td>
-                                                <td>14/05/2022:12.00pm</td>
-                                                <td><Button >View</Button></td>
-                                                <td><Button variant="danger">Delete</Button></td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>Casio Calculator</td>
-                                                <td>John Doe</td>
-                                                <td>500</td>
-                                                <td>12/05/2022:12.00pm</td>
-                                                <td>14/05/2022:12.00pm</td>
-                                                <td><Button >View</Button></td>
-                                                <td><Button variant="danger">Delete</Button></td>
-                                            </tr>
-                                    </tbody>
-                                </Table>
-
-                            </Card.Body>
+                                                <td colSpan={7} className={"text-center"}>No saved auctions</td>
+                                            </tr> :
+                                            this.state.saved_auctions.map((auction, index) => {
+                                                return (
+                                                    <tr key={auction.auctionProduct.id}>
+                                                        <td>{index + 1}</td>
+                                                        <td>{auction.auctionProduct.product_name}</td>
+                                                        <td>{auction.auctionProduct.owner.firstName}</td>
+                                                        <td>{auction.auctionProduct.max_bid}</td>
+                                                        <td>{auction.auctionProduct.auction_start_date}</td>
+                                                        <td>{auction.auctionProduct.auction_end_date}</td>
+                                                        <td>
+                                                            <Button variant="outline-danger" size="sm">Delete</Button>
+                                                        </td>
+                                                        <td>
+                                                            <Button variant="outline-success" size="sm">View</Button>
+                                                        </td>
+                                                    </tr>
+                                                )
+                                            })
+                                        }
+                                        </tbody>
+                                    </Table>
+                                </Card.Body>
                         </Card>
+                        </div>
                     </div>
-
                 </div>
             </div>
-
-        </div>
         );
     }
 }

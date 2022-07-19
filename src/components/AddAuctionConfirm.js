@@ -9,7 +9,7 @@ class AddAuctionConfirm extends React.Component{
         // use axios to post to server
         let ownerId = 1;
         const {values : {product_name, product_description, minimum_price, start_date, start_time, end_date, end_time,
-            is_online, address, photos, tags}} = this.props;
+            address, photos, tags}} = this.props;
         let auction_start_date = start_date + " " + start_time;
         let auction_end_date = end_date + " " + end_time;
         let url = "http://localhost:8080/auction_products/create" ;
