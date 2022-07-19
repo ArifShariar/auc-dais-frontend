@@ -49,6 +49,10 @@ class SignUp extends React.Component{
             }
         ).catch(error => {
 	    console.log(error.response)
+            // check if the error code is 5**
+            if (error.response.status >= 500) {
+                alert("Server Error: Failed to create user, please try with different credentials");
+            }
 	});
     }
 

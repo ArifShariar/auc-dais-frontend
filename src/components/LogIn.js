@@ -1,6 +1,40 @@
 import React from "react";
 import {Card} from "react-bootstrap";
+import axios from "axios";
 class LogInPage extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = this.initialState;
+        this.submitForm = this.submitForm.bind(this);
+    }
+
+    initialState = {
+        email: '',
+        password: ''
+    }
+
+    submitForm = event => {
+        event.preventDefault();
+        const user = {
+            email: this.state.email,
+            password: this.state.password
+        }
+
+        axios.post('http://localhost:8080/users/login', user).then(
+            response => {
+                if(response.data != null) {
+                    this.setState(this.initialState);
+                    alert("User Creation Successful");
+                }
+            }
+        ).catch(error => {
+        console.log(error.response)
+            // check if the error code is 5**
+            if (error.response.status >= 500) {
+                alert("Server Error: Failed to create user, please try with different credentials");
+            }
+    });
+    }
     render() {
         return (
             <div className="card-container">
