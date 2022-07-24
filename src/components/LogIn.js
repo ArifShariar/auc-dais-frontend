@@ -23,7 +23,6 @@ class LogInPage extends React.Component {
                 if(response.data != null) {
                     if(response.status == 200) {
                         this.setState(this.initialState);
-                        alert("It's working!");
                         window.location.replace("http://localhost:3000?id=" + response.data.id);
                     }
                 }
