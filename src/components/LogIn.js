@@ -3,6 +3,8 @@ import {Card, Form, Toast} from "react-bootstrap";
 import axios from "axios";
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Navigate } from 'react-router-dom';
+import Home from './pages/Home';
 
 class LogInPage extends React.Component {
     constructor(props) {
