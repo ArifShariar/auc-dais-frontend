@@ -1,6 +1,8 @@
 import './App.css';
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import NavBar from "./components/NavBar";
 import LogInPage from "./components/LogIn";
@@ -14,6 +16,7 @@ import AddAuction from "./components/AddAuction";
 import Home from './components/pages/Home';
 import ShowAuctionDetails from './components/pages/ShowAuctionDetails';
 
+toast.configure();
 function App() {
 
   return (

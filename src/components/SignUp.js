@@ -40,7 +40,7 @@ class SignUp extends React.Component{
             return;
         }
 
-        axios.post('http://localhost:8080/users/create', user).then(
+        axios.post('http://localhost:8080/users/signup', user).then(
             response => {
                 if(response.data != null) {
                     this.setState(this.initialstate);
