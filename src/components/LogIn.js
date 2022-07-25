@@ -1,10 +1,8 @@
 import React from "react";
-import {Card, Form, Toast} from "react-bootstrap";
+import {Card, Form} from "react-bootstrap";
 import axios from "axios";
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Navigate } from 'react-router-dom';
-import Home from './pages/Home';
 
 class LogInPage extends React.Component {
     constructor(props) {
@@ -23,7 +21,7 @@ class LogInPage extends React.Component {
         axios.post('http://localhost:8080/users/login', {email:this.state.email, password:this.state.password}).then(
             response => {
                 if(response.data != null) {
-                    if(response.status == 200) {
+                    if(response.status === 200) {
                         this.setState(this.initialState);
                         window.location.replace("http://localhost:3000?id=" + response.data.id);
                     }
@@ -35,7 +33,7 @@ class LogInPage extends React.Component {
             if (error.response.status >= 500) {
                 alert("Server Error: Failed to login, please try with different credentials");
             }
-            else if (error.response.status == 400) {
+            else if (error.response.status === 400) {
                 this.notify();
             }
         });
