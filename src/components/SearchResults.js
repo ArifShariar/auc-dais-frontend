@@ -2,6 +2,8 @@ import React from "react";
 import {Card, Table} from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import {useLocation} from "react-router-dom";
+import axios from "axios";
+
 
 
 
@@ -10,10 +12,40 @@ function SearchResult() {
     console.log(state.searchResult);
     // get search_keyword from url
     let search_result = state.searchResult;
+    let user_id = 2;
 
 
+    function AddToSave(id){
+        //http://localhost:8080/savedAuctions/create/user/1/auction/2
+        let url = "http://localhost:8080/savedAuctions/create/user/" + user_id + "/auction/" + id;
+        axios({
+            method: 'post',
+            url: url,
+            headers: {},
+            data: {
+                date: new Date(),
+            }
+        }).then(response => {
+            if (response.data!=null){
+                if (response.status === 200){
+                    alert("Auction added to saved auctions");
+                    // disable button
+                    document.getElementById(id).disabled = true;
+                }
+            }
+        }).catch(error => {
+            console.log(error);
+            alert("Error adding auction to saved auctions");
+            document.getElementById(id).disabled = true;
+        });
+    }
 
-            return(
+
+    function ViewAuctionDetails(id) {
+        console.log("View Auction Details : " + id);
+    }
+
+    return(
                 <div className="card-container">
                     <div className='container-fluid' >
                         <div className="row">
@@ -48,10 +80,10 @@ function SearchResult() {
                                                             <td>{auction.auction_start_date}</td>
                                                             <td>{auction.auction_end_date}</td>
                                                             <td>
-                                                                <Button variant="outline-danger" size="sm" >View</Button>
+                                                                <Button variant="outline-danger" size="sm" onClick={()=>ViewAuctionDetails(auction.id)}>View</Button>
                                                             </td>
                                                             <td>
-                                                                <Button variant="outline-success" size="sm">Add to Wishlist</Button>
+                                                                <Button variant="outline-success" size="sm" onClick={()=>AddToSave(auction.id)} id={auction.id}>Save</Button>
                                                             </td>
                                                         </tr>
                                                     )
