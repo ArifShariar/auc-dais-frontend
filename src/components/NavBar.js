@@ -5,25 +5,23 @@ import Navbar from 'react-bootstrap/Navbar';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Link, Route, Routes, useNavigate, withRouter} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
 
 
 function NavBar() {
     const navigate = useNavigate();
 
-    // declare variable for search result output
     let searchResult = [];
 
     const onSubmit = (e) => {
         e.preventDefault();
         let search_keyword = document.getElementById("search_keyword").value;
-
         axios.get("http://localhost:8080/auction_products/search/" + search_keyword)
             .then(response => response.data)
             .then(data => {
                 searchResult = data;
-                navigate("/search_result", {state: {searchResult: searchResult}});
+                navigate("/search", {state: {searchResult: searchResult}});
 
             })
             .catch(error => {

@@ -35,8 +35,8 @@ function App() {
             <Route path="/savedAuctions" element={<SavedAuctions/>}/>
             <Route path="/addAuction" element={<AddAuction/>}/>
             <Route path="/auctionTitleWithId" element={<ShowAuctionDetails />} />
-            <Route path="/search_result" element={<SearchResults/>}/>
-            <Route path="*" element={<Home />} />
+            <Route path="/search"  element={<SearchResults/>}/>
+            <Route path="/" element={<Home />} />
         </Routes>
     </Router>
   );
