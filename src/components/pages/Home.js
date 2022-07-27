@@ -7,8 +7,8 @@ import '../../App.css'
 
 export default function () {
 
-  const search = useLocation().search;
-  const idFromUrl = new URLSearchParams(search).get("id");
+  const { state } = useLocation();
+  //alert(state.id);
 
   return (
     <>
