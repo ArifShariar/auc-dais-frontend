@@ -7,11 +7,13 @@ import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
+import { useAuth } from './context/AuthProvider';
+import { RequireAuth } from './RequireAuth';
 
 
 function NavBar() {
     const navigate = useNavigate();
-
+    const useauth = useAuth();
     let searchResult = [];
 
     const onSubmit = (e) => {
@@ -28,6 +30,12 @@ function NavBar() {
                 console.log(error);
             })
 
+    }
+
+    const handleLogout = (event) => {
+        event.preventDefault();
+        useauth.logout();
+        window.location.replace("http://localhost:3000");
     }
 
     return (
@@ -62,10 +70,20 @@ function NavBar() {
 
 
                     </Nav>
-                    <Nav className="ml-auto">
-                        <Link to={"login"} className={"nav-link text-white"}>Log In</Link>
-                        <Link to={"signup"} className={"nav-link text-white"}>Sign Up</Link>
-                    </Nav>
+                    {!useauth.user && (
+                            <Nav className="ml-auto">
+                                <Link to={"login"} className={"nav-link text-white"}>Log In</Link>
+                                <Link to={"signup"} className={"nav-link text-white"}>Sign Up</Link>
+                            </Nav>
+                        )
+                    }
+
+                    {useauth.user && (
+                            <Nav className="ml-auto">
+                                <Link to={""} className={"nav-link text-white"} onClick={handleLogout}>Logout</Link>
+                            </Nav>
+                        )
+                    }
 
                 </Navbar.Collapse>
             </Container>
