@@ -37,7 +37,7 @@ function App() {
             <Route path="/liveAuctions" element={<RequireAuth><LiveAuctions/></RequireAuth>}/>
             <Route path="/savedAuctions" element={<RequireAuth><SavedAuctions/></RequireAuth>}/>
             <Route path="/addAuction" element={<RequireAuth><AddAuction/></RequireAuth>}/>
-            <Route path="/auctionTitleWithId" element={<RequireAuth><ShowAuctionDetails/></RequireAuth>} />
+            <Route path="/auction/:id" element={<RequireAuth><ShowAuctionDetails/></RequireAuth>} />
             <Route path="/search"  element={<SearchResults/>}/>
             <Route path="/" element={<Home />} />
         </Routes>
