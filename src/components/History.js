@@ -2,6 +2,7 @@ import React from "react";
 import {Table, Card, Button} from "react-bootstrap";
 import './Card.css'
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 class History extends React.Component{
 
@@ -13,9 +14,6 @@ class History extends React.Component{
         }
     }
 
-    viewAuction() {
-        console.log("View Auction");
-    }
 
     componentDidMount() {
         let url = "http://localhost:8080/history/get/user/" + this.state.user_id;
@@ -67,7 +65,7 @@ class History extends React.Component{
                                                         <td className={"text-center"}>{history.bid_amount}</td>
                                                         <td className={"text-center"}>{history.date}</td>
                                                         <td className={"text-center"}>
-                                                            <Button variant={"outline-info"} onClick={() => {this.viewAuction()}} className={"text-center"}>View</Button>
+                                                            <Link to={'/auction/' + history.auctionProduct.id} className={"btn btn-primary"}>View</Link>
                                                         </td>
                                                     </tr>
                                                 )

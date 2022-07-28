@@ -34,7 +34,7 @@ function App() {
             <Route path="/liveAuctions" element={<LiveAuctions/>}/>
             <Route path="/savedAuctions" element={<SavedAuctions/>}/>
             <Route path="/addAuction" element={<AddAuction/>}/>
-            <Route path="/auctionTitleWithId" element={<ShowAuctionDetails />} />
+            <Route path="/auction/:id" element={<ShowAuctionDetails />} />
             <Route path="/search"  element={<SearchResults/>}/>
             <Route path="/" element={<Home />} />
         </Routes>
