@@ -3,7 +3,7 @@ import {Card, Form} from "react-bootstrap";
 import axios from "axios";
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useLocation} from "react-router-dom";
 import {useAuth} from "./context/AuthProvider";
 
 function LogInPage() {
@@ -12,6 +12,7 @@ function LogInPage() {
     const [password, setPassword] = useState('');
     const [user, setUser] = useState('');
     const useauth = useAuth();
+    const location = useLocation();
 
     const submitForm = (event) => {
         event.preventDefault();
@@ -21,14 +22,25 @@ function LogInPage() {
             response => {
                 if(response.data != null) {
                     if(response.status === 200) {
-                        //this.setState(this.initialState);
                         setEmail('');
                         setPassword('');
                         useauth.login(user);
-                        navigate("/?id=" + response.data.id, {
+                        
+                        /*===== Here I'm trying to redirect to the page the user clicked before loging in ====*/
+                        /*===== Though not that necessary still a nice feature to have. ====*/
+                        /*===== We get the path name from "RequireAuth.js" file =====*/
+                        
+                        //var homepath = '/?id=' + response.data.id;
+                        //const redirectpath = location.state.path;
+                        //alert(redirectpath);
+
+                        navigate('/?id='+response.data.id, {
                             state: { 
                                     id: response.data.id,
-                                }
+                                    created: false,
+                                    name: response.data.firstName
+                                },
+                            replace: true
                             }
                         );
                     }
@@ -37,11 +49,13 @@ function LogInPage() {
         ).catch(error => {
         console.log(error.response)
             // check if the error code is 5**
-            if (error.response.status >= 500) {
-                alert("Server Error: Failed to login, please try with different credentials");
-            }
-            else if (error.response.status === 400) {
-                notify();
+            if(error.response != null) {
+                if (error.response.status >= 500) {
+                    alert("Server Error: Failed to login, please try with different credentials");
+                }
+                else if (error.response.status === 400) {
+                    notify();
+                }
             }
         });
     }
