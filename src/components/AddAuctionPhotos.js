@@ -29,7 +29,7 @@ class AddAuctionPhotos extends React.Component{
                     <div className="row">
                         <div className=" col-sm-12">
                         <Card className=" bg-warning.bg-gradient">
-                            <Card.Header className={"bg-warning text-white text-center"}> Saved Auctions </Card.Header>
+                            <Card.Header className={"bg-warning text-white text-center"}> Add Photos </Card.Header>
                              <Card.Body>
                             <form encType={"multipart/form-data"}>
                                 <div className="form-group">
@@ -39,10 +39,10 @@ class AddAuctionPhotos extends React.Component{
                                         onChange={handleChange('photos')} defaultValue={values.photos} required={true} multiple={true}/>
                                 </div>
 
-                                <div className="form-group text-center" style={marginTop}>
+                                <div className="d-grid gap-2 col-6 mx-auto text-container" style={marginTop}>
                                     <button type="submit" className="btn btn-primary" onClick={this.continue}>Next</button>
                                 </div>
-                                <div className="form-group text-center" style={marginTop}>
+                                <div className="d-grid gap-2 col-6 mx-auto text-container" style={marginTop}>
                                     <button type="submit" className="btn btn-danger" onClick={this.back}>Back</button>
                                 </div>
 

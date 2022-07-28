@@ -16,6 +16,7 @@ class AddAuctionDateTime extends React.Component{
         }
 
     }
+
     back = e => {
         e.preventDefault();
         this.props.prevStep();
@@ -25,13 +26,14 @@ class AddAuctionDateTime extends React.Component{
             marginTop: "10px"
         }
         const {values, handleChange} = this.props;
+
         return (
             <div className="card-container">
                 <div className='container-fluid' >
                     <div className="row">
                         <div className=" col-sm-12">
                         <Card className=" bg-warning.bg-gradient">
-                            <Card.Header className={"bg-warning text-white text-center"}> Saved Auctions </Card.Header>
+                            <Card.Header className={"bg-warning text-white text-center"}> Add Date and Time </Card.Header>
                               <Card.Body>
                                 <form>
                                     <div className="form-group">
@@ -56,10 +58,10 @@ class AddAuctionDateTime extends React.Component{
                                     </div>
 
 
-                                    <div className="form-group text-center" style={marginTop}>
+                                    <div className="d-grid gap-2 col-6 mx-auto text-container" style={marginTop}>
                                         <button type="submit" className="btn btn-primary" onClick={this.continue}>Next</button>
                                     </div>
-                                    <div className="form-group text-center" style={marginTop}>
+                                    <div className="d-grid gap-2 col-6 mx-auto text-container" style={marginTop}>
                                         <button type="submit" className="btn btn-danger" onClick={this.back}>Back</button>
                                     </div>
 

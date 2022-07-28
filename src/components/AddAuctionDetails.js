@@ -20,7 +20,7 @@ class AddAuctionDetails extends React.Component{
         return (
             <div className="card-container">
             <Card className=" bg-warning.bg-gradient">
-                <Card.Header className={" bg-warning text-dark text-center"}>Add Auction Details</Card.Header>
+                <Card.Header className={" bg-warning text-white text-center"}>Add Auction Details</Card.Header>
                 <Card.Body className="card-body-container">
                     <form>
                         <div className="form-group">
