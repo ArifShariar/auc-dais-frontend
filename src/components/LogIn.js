@@ -3,12 +3,15 @@ import {Card, Form} from "react-bootstrap";
 import axios from "axios";
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {useNavigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom";
+import {useAuth} from "./context/AuthProvider";
 
 function LogInPage() {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [user, setUser] = useState('');
+    const useauth = useAuth();
 
     const submitForm = (event) => {
         event.preventDefault();
@@ -21,6 +24,7 @@ function LogInPage() {
                         //this.setState(this.initialState);
                         setEmail('');
                         setPassword('');
+                        useauth.login(user);
                         navigate("/?id=" + response.data.id, {
                             state: { 
                                     id: response.data.id,
@@ -40,6 +44,11 @@ function LogInPage() {
                 notify();
             }
         });
+    }
+
+    const setcurrentUser = (event) => {
+        setEmail(event.target.value);
+        setUser(event.target.value);
     }
 
     const notify = () => {
@@ -67,7 +76,7 @@ function LogInPage() {
                                 <Form id="signupform" onSubmit={submitForm}>
                                     <Form.Group className="mb-3" controlId="inputEmail">
                                         <Form.Label>Email</Form.Label>
-                                        <Form.Control required id="email" type="email" name="email" placeholder="Email" onChange={(e)=>setEmail(e.target.value)} />
+                                        <Form.Control required id="email" type="email" name="email" placeholder="Email" onChange={setcurrentUser}/>
                                     </Form.Group>
 
                                     <Form.Group className="mb-3" controlId="inputPassword">
