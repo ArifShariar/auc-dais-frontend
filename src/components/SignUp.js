@@ -85,56 +85,67 @@ class SignUp extends React.Component{
             <div className="card-container">
                 <div className='container-fluid' >
                     <div className="row">
-                        <div className=" col-sm-12">
+                        <div className="col">
                         <Card className=" bg-warning.bg-gradient">
                             <Card.Header className={"bg-warning text-white text-center"}> Sign Up</Card.Header>
                              <Card.Body>
-                                    <Form id="signupform" onSubmit={this.submitUser}>
-                                        <Form.Group className="mb-3" controlId="inputFirstName">
-                                            <Form.Label>First Name</Form.Label>
-                                            <Form.Control required value={this.state.firstName} onChange={this.userChange} type="text" name="firstName" placeholder="First Name" />
-                                        </Form.Group>
+                                    <div className="row">
+                                        <div className="col">
+                                            <Form id="signupform" onSubmit={this.submitUser}>
+                                                <Form.Group className="mb-3" controlId="inputFirstName">
+                                                    <Form.Label>First Name</Form.Label>
+                                                    <Form.Control required value={this.state.firstName} onChange={this.userChange} type="text" name="firstName" placeholder="First Name" />
+                                                </Form.Group>
 
-                                        <Form.Group className="mb-3" controlId="inputLastName">
-                                            <Form.Label>Last Name</Form.Label>
-                                            <Form.Control required value={this.state.lastName} onChange={this.userChange} type="text" name="lastName" placeholder="Last Name" />
-                                        </Form.Group>
+                                                <Form.Group className="mb-3" controlId="inputLastName">
+                                                    <Form.Label>Last Name</Form.Label>
+                                                    <Form.Control required value={this.state.lastName} onChange={this.userChange} type="text" name="lastName" placeholder="Last Name" />
+                                                </Form.Group>
 
-                                        <Form.Group className="mb-3" controlId="inputEmail">
-                                            <Form.Label>Email address</Form.Label>
-                                            <Form.Control required value={this.state.email} onChange={this.userChange} type="email" name="email" placeholder="Enter email" />
-                                        </Form.Group>
+                                                <Form.Group className="mb-3" controlId="inputEmail">
+                                                    <Form.Label>Email address</Form.Label>
+                                                    <Form.Control required value={this.state.email} onChange={this.userChange} type="email" name="email" placeholder="Enter email" />
+                                                </Form.Group>
 
-                                        <Form.Group className="mb-3" controlId="inputPhone">
-                                            <Form.Label>Phone Number</Form.Label>
-                                            <Form.Control required value={this.state.phoneNumber} onChange={this.userChange} type="text" name="phoneNumber" placeholder="Enter Phone" />
-                                        </Form.Group>
+                                                <Form.Group className="mb-3" controlId="inputPhone">
+                                                    <Form.Label>Phone Number</Form.Label>
+                                                    <Form.Control required value={this.state.phoneNumber} onChange={this.userChange} type="text" name="phoneNumber" placeholder="Enter Phone" />
+                                                </Form.Group>
 
-                                        <Form.Group className="mb-3" controlId="inputAddress">
-                                            <Form.Label>Address</Form.Label>
-                                            <Form.Control required value={this.state.address} onChange={this.userChange} type="text" name="address" placeholder="Enter Address" />
-                                        </Form.Group>
+                                                <Form.Group className="mb-3" controlId="inputAddress">
+                                                    <Form.Label>Address</Form.Label>
+                                                    <Form.Control required value={this.state.address} onChange={this.userChange} type="text" name="address" placeholder="Enter Address" />
+                                                </Form.Group>
 
-                                        <Form.Group className="mb-3" controlId="inputPassword">
-                                            <Form.Label>Password</Form.Label>
-                                            <Form.Control required value={this.state.password} onChange={this.userChange} type="password" name="password" placeholder="Password" />
-                                        </Form.Group>
+                                                <Form.Group className="mb-3" controlId="inputPassword">
+                                                    <Form.Label>Password</Form.Label>
+                                                    <Form.Control required value={this.state.password} onChange={this.userChange} type="password" name="password" placeholder="Password" />
+                                                </Form.Group>
 
-                                        <Form.Group className="mb-3" controlId="confirmPassword">
-                                            <Form.Label>Confirm Password</Form.Label>
-                                            <Form.Control required value={this.state.confirmpass} onChange={this.userChange} type="password" name="confirmpass" placeholder="Confirm Password" />
-                                        </Form.Group>
+                                                <Form.Group className="mb-3" controlId="confirmPassword">
+                                                    <Form.Label>Confirm Password</Form.Label>
+                                                    <Form.Control required value={this.state.confirmpass} onChange={this.userChange} type="password" name="confirmpass" placeholder="Confirm Password" />
+                                                </Form.Group>
 
-                                        <Form.Group className="mb-3" controlId="inputDOB">
-                                            <Form.Label>Date of Birth</Form.Label>
-                                            <Form.Control required value={this.state.dateOfBirth} onChange={this.userChange} type="date" name="dateOfBirth" placeholder="Enter Date of Birth" />
-                                        </Form.Group>
+                                                <Form.Group className="mb-3" controlId="inputDOB">
+                                                    <Form.Label>Date of Birth</Form.Label>
+                                                    <Form.Control required value={this.state.dateOfBirth} onChange={this.userChange} type="date" name="dateOfBirth" placeholder="Enter Date of Birth" />
+                                                </Form.Group>
 
-                                        <div className="form-group d-grid gap-2 col-6 mx-auto text-container">
-                                            <button type="submit" className="btn btn-secondary">Submit</button>
+                                                <div className="form-group d-grid gap-2 col-6 mx-auto text-container">
+                                                    <button type="submit" className="btn btn-secondary">Submit</button>
+                                                </div>
+                                            </Form>
                                         </div>
-                                    </Form>
-
+                                        <div className="image-container col">
+                                            <img
+                                                src={require("../images/online-auctions.jpg")}
+                                                alt="online-auctions photo"
+                                                height={'100%'}
+                                                width={'100%'}
+                                            /> 
+                                        </div>
+                                    </div>
                                 </Card.Body>
                             </Card> 
                         </div>
