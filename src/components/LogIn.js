@@ -87,21 +87,33 @@ function LogInPage() {
                     <Card className=" bg-warning.bg-gradient">
                         <Card.Header className={"bg-warning text-white text-center"}> Log In</Card.Header> 
                             <Card.Body>
-                                <Form id="signupform" onSubmit={submitForm}>
-                                    <Form.Group className="mb-3" controlId="inputEmail">
-                                        <Form.Label>Email</Form.Label>
-                                        <Form.Control required id="email" type="email" name="email" placeholder="Email" onChange={setcurrentUser}/>
-                                    </Form.Group>
+                                <div className="row">
+                                    <div className="col col-element">
+                                        <Form id="signupform" onSubmit={submitForm}>
+                                            <Form.Group className="mb-3" controlId="inputEmail">
+                                                <Form.Label>Email</Form.Label>
+                                                <Form.Control required id="email" type="email" name="email" placeholder="Email" onChange={setcurrentUser}/>
+                                            </Form.Group>
 
-                                    <Form.Group className="mb-3" controlId="inputPassword">
-                                        <Form.Label>Password</Form.Label>
-                                        <Form.Control required id="password" type="password" name="password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)}/>
-                                    </Form.Group>
+                                            <Form.Group className="mb-3" controlId="inputPassword">
+                                                <Form.Label>Password</Form.Label>
+                                                <Form.Control required id="password" type="password" name="password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)}/>
+                                            </Form.Group>
 
-                                    <div className="form-group d-grid gap-2 col-6 mx-auto text-container">
-                                        <button type="submit" className="btn btn-secondary">Submit</button>
+                                            <div className="form-group d-grid gap-2 col-6 mx-auto text-container">
+                                                <button type="submit" className="btn btn-secondary">Log In</button>
+                                            </div>
+                                        </Form>
                                     </div>
-                                </Form>
+                                    <div className="image-container col">
+                                        <img
+                                            src={require("../images/login-auction.jpg")}
+                                            alt="online-auctions photo"
+                                            height={'100%'}
+                                            width={'100%'}
+                                        /> 
+                                    </div>
+                                </div>
 
                             </Card.Body>
                         </Card>

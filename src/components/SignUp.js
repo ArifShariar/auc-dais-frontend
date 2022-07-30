@@ -110,10 +110,12 @@ function SignUp() {
         <div className="card-container">
             <div className='container-fluid' >
                 <div className="row">
-                    <div className=" col-sm-12">
+                    <div className="col">
                     <Card className=" bg-warning.bg-gradient">
                         <Card.Header className={"bg-warning text-white text-center"}> Sign Up</Card.Header>
                             <Card.Body>
+                            <div className="row">
+                            <div className="col">
                                 <Form id="signupform" onSubmit={submitUser}>
                                     <Form.Group className="mb-3" controlId="inputFirstName">
                                         <Form.Label>First Name</Form.Label>
@@ -159,7 +161,16 @@ function SignUp() {
                                         <button type="submit" className="btn btn-secondary">Submit</button>
                                     </div>
                                 </Form>
-
+                                </div>
+                                        <div className="image-container col">
+                                            <img
+                                                src={require("../images/online-auctions.jpg")}
+                                                alt="online-auctions photo"
+                                                height={'100%'}
+                                                width={'100%'}
+                                            /> 
+                                        </div>
+                                    </div>
                             </Card.Body>
                         </Card> 
                     </div>
