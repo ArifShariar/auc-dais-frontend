@@ -105,7 +105,6 @@ function SignUp() {
         setUser(event.target.value);
     }
 
-
     return(
         <div className="card-container">
             <div className='container-fluid' >
