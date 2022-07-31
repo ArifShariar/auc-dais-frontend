@@ -20,6 +20,7 @@ import {AuthProvider} from "./components/context/AuthProvider"
 import { RequireAuth } from './components/RequireAuth';
 import Message from "./components/Message";
 
+// We may need to get rid of RequireAuth and use PersistLogin instead
 toast.configure();
 function App() {
 
