@@ -60,11 +60,10 @@ function SignUp() {
                         setPassword('');
                         setConPassword('');
                         setDob('');
-                        useauth.login(user);
+                        // useauth.login(response.data.token);
                         
-                        navigate('/?id='+response.data, {
+                        navigate('/login', {
                                 state: {
-                                    id: response.data,
                                     created: true,
                                     name: fname
                                 },
@@ -104,7 +103,6 @@ function SignUp() {
         setEmail(event.target.value);
         setUser(event.target.value);
     }
-
 
     return(
         <div className="card-container">

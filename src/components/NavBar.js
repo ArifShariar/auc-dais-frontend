@@ -15,6 +15,7 @@ function NavBar() {
     const navigate = useNavigate();
     const useauth = useAuth();
     let searchResult = [];
+    console.log('in navbar'+useAuth);
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -70,7 +71,7 @@ function NavBar() {
 
 
                     </Nav>
-                    {!useauth.user && (
+                    {!useauth.isLogin() && (
                             <Nav className="ml-auto">
                                 <Link to={"login"} className={"nav-link text-white"}>Log In</Link>
                                 <Link to={"signup"} className={"nav-link text-white"}>Sign Up</Link>
@@ -78,7 +79,7 @@ function NavBar() {
                         )
                     }
 
-                    {useauth.user && (
+                    {useauth.isLogin() && (
                             <Nav className="ml-auto">
                                 <Link to={""} className={"nav-link text-white"} onClick={handleLogout}>Logout</Link>
                             </Nav>

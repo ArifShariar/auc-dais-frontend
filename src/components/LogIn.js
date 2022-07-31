@@ -14,18 +14,20 @@ function LogInPage() {
     const useauth = useAuth();
     const location = useLocation();
 
-    const submitForm = (event) => {
+    const submitForm = async event => {
         event.preventDefault();
         var email = document.getElementById("email").value;
         var password = document.getElementById("password").value;
-        axios.post('http://localhost:8080/users/login', {email: email, password: password}).then(
+        await axios.post('http://localhost:8080/users/login', {email: email, password: password}).then(
             response => {
                 if(response.data != null) {
                     if(response.status === 200) {
                         setEmail('');
                         setPassword('');
-                        useauth.login(user);
-                        
+                        // Saving token in the local storage.
+                        useauth.login(response.data.token);
+                        console.log("The token generated for user: " + response.data.token);
+
                         /*===== Here I'm trying to redirect to the page the user clicked before loging in ====*/
                         /*===== Though not that necessary still a nice feature to have. ====*/
                         /*===== We get the path name from "RequireAuth.js" file =====*/
