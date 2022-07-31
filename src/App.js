@@ -18,6 +18,7 @@ import ShowAuctionDetails from './components/pages/ShowAuctionDetails';
 import SearchResults from "./components/SearchResults";
 import {AuthProvider} from "./components/context/AuthProvider"
 import { RequireAuth } from './components/RequireAuth';
+import Message from "./components/Message";
 
 // We may need to get rid of RequireAuth and use PersistLogin instead
 toast.configure();
@@ -40,6 +41,7 @@ function App() {
             <Route path="/addAuction" element={<RequireAuth><AddAuction/></RequireAuth>}/>
             <Route path="/auction/:id" element={<RequireAuth><ShowAuctionDetails/></RequireAuth>} />
             <Route path="/search"  element={<SearchResults/>}/>
+            <Route path="/message" element={<Message/>}/>
             <Route path="/" element={<Home />} />
         </Routes>
     </Router>
