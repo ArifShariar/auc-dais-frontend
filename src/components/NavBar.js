@@ -8,8 +8,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
 import { useAuth } from './context/AuthProvider';
-import { RequireAuth } from './RequireAuth';
-
 
 function NavBar() {
     const navigate = useNavigate();
@@ -53,6 +51,7 @@ function NavBar() {
                         <Link to={"liveAuctions"} className={"nav-link text-white"}>Live Auctions</Link>
                         <Link to={"savedAuctions"} className={"nav-link text-white"}>Saved Auctions</Link>
                         <Link to={"history"} className={"nav-link text-white"}>History</Link>
+                        <Link to={"messages"} className={"nav-link text-white"}>Messages</Link>
                         {/*<Link to={"location"} className={"nav-link text-white"}>Location</Link>*/}
                         <Form className="d-flex">
                             <Form.Control
@@ -81,6 +80,7 @@ function NavBar() {
 
                     {useauth.isLogin() && (
                             <Nav className="ml-auto">
+                                <Link to={"profile"} className={"nav-link text-white"}>Profile</Link>
                                 <Link to={""} className={"nav-link text-white"} onClick={handleLogout}>Logout</Link>
                             </Nav>
                         )
