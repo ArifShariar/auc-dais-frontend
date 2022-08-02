@@ -24,7 +24,7 @@ class ShowAuctionDetails extends React.Component{
         else{
             alert("Bid Amount: " + this.state.bid_amount);
             let auction_id = this.state.auction.id;
-            let max_bidder_id = 2;
+            let max_bidder_id = 7;
             let url = "http://localhost:8080/auction_products/update/max_bid/" + auction_id;
             axios.put(url,
                 {},

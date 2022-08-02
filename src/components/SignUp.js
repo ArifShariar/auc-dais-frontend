@@ -51,7 +51,7 @@ function SignUp() {
         axios.post('http://localhost:8080/users/signup', newUser).then(
             response => {
                 if(response.data != null) {
-                    if(response.status == 200) {
+                    if(response.status === 200) {
                         setFirstName('');
                         setLastName('');
                         setEmail('');
@@ -78,7 +78,7 @@ function SignUp() {
             if (error.response.status >= 500) {
                 alert("Server Error: Failed to create user, please try with different credentials");
             }
-            else if (error.response.status == 400) {
+            else if (error.response.status === 400) {
                 notify("Email already taken");
             }
 	    });

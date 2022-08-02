@@ -10,21 +10,31 @@ class History extends React.Component{
         super(props);
         this.state = {
             history : [],
-            user_id : 2
+            // get user_id from local storage
+            user_id : localStorage.getItem('user_id'),
+            user_token: localStorage.getItem('user')
         }
     }
 
 
     componentDidMount() {
         let url = "http://localhost:8080/history/get/user/" + this.state.user_id;
-        axios.get(url)
-            .then(response =>response.data)
-            .then((data)=>{
-                this.setState({history: data});
-                console.log(data);
-        }).catch(error => {
-            console.log(error);
+        axios({
+            method: 'get',
+            url: url,
+            headers: {},
+            data: {
+                token: this.state.user_token
+            }
         })
+            .then(response => response.data)
+            .then(data => {
+                console.log("Received messages: ");
+                console.log(data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
 
     }
 
