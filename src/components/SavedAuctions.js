@@ -15,7 +15,7 @@ class SavedAuctions extends React.Component{
     }
 
     componentDidMount() {
-        axios.get("http://localhost:8080/savedAuctions/get/user/1")
+        axios.get("http://localhost:8080/savedAuctions/get/user/2")
             .then(response =>response.data)
             .then((data)=>{
                 this.setState({saved_auctions: data});

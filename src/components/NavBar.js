@@ -8,8 +8,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
 import { useAuth } from './context/AuthProvider';
-import { RequireAuth } from './RequireAuth';
-
 
 function NavBar() {
     const navigate = useNavigate();
@@ -40,15 +38,11 @@ function NavBar() {
     }
 
     return (
-        <Navbar collapseOnSelect expand="lg" sticky="top">
-            <Container fluid>
+        <Navbar collapseOnSelect expand="lg" sticky="top"> 
                 <Link to={""} className="navbar-brand text-white">
                     AucDais
                 </Link>
-                <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
-                <Navbar.Collapse id="responsive-navbar-nav ">
-                    <Nav className="mx-auto">
-                        <Form className="d-flex">
+                     <Form className="d-flex">
                             <Form.Control
                                 type="search"
                                 placeholder="Enter Keyword"
@@ -62,9 +56,7 @@ function NavBar() {
                                         onClick={onSubmit}> Search</Button>
                             </div>
                         </Form>
-
-
-                    </Nav>
+ 
                     {!useauth.isLogin() && (
                             <Nav className="ml-auto">
                                 <Link to={"login"} className={"nav-link text-white"}>Log In</Link>
@@ -75,13 +67,11 @@ function NavBar() {
 
                     {useauth.isLogin() && (
                             <Nav className="ml-auto">
+                                <Link to={"profile"} className={"nav-link text-white"}>Profile</Link>
                                 <Link to={""} className={"nav-link text-white"} onClick={handleLogout}>Logout</Link>
                             </Nav>
                         )
-                    }
-
-                </Navbar.Collapse>
-            </Container>
+                    } 
         </Navbar>
     )
 

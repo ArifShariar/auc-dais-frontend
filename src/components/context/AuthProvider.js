@@ -4,8 +4,9 @@ const AuthContext = createContext(null);
 
 export const AuthProvider = ({children}) => {
 
-    const login = (usertoken) => {
+    const login = (usertoken, user_id) => {
         localStorage.setItem('user', usertoken);
+        localStorage.setItem('user_id', user_id);
     }
 
     const logout = () => {
