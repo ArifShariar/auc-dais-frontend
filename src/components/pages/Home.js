@@ -4,6 +4,7 @@ import Footer from "../Footer";
 import { useLocation } from "react-router-dom";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import SideBar from "../SideBar";
 
 import '../../App.css'
 
@@ -26,12 +27,16 @@ export default function () {
   const { state } = useLocation();
 
   return (
-    <>
-       <Carousels /> 
-       <div>
-        
-       </div>
-        <Footer />
-    </>
-  )
+      <div className="container">
+        <div className="row">
+            <div className="col">
+              <SideBar />
+            </div>
+            <div className="col-md-auto w-85">
+              <Carousels /> 
+            </div>
+        </div>
+        {/* <Footer /> */}   
+    </div>    
+  );
 }

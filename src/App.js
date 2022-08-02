@@ -29,8 +29,7 @@ function App() {
     <Router>
         <div className='navbar-container fixed-top'>
             <NavBar/>
-        </div>
-
+        </div>  
         <Routes>
             <Route path="/login" element={<LogInPage/>}/>
             <Route path="/signup" element={<SignUp/>}/>

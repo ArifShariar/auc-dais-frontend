@@ -1,23 +1,23 @@
 .card-container{
     background-color: #FEF9A7;
     padding-top: 100px;
-    padding-left: 100px;
-    padding-right: 100px;
+    padding-left: 1%;
+    padding-right: 1%;
     padding-bottom: 20px;
     flex-direction: column;
-    align-self: left;
+    align-self: right;
 }
 .card-body-container{
     justify-content: flex-end;
-    padding-left: 100px;
-    padding-right: 100px;
+    padding-left: 10%;
+    padding-right: 10%;
     padding-top: 50px;
     padding-bottom: 20px;
 }
 .card-image-container{
     padding-top: 10px;
-    padding-left: 100px;
-    padding-right: 100px;
+    padding-left: 10%;
+    padding-right: 10%;
     padding-bottom: 20px;
     display: flex;
     flex-direction: row;

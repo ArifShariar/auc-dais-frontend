@@ -45,25 +45,19 @@ function NavBar() {
                 <Link to={""} className="navbar-brand text-white">
                     AucDais
                 </Link>
-                {/*<Navbar.Brand href="#home">AucDais</Navbar.Brand>*/}
                 <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
-                <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="me-auto ">
-                        <Link to={"addAuction"} className={"nav-link text-white"}>Add Auction</Link>
-                        <Link to={"liveAuctions"} className={"nav-link text-white"}>Live Auctions</Link>
-                        <Link to={"savedAuctions"} className={"nav-link text-white"}>Saved Auctions</Link>
-                        <Link to={"history"} className={"nav-link text-white"}>History</Link>
-                        {/*<Link to={"location"} className={"nav-link text-white"}>Location</Link>*/}
+                <Navbar.Collapse id="responsive-navbar-nav ">
+                    <Nav className="mx-auto">
                         <Form className="d-flex">
                             <Form.Control
                                 type="search"
                                 placeholder="Enter Keyword"
-                                className="me-2"
+                                className="mx-2 p-2"
                                 aria-label="Search"
                                 id="search_keyword"
                                 name="search_keyword"
                             />
-                            <div className="d-grid gap-2 col-6 mx-auto bg-danger text-white ">
+                            <div className="d-grid gap-2 mx-auto bg-danger text-white ">
                                 <Button type="submit" className="btn btn-danger"
                                         onClick={onSubmit}> Search</Button>
                             </div>
