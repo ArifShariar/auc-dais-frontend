@@ -38,11 +38,16 @@ function NavBar() {
     }
 
     return (
-        <Navbar collapseOnSelect expand="lg" sticky="top"> 
-                <Link to={""} className="navbar-brand text-white">
-                    AucDais
-                </Link>
-                     <Form className="d-flex">
+        <Navbar collapseOnSelect expand="lg" sticky="top">
+            <Container fluid>
+                <Navbar.Brand>
+                    <Link to={""} className="navbar-brand text-white">
+                        AucDais
+                    </Link>
+                </Navbar.Brand>
+                <Navbar.Collapse id="responsive-navbar-nav">
+                    <Nav className="ml-auto">
+                        <Form className="d-flex">
                             <Form.Control
                                 type="search"
                                 placeholder="Enter Keyword"
@@ -51,27 +56,32 @@ function NavBar() {
                                 id="search_keyword"
                                 name="search_keyword"
                             />
-                            <div className="d-grid gap-2 mx-auto bg-danger text-white ">
+                            <div className="d-grid gap-2 ml-auto bg-danger text-white ">
                                 <Button type="submit" className="btn btn-danger"
                                         onClick={onSubmit}> Search</Button>
                             </div>
                         </Form>
- 
+                    </Nav>    
+                            
+                </Navbar.Collapse>
+                <Navbar.Collapse id="responsive-navbar-nav">
                     {!useauth.isLogin() && (
-                            <Nav className="ml-auto">
-                                <Link to={"login"} className={"nav-link text-white"}>Log In</Link>
-                                <Link to={"signup"} className={"nav-link text-white"}>Sign Up</Link>
-                            </Nav>
-                        )
-                    }
+                                <Nav className="mx-auto">
+                                    <Link to={"login"} className={"nav-link text-white"}>Log In</Link>
+                                    <Link to={"signup"} className={"nav-link text-white"}>Sign Up</Link>
+                                </Nav>
+                            )
+                        }
 
-                    {useauth.isLogin() && (
-                            <Nav className="ml-auto">
-                                <Link to={"profile"} className={"nav-link text-white"}>Profile</Link>
-                                <Link to={""} className={"nav-link text-white"} onClick={handleLogout}>Logout</Link>
-                            </Nav>
-                        )
-                    } 
+                        {useauth.isLogin() && (
+                                <Nav className="mx-auto">
+                                    <Link to={"profile"} className={"nav-link text-white"}>Profile</Link>
+                                    <Link to={""} className={"nav-link text-white"} onClick={handleLogout}>Logout</Link>
+                                </Nav>
+                            )
+                        }
+                </Navbar.Collapse>
+            </Container>
         </Navbar>
     )
 
