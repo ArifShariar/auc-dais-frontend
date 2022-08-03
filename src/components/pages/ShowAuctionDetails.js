@@ -10,6 +10,8 @@ class ShowAuctionDetails extends React.Component{
         this.state = {
             auction:[],
             bid_amount:0,
+            user_id : localStorage.getItem('user_id'),
+            user_token: localStorage.getItem('user')
         }
     }
     // on click of submit button, display the bid amount on alert
@@ -24,7 +26,7 @@ class ShowAuctionDetails extends React.Component{
         else{
             alert("Bid Amount: " + this.state.bid_amount);
             let auction_id = this.state.auction.id;
-            let max_bidder_id = 7;
+            let max_bidder_id = this.state.user_id;
             let url = "http://localhost:8080/auction_products/update/max_bid/" + auction_id;
             axios.put(url,
                 {},
@@ -32,6 +34,9 @@ class ShowAuctionDetails extends React.Component{
                     params:{
                         user_id:max_bidder_id,
                         max_bid: this.state.bid_amount
+                    },
+                    data: {
+                        token: this.state.user_token
                     }
                 })
                 .then(response=>{

@@ -18,7 +18,7 @@ class History extends React.Component{
 
 
     componentDidMount() {
-        let url = "http://localhost:8080/history/get/user/" + this.state.user_id;
+        let url = "http://localhost:8080/history/get/user/" + this.state.user_id + "/" + this.state.user_token;
         axios({
             method: 'get',
             url: url,
@@ -29,8 +29,8 @@ class History extends React.Component{
         })
             .then(response => response.data)
             .then(data => {
-                console.log("Received messages: ");
-                console.log(data);
+                this.state.history = data;
+                this.setState(this.state.history);
             })
             .catch(error => {
                 console.log(error);
@@ -63,7 +63,7 @@ class History extends React.Component{
 
                                         {this.state.history.length === 0 ?
                                             <tr>
-                                                <td colSpan={6} className={"text-center"}>No history</td>
+                                                <td colSpan={7} className={"text-center"}>No history</td>
                                             </tr> :
                                             this.state.history.map((history, index) => {
                                                 return (
