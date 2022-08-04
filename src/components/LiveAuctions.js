@@ -3,7 +3,7 @@ import React from "react";
 class LiveAuctions extends React.Component{
     render() {
         return (
-            <div>
+            <div class="mt-5 pt-5">
                 <h1>Live Auctions</h1>
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.

@@ -35,9 +35,9 @@ function LogInPage() {
                         //const redirectpath = location.state.path;
                         //alert(redirectpath);
 
-                        navigate('/?id='+response.data.id, {
+                        navigate('/?id='+response.data.user.id, {
                             state: { 
-                                    id: response.data.id,
+                                    id: response.data.user.id,
                                     created: false,
                                     name: response.data.firstName
                                 },
