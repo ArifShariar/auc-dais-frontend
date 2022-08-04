@@ -137,26 +137,7 @@ class ShowAuctionDetails extends React.Component{
                                                             Time Left  </p> </div> <div className="col-md-4"> </div>
                                                         <div className="col-md-4"> <p className="bg-secondary bg-gradient text-white  rounded-pill  text-padding">
                                                             5hr  </p> </div>
-                                                    </div>
-                                                    <Card className=" card-container">
-                                                        <Card.Header className={"bg-success text-white text-center text-padding"}> Place Your Bid</Card.Header>
-                                                        <Card.Body >
-                                                            <div className='card-header'>
-                                                                <form >
-                                                                    <div className="form-group">
-                                                                        <label htmlFor="place_bid">Enter amount</label>
-                                                                        <input type="number" className="form-control" id="bidAmount" name="bidAmount" />
-
-                                                                    </div>
-                                                                    <div className="d-grid gap-2 col-6 mx-auto text-container">
-                                                                        <Button type="submit" className="btn btn-secondary btn-lg btn-block" onClick={this.onSubmit}> Bid </Button>
-                                                                    </div>
-                                                                </form>
-
-                                                            </div>
-
-                                                        </Card.Body>
-                                                    </Card>
+                                                    </div> 
 
                                                 </Card.Body>
                                             </Card>

@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
 import { useAuth } from './context/AuthProvider';
+import "./SideBar.css"
 
 function NavBar() {
     const navigate = useNavigate();
@@ -39,39 +40,56 @@ function NavBar() {
 
     return (
         <Navbar collapseOnSelect expand="lg" sticky="top"> 
+            <img
+                src={require("../images/auction-logo.webp")}
+                width="100"
+                height="40"
+                className="d-inline-block align-top left-padding-for-logo"
+                alt="" 
+                />
+        <Container>
+            <Navbar.Brand>               
                 <Link to={""} className="navbar-brand text-white">
                     AucDais
                 </Link>
-                     <Form className="d-flex">
-                            <Form.Control
-                                type="search"
-                                placeholder="Enter Keyword"
-                                className="mx-2 p-2"
-                                aria-label="Search"
-                                id="search_keyword"
-                                name="search_keyword"
-                            />
-                            <div className="d-grid gap-2 mx-auto bg-danger text-white ">
-                                <Button type="submit" className="btn btn-danger"
-                                        onClick={onSubmit}> Search</Button>
-                            </div>
-                        </Form>
- 
-                    {!useauth.isLogin() && (
-                            <Nav className="ml-auto">
-                                <Link to={"login"} className={"nav-link text-white"}>Log In</Link>
-                                <Link to={"signup"} className={"nav-link text-white"}>Sign Up</Link>
-                            </Nav>
-                        )
-                    }
+            </Navbar.Brand>
+            <Navbar.Collapse id="basic-navbar-nav"> 
+                <Nav>
+                    <Form className="d-flex">
+                        <Form.Control
+                            type="search"
+                            placeholder="Enter Keyword"
+                            className="mx-2 p-2"
+                            aria-label="Search"
+                            id="search_keyword"
+                            name="search_keyword"
+                        />
+                        <div className="d-grid gap-2 mx-auto bg-danger text-white ">
+                            <Button type="submit" className="btn btn-danger"
+                                    onClick={onSubmit}> Search</Button>
+                        </div>
+                    </Form>
+                </Nav>
+            </Navbar.Collapse>
+            <Navbar.Collapse className="justify-content-end">
+                {!useauth.isLogin() && (
+                        <Nav className="ml-auto">
+                            <Link to={"login"} className={"nav-link text-white"}>Log In</Link>
+                            <Link to={"signup"} className={"nav-link text-white"}>Sign Up</Link>
+                        </Nav>
+                    )
+                }
 
-                    {useauth.isLogin() && (
-                            <Nav className="ml-auto">
-                                <Link to={"profile"} className={"nav-link text-white"}>Profile</Link>
-                                <Link to={""} className={"nav-link text-white"} onClick={handleLogout}>Logout</Link>
-                            </Nav>
-                        )
-                    } 
+                {useauth.isLogin() && (
+                        <Nav className="ml-auto">
+                            <Link to={"profile"} className={"nav-link text-white"}>Profile</Link>
+                            <Link to={""} className={"nav-link text-white"} onClick={handleLogout}>Logout</Link>
+                        </Nav>
+                    )
+                } 
+            </Navbar.Collapse>
+        </Container> 
+                     
         </Navbar>
     )
 
