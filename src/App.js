@@ -27,7 +27,7 @@ import SideBar from "./components/SideBar";
 // We may need to get rid of RequireAuth and use PersistLogin instead
 toast.configure();
 function App() {
-
+  const state = {}
   return (
     <AuthProvider>
     <Router>
@@ -41,8 +41,8 @@ function App() {
             <Route path="/history" element={<RequireAuth><History/></RequireAuth>}/>
             <Route path="/location" element={<RequireAuth><Location/></RequireAuth>}/>
             <Route path="/liveAuctions" element={<RequireAuth><LiveAuctions/></RequireAuth>}/>
-            
-            <Route path="/liveAuction" element={<RequireAuth><LiveAuction/></RequireAuth>}/><Route path="/savedAuctions" element={<RequireAuth><SavedAuctions/></RequireAuth>}/>
+            <Route path="/liveAuctions/liveAuction" element={<RequireAuth><LiveAuction state={state}/></RequireAuth>}/>
+            <Route path="/savedAuctions" element={<RequireAuth><SavedAuctions/></RequireAuth>}/>
             <Route path="/addAuction" element={<RequireAuth><AddAuction/></RequireAuth>}/>
             <Route path="/auction/:id" element={<RequireAuth><ShowAuctionDetails/></RequireAuth>} />
             <Route path="/search"  element={<SearchResults/>}/>

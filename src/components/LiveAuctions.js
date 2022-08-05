@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import {Card} from "react-bootstrap"; 
 import './Card.css'
 import axios from "axios"; 
-import {useLocation} from "react-router-dom";
+import {Route,Router,Link, Routes} from "react-router-dom";
 import { useEffect } from 'react';
+import LiveAuction from './LiveAuction';
 
 class LiveAuctions extends React.Component{
     constructor(props) {
@@ -38,23 +39,30 @@ class LiveAuctions extends React.Component{
                                         </h3> :
                                         this.state.live_auctions.map((auction, index) => {
                                             return (
-                                                <div className='card-image-container border border-warning'>
-                                                    <img
-                                                            src={require('../images/vase.jpeg')}
-                                                            alt="product image"
-                                                            height={200}
-                                                            width={150}
-                                                        />
-                                                    <div className="image-desc-container">
-                                                    <p>{auction.auctionProduct.product_name}</p>
-                                                            <p>{auction.auctionProduct.max_bid}</p>
-                                                            <p>{auction.auctionProduct.auction_start_date}</p>
-                                                            <p>{auction.auctionProduct.auction_end_date}</p>
+                                                
+                                                <Link to={{
+                                                    pathname : "/liveAuctions/liveAuction",
+                                                    state : {'auction':auction} 
+
+                                                }}> 
+                                                    <div className='card-image-container border border-warning'>
+                                                        <img
+                                                                src={require('../images/vase.jpeg')}
+                                                                alt="product image"
+                                                                height={200}
+                                                                width={150}
+                                                            />
+                                                        <div className="image-desc-container">
+                                                        <p>{auction.auctionProduct.product_name}</p>
+                                                                <p>{auction.auctionProduct.max_bid}</p>
+                                                                <p>{auction.auctionProduct.auction_start_date}</p>
+                                                                <p>{auction.auctionProduct.auction_end_date}</p>
+
+                                                        </div>
 
                                                     </div>
-
-                                                </div>
-                                                
+                                                    <LiveAuction auction={auction}/>
+                                                </Link>
                                                 )
                                             })
                                         } 
