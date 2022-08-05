@@ -105,6 +105,7 @@ function SignUp() {
     }
 
     return(
+        <div className="home-element-padding">
         <div className="card-container">
             <div className='container-fluid' >
                 <div className="row">
@@ -175,7 +176,7 @@ function SignUp() {
                 </div>
             </div>
             <ToastContainer/>
-        </div>
+        </div> </div>
     );
 }
 

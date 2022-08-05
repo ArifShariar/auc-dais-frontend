@@ -24,6 +24,7 @@ class RatingReviewAdd extends React.Component{
             );
           };
         return(
+          <div className="home-element-padding">
             <div className="card-container">
                 <div className='container-fluid' >
                     <div className="row">
@@ -58,7 +59,7 @@ class RatingReviewAdd extends React.Component{
                         </div>
                     </div>
                 </div>
-            </div>
+            </div></div>
         );
     }
 }
