@@ -38,6 +38,10 @@ function NavBar() {
         window.location.replace("http://localhost:3000");
     }
 
+    const paddingLeft = {
+        paddingLeft: "10px"
+    }
+
     return (
         <Navbar collapseOnSelect expand="lg" sticky="top"> 
             <img
@@ -47,13 +51,13 @@ function NavBar() {
                 className="d-inline-block align-top left-padding-for-logo"
                 alt="" 
                 />
-        <Container>
-            <Navbar.Brand>               
+            <Navbar.Brand style={paddingLeft}>
                 <Link to={""} className="navbar-brand text-white">
                     AucDais
                 </Link>
             </Navbar.Brand>
-            <Navbar.Collapse id="basic-navbar-nav"> 
+
+            <Navbar.Collapse id="basic-navbar-nav">
                 <Nav>
                     <Form className="d-flex">
                         <Form.Control
@@ -71,6 +75,9 @@ function NavBar() {
                     </Form>
                 </Nav>
             </Navbar.Collapse>
+        <Container>
+
+
             <Navbar.Collapse className="justify-content-end">
                 {!useauth.isLogin() && (
                         <Nav className="ml-auto">
