@@ -64,6 +64,7 @@ class ShowAuctionDetails extends React.Component{
 
     render(){
         return (
+            <div className="home-element-padding">
             <div className="card-container">
                 <div className='container-fluid' >
 
@@ -149,7 +150,7 @@ class ShowAuctionDetails extends React.Component{
                     </div>
 
                 </div>
-            </div>
+            </div></div>
         )
     }
 
