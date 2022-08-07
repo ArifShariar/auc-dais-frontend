@@ -50,8 +50,9 @@ function App() {
             <Route path="/message" element={<Message/>}/>
             <Route path="/messages" element={<AllMessages/>}/>
             <Route path="/profile" element={<RequireAuth><Profile/></RequireAuth>}/>
+            <Route path="/chatroom" element={<ChatRoom/>} />
             <Route path="/" element={<Home />} />
-            <Route path="/chatroom" element={<RequireAuth><ChatRoom/></RequireAuth>} />
+            
         </Routes>
     </Router>
     </AuthProvider>
