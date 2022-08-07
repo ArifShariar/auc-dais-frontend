@@ -5,13 +5,15 @@ import axios from "axios";
 class AddAuctionConfirm extends React.Component{
     continue = e => {
         e.preventDefault();
-        // api call here
-        // use axios to post to server
-        let ownerId = localStorage.getItem('user_id');
+
+        let ownerId = localStorage.getItem("user_id");
+        // alert("owner id: " + ownerId);
         const {values : {product_name, product_description, minimum_price, start_date, start_time, end_date, end_time,
             address, photos, tags}} = this.props;
         let auction_start_date = start_date + " " + start_time;
         let auction_end_date = end_date + " " + end_time;
+
+        // alert("auction start date: " + auction_start_date + " auction end date: " + auction_end_date);
         let url = "http://localhost:8080/auction_products/create" ;
 
         axios.post(url,

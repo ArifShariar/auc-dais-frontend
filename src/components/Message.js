@@ -116,33 +116,22 @@ function Message (){
 
 
     return (
-        <div className={"card-container"}>
-            <div className={"container-fluid"}>
-                <Card className="bg-warning.bg-gradient" >
-                    <Card.Header className={"bg-warning text-white text-center"}>Message</Card.Header>
-                    <Card.Body>
-                        <ListGroup>
-                            <ListGroup.Item variant="warning" style={padding_top_bottom_between_text}>Message from sender</ListGroup.Item>
-                            <ListGroup.Item variant="info" style={padding_top_bottom_between_text}>Message from receiver</ListGroup.Item>
-                        </ListGroup>
+        <div className='message-container'>
+            <ListGroup>
+                <ListGroup.Item variant="warning w-50 align-self-start rounded-pill" style={padding_top_bottom_between_text}>Message from sender</ListGroup.Item>
+                <ListGroup.Item variant="info w-50 align-self-end rounded-pill d-flex justify-content-end" style={padding_top_bottom_between_text}>Message from receiver</ListGroup.Item>
+            </ListGroup>
 
-
-                        <div style={padding_top}>
-                            <InputGroup className="mb-3" size="lg">
-                                <Form.Control
-                                    placeholder="Type Message..."
-                                    aria-label="Type Message..."
-                                    aria-describedby="basic-addon2"
-                                    id = "message"
-                                />
-                                <Button type={"submit"} variant="primary" onClick={sendMessage}>Send</Button>
-                            </InputGroup>
-                        </div>
-
-                    </Card.Body>
-
-                </Card>
-
+            <div style={padding_top}>
+                <InputGroup className="mb-3" size="lg">
+                    <Form.Control
+                        placeholder="Type Message..."
+                        aria-label="Type Message..."
+                        aria-describedby="basic-addon2"
+                        id = "message"
+                    />
+                    <Button type={"submit"} variant="primary" onClick={sendMessage}>Send</Button>
+                </InputGroup>
             </div>
 
         </div>

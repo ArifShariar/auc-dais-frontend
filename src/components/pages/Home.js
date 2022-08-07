@@ -5,6 +5,8 @@ import { useLocation } from "react-router-dom";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SideBar from "../SideBar";
+import Container from 'react-bootstrap/Container';
+import "../Card.css"
 
 import '../../App.css'
 
@@ -27,16 +29,8 @@ export default function () {
   const { state } = useLocation();
 
   return (
-      <div className="container">
-        <div className="row">
-            <div className="col">
-              <SideBar />
-            </div>
-            <div className="col-md-auto w-85">
-              <Carousels /> 
-            </div>
-        </div>
-        {/* <Footer /> */}   
-    </div>    
-  );
+      <Container className="home-element-padding">
+          <Carousels />
+      </Container> 
+  )
 }

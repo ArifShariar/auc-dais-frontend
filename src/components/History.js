@@ -44,8 +44,8 @@ class History extends React.Component{
                 <div className='container-fluid' >
                     <div className="row">
                         <div className=" col-sm-12">
-                        <Card className=" bg-warning.bg-gradient">
-                            <Card.Header className={"bg-warning text-white text-center"}>History</Card.Header>
+                            <Card className=" bg-warning.bg-gradient">
+                                <Card.Header className={"bg-warning text-white text-center"}>History</Card.Header>
                                 <Card.Body>
                                     <Table striped bordered hover size="sm">
                                         <thead>
@@ -66,20 +66,20 @@ class History extends React.Component{
                                                 <td colSpan={7} className={"text-center"}>No history</td>
                                             </tr> :
                                             this.state.history.map((history, index) => {
-                                                return (
-                                                    <tr key={history.id}>
-                                                        <td>{index + 1}</td>
-                                                        <td className={"text-center"}>{history.auctionProduct.product_name}</td>
-                                                        <td className={"text-center"}>{history.auctionProduct.owner.firstName}</td>
-                                                        <td className={"text-center"}>{history.auctionProduct.max_bid}</td>
-                                                        <td className={"text-center"}>{history.bid_amount}</td>
-                                                        <td className={"text-center"}>{history.date}</td>
-                                                        <td className={"text-center"}>
-                                                            <Link to={'/auction/' + history.auctionProduct.id} className={"btn btn-primary"}>View</Link>
-                                                        </td>
-                                                    </tr>
-                                                )
-                                            }
+                                                    return (
+                                                        <tr key={history.id}>
+                                                            <td>{index + 1}</td>
+                                                            <td className={"text-center"}>{history.auctionProduct.product_name}</td>
+                                                            <td className={"text-center"}>{history.auctionProduct.owner.firstName}</td>
+                                                            <td className={"text-center"}>{history.auctionProduct.max_bid}</td>
+                                                            <td className={"text-center"}>{history.bid_amount}</td>
+                                                            <td className={"text-center"}>{history.date}</td>
+                                                            <td className={"text-center"}>
+                                                                <Link to={'/auction/' + history.auctionProduct.id} className={"btn btn-primary"}>View</Link>
+                                                            </td>
+                                                        </tr>
+                                                    )
+                                                }
                                             )
                                         }
                                         </tbody>

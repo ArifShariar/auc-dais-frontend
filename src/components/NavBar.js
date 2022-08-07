@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
 import { useAuth } from './context/AuthProvider';
+import "./SideBar.css"
 
 function NavBar() {
     const navigate = useNavigate();
@@ -33,8 +34,20 @@ function NavBar() {
         window.location.replace("http://localhost:3000");
     }
 
+    const paddingLeft = {
+        paddingLeft: "10px"
+    }
+
     return (
         <Navbar collapseOnSelect expand="lg" sticky="top" className={useauth.isLogin()?'py-0':'py-auto'}>
+                <img
+                    src={require("../images/auction-logo.webp")}
+                    width="100"
+                    height="40"
+                    className="d-inline-block align-top left-padding-for-logo"
+                    alt=""
+                />
+                
                 <Navbar.Brand className="justify-content-end px-3">
                 <Link to={""} className="navbar-brand text-white">
                     AucDais

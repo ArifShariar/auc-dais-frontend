@@ -23,6 +23,7 @@ function Profile () {
 
 
     return (
+        <div className="home-element-padding">
         <div className={"card-container"}>
             <div className={"container-fluid"}>
                 <Card className="bg-warning.bg-gradient" >
@@ -51,7 +52,7 @@ function Profile () {
                     </Card.Body>
                 </Card>
             </div>
-        </div>
+        </div></div>
     );
 }
 
