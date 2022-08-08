@@ -8,6 +8,7 @@ function SavedAuctions() {
     let [savedAuctions, setSavedAuctions] = useState([]);
     let user_id = localStorage.getItem('user_id');
     let user_token = localStorage.getItem('user');
+    let [numSaveAuc, setNumSaveAuc] = useState();
 
     const deleteAuction = (id) => {
         // /delete/user/{userId}/auction/{auctionId}/{token}
@@ -16,7 +17,7 @@ function SavedAuctions() {
             method: 'delete',
             url: delete_url
         }).then(() => {
-
+            setNumSaveAuc(numSaveAuc-1)
         })
     }
 
@@ -30,9 +31,18 @@ function SavedAuctions() {
         axios.get("http://localhost:8080/savedAuctions/get/user/" + user_id + "/" + user_token)
             .then(response =>response.data)
             .then(data =>{
+                setNumSaveAuc(data.length);
                 setSavedAuctions(data);
             })
-    });
+    }, []);
+
+    useEffect(() => {
+        axios.get("http://localhost:8080/savedAuctions/get/user/" + user_id + "/" + user_token)
+            .then(response =>response.data)
+            .then(data =>{
+                setSavedAuctions(data);
+            })
+    }, [numSaveAuc]);
 
     return(
         <div className="home-element-padding">
