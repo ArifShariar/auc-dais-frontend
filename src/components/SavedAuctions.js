@@ -4,33 +4,56 @@ import Table from 'react-bootstrap/Table';
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 import './Card.css'
+
+import {useHistory} from "react-router-dom";
+
 // this class will show the saved auctions by a user
 
 class SavedAuctions extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            saved_auctions: []
+            saved_auctions: [],
+            user_id: localStorage.getItem('user_id'),
+            user_token: localStorage.getItem('user')
         }
     }
 
     componentDidMount() {
-        axios.get("http://localhost:8080/savedAuctions/get/user/2")
+        axios.get("http://localhost:8080/savedAuctions/get/user/" + this.state.user_id + "/" + this.state.user_token)
             .then(response =>response.data)
             .then((data)=>{
                 this.setState({saved_auctions: data});
+            })
+    }
+
+    deleteAuction(id) {
+        // /delete/user/{userId}/auction/{auctionId}/{token}
+        let delete_url = "http://localhost:8080/savedAuctions/delete/user/" + this.state.user_id + "/auction/" + id + "/" + this.state.user_token;
+        axios({
+            method: 'delete',
+            url: delete_url
+        }).then(() => {
+            this.componentDidMount();
         })
     }
 
+    showAuctionDetails(id) {
+        // use navigate to go to the auction details page
+        // TODO: ADD ROUTING HERE
+
+    }
+
     render() {
+
         return (
             <div className="home-element-padding">
                 <div className="card-container ">
                     <div className='container-fluid' >
                         <div className="row">
                             <div className=" col-sm-12">
-                            <Card className=" bg-warning.bg-gradient">
-                                <Card.Header className={"bg-warning text-white text-center"}> Saved Auctions </Card.Header>
+                                <Card className=" bg-warning.bg-gradient">
+                                    <Card.Header className={"bg-warning text-white text-center"}> Saved Auctions </Card.Header>
                                     <Card.Body>
                                         <Table bordered hover striped responsive>
                                             <thead>
@@ -59,10 +82,10 @@ class SavedAuctions extends React.Component{
                                                             <td>{auction.auctionProduct.auction_start_date}</td>
                                                             <td>{auction.auctionProduct.auction_end_date}</td>
                                                             <td>
-                                                                <Button variant="outline-danger" size="sm" className={"text-center"}>Delete</Button>
+                                                                <Button variant="outline-danger" size="sm" className={"text-center"} onClick={()=>this.deleteAuction(auction.auctionProduct.id)}>Delete</Button>
                                                             </td>
                                                             <td>
-                                                                <Button variant="outline-success" size="sm" className={"text-center"}>View</Button>
+                                                                <Button variant="outline-success" size="sm" className={"text-center"} onClick={()=>this.showAuctionDetails(auction.auctionProduct.id)}>View</Button>
                                                             </td>
                                                         </tr>
                                                     )
@@ -71,7 +94,7 @@ class SavedAuctions extends React.Component{
                                             </tbody>
                                         </Table>
                                     </Card.Body>
-                            </Card>
+                                </Card>
                             </div>
                         </div>
                     </div>

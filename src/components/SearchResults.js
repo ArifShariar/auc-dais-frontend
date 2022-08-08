@@ -12,12 +12,11 @@ function SearchResult() {
     console.log(state.searchResult);
     // get search_keyword from url
     let search_result = state.searchResult;
-    let user_id = 2;
+    let user_id = localStorage.getItem('user_id');
 
 
     function AddToSave(id){
-        //http://localhost:8080/savedAuctions/create/user/1/auction/2
-        let url = "http://localhost:8080/savedAuctions/create/user/" + user_id + "/auction/" + id;
+        let url = "http://localhost:8080/savedAuctions/create/user/" + user_id + "/auction/" + id + "/" + localStorage.getItem('user');
         axios({
             method: 'post',
             url: url,
