@@ -29,12 +29,10 @@ function SavedAuctions() {
     useEffect(() => {
         axios.get("http://localhost:8080/savedAuctions/get/user/" + user_id + "/" + user_token)
             .then(response =>response.data)
-            .then((data)=>{
-                setSavedAuctions = data;
-                console.log("data : " );
-                console.log(savedAuctions);
+            .then(data =>{
+                setSavedAuctions(data);
             })
-    })
+    });
 
     return(
         <div className="home-element-padding">
