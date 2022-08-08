@@ -25,10 +25,7 @@ function LogInPage() {
                         setEmail('');
                         setPassword('');
                         // Saving token in the local storage.
-                        useauth.login(response.data.token, response.data.user.id);
-
-                        console.log("The token generated for user: " + response.data.token);
-                        console.log(response.data);
+                        useauth.login(response);
 
                         /*===== Here I'm trying to redirect to the page the user clicked before loging in ====*/
                         /*===== Though not that necessary still a nice feature to have. ====*/
@@ -38,9 +35,9 @@ function LogInPage() {
                         //const redirectpath = location.state.path;
                         //alert(redirectpath);
 
-                        navigate('/?id='+response.data.id, {
+                        navigate('/?id='+response.data.user.id, {
                             state: { 
-                                    id: response.data.id,
+                                    id: response.data.user.id,
                                     created: false,
                                     name: response.data.firstName
                                 },

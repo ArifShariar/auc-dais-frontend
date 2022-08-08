@@ -22,6 +22,7 @@ import { RequireAuth } from './components/RequireAuth';
 import Message from "./components/Message";
 import Profile from "./components/Profile";
 import AllMessages from "./components/AllMessages";
+import ChatRoom from "./components/ChatRoom";
 import SideBar from "./components/SideBar";
 
 // We may need to get rid of RequireAuth and use PersistLogin instead
@@ -49,7 +50,9 @@ function App() {
             <Route path="/message" element={<Message/>}/>
             <Route path="/messages" element={<AllMessages/>}/>
             <Route path="/profile" element={<RequireAuth><Profile/></RequireAuth>}/>
+            <Route path="/chatroom" element={<ChatRoom/>} />
             <Route path="/" element={<Home />} />
+            
         </Routes>
     </Router>
     </AuthProvider>
