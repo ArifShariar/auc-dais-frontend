@@ -17,7 +17,11 @@ function SavedAuctions() {
             method: 'delete',
             url: delete_url
         }).then(() => {
+<<<<<<< HEAD
             setNumSaveAuc(numSaveAuc-1)
+=======
+            window.location.reload();
+>>>>>>> 4a8826d713d034a77f0b49cc848705c974a00722
         })
     }
 
@@ -42,7 +46,11 @@ function SavedAuctions() {
             .then(data =>{
                 setSavedAuctions(data);
             })
+<<<<<<< HEAD
     }, [numSaveAuc]);
+=======
+    }, []);
+>>>>>>> 4a8826d713d034a77f0b49cc848705c974a00722
 
     return(
         <div className="home-element-padding">

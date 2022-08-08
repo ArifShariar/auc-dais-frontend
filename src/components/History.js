@@ -40,6 +40,7 @@ class History extends React.Component{
 
     render() {
         return (
+            <div className="home-element-padding"> 
             <div className="card-container">
                 <div className='container-fluid' >
                     <div className="row">
@@ -89,7 +90,7 @@ class History extends React.Component{
                         </div>
                     </div>
                 </div>
-            </div>
+            </div></div>
         );
     }
 }
