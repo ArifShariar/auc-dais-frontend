@@ -3,12 +3,15 @@ import {Card} from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 function SavedAuctions() {
     let [savedAuctions, setSavedAuctions] = useState([]);
     let user_id = localStorage.getItem('user_id');
     let user_token = localStorage.getItem('user');
     let [numSaveAuc, setNumSaveAuc] = useState();
+
+    const navigate = useNavigate();
 
     const deleteAuction = (id) => {
         // /delete/user/{userId}/auction/{auctionId}/{token}
@@ -24,7 +27,7 @@ function SavedAuctions() {
 
     const showAuctionDetails = (id) => {
         // use navigate to go to the auction details page
-        alert("View Auction Details : " + id);
+        navigate("/auction/" + id);
     }
 
     useEffect(() => {
