@@ -16,7 +16,7 @@ function SavedAuctions() {
             method: 'delete',
             url: delete_url
         }).then(() => {
-
+            window.location.reload();
         })
     }
 
@@ -32,7 +32,7 @@ function SavedAuctions() {
             .then(data =>{
                 setSavedAuctions(data);
             })
-    });
+    }, []);
 
     return(
         <div className="home-element-padding">
