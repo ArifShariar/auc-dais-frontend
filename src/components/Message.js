@@ -14,57 +14,28 @@ function Message (){
     let receiver_id = 2;
 
     const [message, setMessage] = useState([]);
-    const [sentMessage, setSentMessage] = useState([]);
-    const [receivedMessage, setReceivedMessage] = useState([]);
-
 
     const fetchSentMessages = () => {
-        let url = "http://localhost:8080/message/get/sender/" + sender_id +"/receiver/" + receiver_id;
-        let url2 = "http://localhost:8080/message/get/sender/" + receiver_id +"/receiver/" + sender_id;
+        let url = "http://localhost:8080/message/get/sender/" + sender_id +"/receiver/" + receiver_id + "/sorted";
 
-        axios({
-            method: 'get',
-            url: url,
-            headers: {},
-            data: {}
+        axios.get(url).then(r => {
+            setMessage(r.data);
+            console.log(r.data);
+        }).catch(e => {
+            notify_error("Error fetching messages");
         })
-            .then(response => response.data)
-            .then(data => {
-                console.log("sent messages: ");
-                console.log(data);
-                setSentMessage(data);
-                setMessage(data);
-            })
-            .catch(error => {
-                console.log(error);
-                notify_error("Failed to load sent message");
-            });
-
-        axios({
-            method: 'get',
-            url: url2,
-            headers: {},
-            data: {}
-        })
-            .then(response => response.data)
-            .then(data => {
-                console.log("Received messages: ");
-                console.log(data);
-                setReceivedMessage(data);
-            })
-            .catch(error => {
-                console.log(error);
-                notify_error("Failed to load receive message");
-            });
 
 
     }
 
     useEffect( () =>{
         fetchSentMessages();
-
-
-    }, []);
+        //mark_all_read/sender/{senderId}/receiver/{receiverId}
+        let url = "http://localhost:8080/message/mark_all_read/sender/" + sender_id +"/receiver/" + receiver_id;
+        axios.put(url).then(r => {
+            console.log(r);
+        });
+    },[] );
 
     const padding_top ={
         paddingTop: '10px'
@@ -91,8 +62,6 @@ function Message (){
 
     const sendMessage = () => {
         let message = document.getElementById("message").value;
-        let sender_id = 1;
-        let receiver_id = 2;
         let url = "http://localhost:8080/message/send/sender/" + sender_id + "/receiver/" + receiver_id;
 
         // check if message is empty
@@ -109,15 +78,18 @@ function Message (){
                 }
             }).then(response => {
                 if (response.data!=null){
-                    if (response.status === 200){
-                        alert("Message sent");
-                    }
+                    // if (response.status === 200){
+                    //     notify_success("Message sent");
+                    //     fetchSentMessages();
+                    //     clearMessage();
+                    // }
                     clear(document.getElementById("message"));
                 } 
             }).catch(error => {
                 console.log(error);
                 notify_error("Failed to send message");
             });
+
 
         }
 
@@ -132,15 +104,24 @@ function Message (){
                     <Card.Header className={"bg-warning text-white text-center"}> Send Message</Card.Header>
                         <div className='message-container'>
                             {message.length === 0 ? <div>No messages</div> :
-                                <ListGroup>
-                                    <ListGroup.Item variant="warning w-50 align-self-start rounded-pill shadow"
-                                                    style={padding_top_bottom_between_text}>{message.length}</ListGroup.Item>
 
-                                    <ListGroup.Item
-                                        variant="info w-50 align-self-end rounded-pill d-flex justify-content-end shadow"
-                                        style={padding_top_bottom_between_text}>Message from receiver blash
-                                        blash blashdsajdhaksd dskjdbasmdnb dsakhjdkasbd</ListGroup.Item>
-                                </ListGroup>
+                                message.map((message, index) => {
+                                    return(
+
+                                        <ListGroup>
+                                            {message.sender.id === receiver_id ?
+                                                <ListGroup.Item variant="warning w-50 align-self-start rounded-pill shadow"
+                                                                style={padding_top_bottom_between_text}>{message.message}
+                                                </ListGroup.Item> :
+
+                                                <ListGroup.Item key="{index}"
+                                                    variant="info w-50 align-self-end rounded-pill d-flex justify-content-end shadow"
+                                                    style={padding_top_bottom_between_text}>{message.message}
+                                                </ListGroup.Item>
+                                            }
+                                        </ListGroup>
+                                    );
+                                })
                             }
 
                             <div style={padding_top}>
