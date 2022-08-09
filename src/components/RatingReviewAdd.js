@@ -1,9 +1,7 @@
 import React from 'react'
 import "./RatingReview.css"
 import { FaStar } from "react-icons/fa";
-import { useState } from "react";
-import { Button, Container } from 'react-bootstrap';
-import { alignProperty } from '@mui/material/styles/cssUtils';
+import { useState } from "react"; 
 
 const colors = {
   orange: "#FFBA5A",
