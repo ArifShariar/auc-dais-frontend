@@ -10,8 +10,13 @@ import {toast} from "react-toastify";
 
 function Message (){
 
-    let sender_id = 1;
+    let sender_id = localStorage.getItem('user_id');
     let receiver_id = 2;
+
+    const [message, setMessage] = useState([]);
+    const [sentMessage, setSentMessage] = useState([]);
+    const [receivedMessage, setReceivedMessage] = useState([]);
+
 
     const fetchSentMessages = () => {
         let url = "http://localhost:8080/message/get/sender/" + sender_id +"/receiver/" + receiver_id;
@@ -27,6 +32,8 @@ function Message (){
             .then(data => {
                 console.log("sent messages: ");
                 console.log(data);
+                setSentMessage(data);
+                setMessage(data);
             })
             .catch(error => {
                 console.log(error);
@@ -43,18 +50,21 @@ function Message (){
             .then(data => {
                 console.log("Received messages: ");
                 console.log(data);
+                setReceivedMessage(data);
             })
             .catch(error => {
                 console.log(error);
                 notify_error("Failed to load receive message");
             });
 
+
     }
 
     useEffect( () =>{
         fetchSentMessages();
 
-    });
+
+    }, []);
 
     const padding_top ={
         paddingTop: '10px'
@@ -117,25 +127,39 @@ function Message (){
 
     return (
         <div className="home-element-padding">
-        <div className='message-container'>
-            <ListGroup>
-                <ListGroup.Item variant="warning w-50 align-self-start rounded-pill" style={padding_top_bottom_between_text}>Message from sender</ListGroup.Item>
-                <ListGroup.Item variant="info w-50 align-self-end rounded-pill d-flex justify-content-end" style={padding_top_bottom_between_text}>Message from receiver</ListGroup.Item>
-            </ListGroup>
+            <div className="card-container">
+                <Card className={"bg-warning.bg-gradient"}>
+                    <Card.Header className={"bg-warning text-white text-center"}> Send Message</Card.Header>
+                        <div className='message-container'>
+                            {message.length === 0 ? <div>No messages</div> :
+                                <ListGroup>
+                                    <ListGroup.Item variant="warning w-50 align-self-start rounded-pill shadow"
+                                                    style={padding_top_bottom_between_text}>{message.length}</ListGroup.Item>
 
-            <div style={padding_top}>
-                <InputGroup className="mb-3" size="lg">
-                    <Form.Control
-                        placeholder="Type Message..."
-                        aria-label="Type Message..."
-                        aria-describedby="basic-addon2"
-                        id = "message"
-                    />
-                    <Button type={"submit"} variant="primary" onClick={sendMessage}>Send</Button>
-                </InputGroup>
+                                    <ListGroup.Item
+                                        variant="info w-50 align-self-end rounded-pill d-flex justify-content-end shadow"
+                                        style={padding_top_bottom_between_text}>Message from receiver blash
+                                        blash blashdsajdhaksd dskjdbasmdnb dsakhjdkasbd</ListGroup.Item>
+                                </ListGroup>
+                            }
+
+                            <div style={padding_top}>
+                                <InputGroup className="mb-3" size="lg">
+                                    <Form.Control
+                                        placeholder="Type Message..."
+                                        aria-label="Type Message..."
+                                        aria-describedby="basic-addon2"
+                                        id = "message"
+                                    />
+                                    <Button type={"submit"} variant="primary" onClick={sendMessage}>Send</Button>
+                                </InputGroup>
+                            </div>
+                        </div>
+
+                </Card>
             </div>
+        </div>
 
-        </div></div>
     );
 }
 
