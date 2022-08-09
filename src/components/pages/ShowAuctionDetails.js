@@ -3,6 +3,7 @@ import {Card,Button} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Card.css' ;
 import axios from "axios";
+import RatingReviewAdd from "../RatingReviewAdd"
 
 class ShowAuctionDetails extends React.Component{
     constructor(props){
@@ -102,7 +103,7 @@ class ShowAuctionDetails extends React.Component{
                                             </Card>
                                         </div>
                                     </div>
-
+                                    <RatingReviewAdd/>
                                     <div className="row">
                                         <div className=" col-sm-12">
                                             <Card className=" bg-warning.bg-gradient">
@@ -146,9 +147,9 @@ class ShowAuctionDetails extends React.Component{
                                     </div>
                                 </Card.Body>
                             </Card>
+                            
                         </div>
                     </div>
-
                 </div>
             </div></div>
         )

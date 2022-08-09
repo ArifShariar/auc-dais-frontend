@@ -1,31 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
+import "./RatingReview.css"
+import {Card,Button} from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './Card.css' ;
 
 class RatingReviewAdd extends React.Component{
-    render(){
-
-        const StarRating = () => {
-            const [rating, setRating] = useState(0);
+    StarRating = () => {
+      const [rating, setRating] = useState(0);
+      return (
+        <div className="star-rating">
+          {[...Array(5)].map((star, index) => {
+            index += 1;
             return (
-              <div className="star-rating">
-                {[...Array(5)].map((star, index) => {
-                  index += 1;
-                  return (
-                    <button
-                      type="button"
-                      key={index}
-                      className={index <= rating ? "on" : "off"}
-                      onClick={() => setRating(index)}
-                    >
-                      <span className="star">&#9733;</span>
-                    </button>
-                  );
-                })}
-              </div>
+              <button
+                type="button"
+                key={index}
+                className={index <= rating ? "on" : "off"}
+                onClick={() => setRating(index)}
+              >
+                <span className="star">&#9733;</span>
+              </button>
             );
-          };
+          })}
+        </div>
+      );
+    };
+    render(){
         return(
           <div className="home-element-padding">
-            <div className="card-container">
+            {/* <div className="card-container">
                 <div className='container-fluid' >
                     <div className="row">
                         <div className=" col-sm-12">
@@ -59,7 +62,8 @@ class RatingReviewAdd extends React.Component{
                         </div>
                     </div>
                 </div>
-            </div></div>
+            </div> */}</div>
         );
     }
 }
+export default RatingReviewAdd
