@@ -103,7 +103,7 @@ function Message (){
                         alert("Message sent");
                     }
                     clear(document.getElementById("message"));
-                }
+                } 
             }).catch(error => {
                 console.log(error);
                 notify_error("Failed to send message");
@@ -116,6 +116,7 @@ function Message (){
 
 
     return (
+        <div className="home-element-padding">
         <div className='message-container'>
             <ListGroup>
                 <ListGroup.Item variant="warning w-50 align-self-start rounded-pill" style={padding_top_bottom_between_text}>Message from sender</ListGroup.Item>
@@ -134,7 +135,7 @@ function Message (){
                 </InputGroup>
             </div>
 
-        </div>
+        </div></div>
     );
 }
 

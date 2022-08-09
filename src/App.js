@@ -24,6 +24,7 @@ import Profile from "./components/Profile";
 import AllMessages from "./components/AllMessages";
 import ChatRoom from "./components/ChatRoom";
 import SideBar from "./components/SideBar";
+import RatingReviewAdd from "./components/RatingReviewAdd";
 
 // We may need to get rid of RequireAuth and use PersistLogin instead
 toast.configure();
@@ -46,6 +47,7 @@ function App() {
             <Route path="/savedAuctions" element={<RequireAuth><SavedAuctions/></RequireAuth>}/>
             <Route path="/addAuction" element={<RequireAuth><AddAuction/></RequireAuth>}/>
             <Route path="/auction/:id" element={<RequireAuth><ShowAuctionDetails/></RequireAuth>} />
+            <Route path="/auction/:id/rating" element={<RequireAuth><RatingReviewAdd/></RequireAuth>} />
             <Route path="/search"  element={<SearchResults/>}/>
             <Route path="/message" element={<Message/>}/>
             <Route path="/messages" element={<AllMessages/>}/>
