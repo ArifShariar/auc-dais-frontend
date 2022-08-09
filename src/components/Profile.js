@@ -31,7 +31,7 @@ function Profile () {
                                             src={require("../images/man-profile.webp")}
                                             alt="online-auctions photo"
                                             height={'100%'}
-                                            width={'100%'}
+                                            width={'100%'} 
                                         />
                                         <div className="text-container">
                                             <p className="profile-tile"> 
