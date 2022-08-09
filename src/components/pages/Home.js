@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Carousels from "../RecomendedAuctions";
-import Footer from "../Footer";
 import { useLocation } from "react-router-dom";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import SideBar from "../SideBar";
+
 import Container from 'react-bootstrap/Container';
 import "../Card.css"
 

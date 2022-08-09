@@ -54,7 +54,6 @@ function App() {
             <Route path="/profile" element={<RequireAuth><Profile/></RequireAuth>}/>
             <Route path="/chatroom" element={<ChatRoom/>} />
             <Route path="/" element={<Home />} />
-            
         </Routes>
     </Router>
     </AuthProvider>
