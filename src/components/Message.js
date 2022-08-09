@@ -103,7 +103,7 @@ function Message (){
                         alert("Message sent");
                     }
                     clear(document.getElementById("message"));
-                }
+                } 
             }).catch(error => {
                 console.log(error);
                 notify_error("Failed to send message");
