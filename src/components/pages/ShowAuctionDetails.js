@@ -3,6 +3,7 @@ import {Card,Button} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Card.css' ;
 import axios from "axios";
+import RatingReviewAdd from '../RatingReviewAdd';
 
 class ShowAuctionDetails extends React.Component{
     constructor(props){
@@ -140,6 +141,16 @@ class ShowAuctionDetails extends React.Component{
                                                                 5hr  </p> </div>
                                                         </div>
 
+                                                    </Card.Body>
+                                                </Card>
+                                            </div>
+                                        </div>
+                                        <div className="row">
+                                            <div className=" col-sm-12">
+                                                 <Card className=" bg-warning.bg-gradient">
+                                                    <Card.Header className={"bg-secondary text-white text-center"}> Leave Us a Review</Card.Header>
+                                                    <Card.Body >
+                                                         <RatingReviewAdd/>
                                                     </Card.Body>
                                                 </Card>
                                             </div>
