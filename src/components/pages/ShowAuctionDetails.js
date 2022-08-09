@@ -1,9 +1,8 @@
 import React from 'react'
-import {Card} from "react-bootstrap";
+import {Card,Button} from "react-bootstrap";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Card.css' ;
 import axios from "axios";
-import RatingReviewAdd from "../RatingReviewAdd"
 
 class ShowAuctionDetails extends React.Component{
     constructor(props){
@@ -104,22 +103,6 @@ class ShowAuctionDetails extends React.Component{
                                             </div>
                                         </div>
 
-                                    </div> 
-                                    <div className="row">
-                                        <div className=" col-sm-12">
-                                            <Card className=" bg-warning.bg-gradient">
-                                                <Card.Header className={"bg-dark text-white text-center "}> Bid Details</Card.Header>
-                                                <Card.Body  >
-                                                    <div className="row rounded-pill">
-                                                        <div className="col-md-4">
-                                                            <p className="bg-secondary bg-gradient text-white  rounded-pill  text-padding">
-                                                                Bid Status  </p> </div> <div className="col-md-4"> </div>
-                                                        <div className="col-md-4">
-                                                            <p className="bg-secondary bg-gradient text-white  rounded-pill  text-padding">
-                                                                {this.state.auction.ongoing === true ? "Ongoing" : "Closed"}
-                                                            </p>
-
-
                                         <div className="row">
                                             <div className=" col-sm-12">
                                                 <Card className=" bg-warning.bg-gradient">
@@ -148,7 +131,6 @@ class ShowAuctionDetails extends React.Component{
                                                                 Current Bid  </p> </div> <div className="col-md-4"> </div>
                                                             <div className="col-md-4"> <p className="bg-secondary bg-gradient text-white  rounded-pill  text-padding">
                                                                 {this.state.auction.max_bid}$  </p> </div>
-
                                                         </div>
 
                                                         <div className="row  rounded-pill " >
@@ -161,22 +143,14 @@ class ShowAuctionDetails extends React.Component{
                                                     </Card.Body>
                                                 </Card>
                                             </div>
-                                        </div> 
-                                    </div>
-                                </Card.Body>
-                            </Card>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div></div> 
+                                        </div>
                                     </Card.Body>
                                 </Card>
                             </div>
                         </div>
 
                     </div>
-                </div></div> 
+                </div></div>
         )
     }
 
