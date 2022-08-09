@@ -27,7 +27,7 @@ function SavedAuctions() {
 
     const showAuctionDetails = (id) => {
         // use navigate to go to the auction details page
-        navigate("/auction/" + id);
+        navigate("/auction/" + id, {state: {auctionId: id}});
     }
 
     useEffect(() => {
