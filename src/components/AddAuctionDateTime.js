@@ -48,7 +48,7 @@ class AddAuctionDateTime extends React.Component{
                         <Card className=" bg-warning.bg-gradient">
                             <Card.Header className={"bg-warning text-white text-center"}> Add Date and Time </Card.Header>
                               <Card.Body>
-                                <form>
+                                <form encType={"multipart/form-data"}>
                                     <div className="form-group">
                                         <label htmlFor="start_date">Auction Start Date*</label>
                                         <input type="date" className="form-control" id="start_date" aria-describedby="start_date" placeholder="Start Date"

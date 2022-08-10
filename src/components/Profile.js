@@ -5,13 +5,13 @@ import {BsFillBellFill} from "react-icons/bs";
 import "./Card.css"
 import axios from "axios";
 
-
 function Profile () {
     let user_id = localStorage.getItem('user_id');
     let user_token = localStorage.getItem('user');
     let [user, setUser] = useState();
     let [loader, setLoader] = useState(false);
     let [imageData, setImageData] = useState(null);
+
 
     useEffect(() => {
         let url = "http://localhost:8080/users/get/" + user_id;
@@ -68,6 +68,7 @@ function Profile () {
                     <Card.Body>
                         <Container>
                             <Row xs={1} md={2}>
+
                                 <Col>
                                     <div style={{ borderRadius: '25% !important',backgroundColor: '#f5f5f5', width: '150px', height: '150px'}}>
                                         <img
@@ -86,6 +87,7 @@ function Profile () {
                                         </div>
                                     </div>
                                 </Col>
+
                                 <Col>
                                 <form encType={"multipart/form-data"}>
                                     <div className="form-group">
@@ -127,14 +129,14 @@ function Profile () {
 
                                         <div className="input-container">
                                             <label>Do you like to get promotional mail? Click <button type="button" className="btn btn-outline-warning">Yes</button> ! </label>
-
-                                        </div> 
-                                    </div></Col>
+                                        </div>
+                                    </div>
+                                </Col>
                             </Row>
                         </Container>
-                        <div className="d-grid gap-2 col-6 mx-auto text-container" >
+                        {/* <div className="d-grid gap-2 col-6 mx-auto text-container" >
                             <button type="submit" className="btn btn-info text-white" onClick={saveChanges}>Save Changes</button>
-                        </div>
+                        </div> */}
 
                     </Card.Body>
                 </Card>

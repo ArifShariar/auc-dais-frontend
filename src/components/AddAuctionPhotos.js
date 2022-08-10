@@ -3,14 +3,14 @@ import {Card} from "react-bootstrap";
 import './Card.css'
 import {toast} from "react-toastify";
 
+
 class AddAuctionPhotos extends React.Component{
     continue = e => {
         const {photos} = this.props.values;
         if (photos.length > 0) {
             e.preventDefault();
             this.props.nextStep();
-        }
-        else {
+        } else {
             e.preventDefault();
             this.notify();
         }
@@ -46,7 +46,7 @@ class AddAuctionPhotos extends React.Component{
                         <Card className=" bg-warning.bg-gradient">
                             <Card.Header className={"bg-warning text-white text-center"}> Add Photos </Card.Header>
                              <Card.Body>
-                            <form encType={"multipart/form-data"}>
+                            <form  method="POST" encType="multipart/form-data">
                                 <div className="form-group">
                                     <label htmlFor="photos">Auction Product Photos*</label>
                                     <input type="file" className="form-control" id="photos" accept="image/png, image/gif, image/jpeg"
