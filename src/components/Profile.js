@@ -4,12 +4,13 @@ import Container from "react-bootstrap/Container";
 import {BsFillBellFill} from "react-icons/bs";
 import "./Card.css"
 import axios from "axios";
-
+import {ButtonGroup, ToggleButton} from "@mui/material";
 
 function Profile () {
     let user_id = localStorage.getItem('user_id');
     let user_token = localStorage.getItem('user');
     let [user, setUser] = useState();
+
 
     useEffect(() => {
         let url = "http://localhost:8080/users/get/" + user_id;
@@ -41,10 +42,11 @@ function Profile () {
                     <Card.Body>
                         <Container>
                             <Row xs={1} md={2}>
+
                                 <Col>
                                     <div style={{ borderRadius: '25% !important',backgroundColor: '#f5f5f5', width: '150px', height: '150px'}}>
                                         <img
-                                            src={require("../images/man-profile.webp")}
+                                            src={"http://localhost:8080/files/howto.PNG"}
                                             alt="online-auctions photo"
                                             height={'100%'}
                                             width={'100%'} 
@@ -59,15 +61,16 @@ function Profile () {
                                         </div>
                                     </div>
                                 </Col>
+
                                 <Col>
                                     <div className="form-group">
                                         <div className="input-container">
-                                            <label htmlFor="name" >First Name</label>
-                                            <input type ="text" className="form-control textarea" id="name" placeholder="Arif"></input>
+                                            <label htmlFor="first_name" >First Name</label>
+                                            <input type ="text" className="form-control textarea" id="first_name" placeholder="Arif"></input>
                                         </div>
                                         <div className="input-container">
-                                            <label htmlFor="name">First Name</label>
-                                            <input type="text" className="form-control textarea" id="name" placeholder="Shariar"></input>
+                                            <label htmlFor="last_name">First Name</label>
+                                            <input type="text" className="form-control textarea" id="last_name" placeholder="Shariar"></input>
                                         </div>
                                         <div className="input-container">
                                             <label htmlFor="email">Email </label>
@@ -79,7 +82,7 @@ function Profile () {
                                         </div>
 
                                         <div className="d-grid gap-2 col-6 mx-auto text-container">
-                                            <button type="submit" className="btn btn-danger" >Save Profile</button>
+                                            <button type="submit" className="btn btn-danger" onClick={saveChanges} >Save Profile</button>
                                         </div>
                                     </div>
                                 </Col>
@@ -91,9 +94,9 @@ function Profile () {
 
                                         <div className="input-container">
                                             <label>Do you like to get promotional mail? Click <button type="button" className="btn btn-outline-warning">Yes</button> ! </label>
-
-                                        </div> 
-                                    </div></Col>
+                                        </div>
+                                    </div>
+                                </Col>
                             </Row>
                         </Container>
                         {/* <div className="d-grid gap-2 col-6 mx-auto text-container" >
