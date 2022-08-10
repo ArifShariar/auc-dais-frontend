@@ -10,6 +10,8 @@ function Profile () {
     let user_id = localStorage.getItem('user_id');
     let user_token = localStorage.getItem('user');
     let [user, setUser] = useState();
+    let [loader, setLoader] = useState(false);
+    let [imageData, setImageData] = useState(null);
 
     useEffect(() => {
         let url = "http://localhost:8080/users/get/" + user_id;
@@ -21,6 +23,7 @@ function Profile () {
         }).then(response =>{
             if (response.data!==null){
                 setUser(response.data);
+                setLoader(true);
             }
         })
     }, []);
@@ -28,10 +31,34 @@ function Profile () {
 
     const saveChanges = () => {
         alert("clicked")
+        console.log(imageData);
+    }
+
+    const updateProfile = async (event) => {
+        event.preventDefault();
+        var firstname = document.getElementById('fname').value;
+        var lastname = document.getElementById('lname').value;
+        var email = document.getElementById('mail').value;
+        var pwd = document.getElementById('pwd').value;
+        const response = await axios.post(axios.post('http://localhost:8080/files', imageData, {
+            onUploadProgress:(progressEvent) => {
+                alert("Uploading : " + ((progressEvent.loaded / progressEvent.total) * 100).toString() + "%")
+            }
+        }).catch(error => {
+            alert("NOt working");
+        }));
+    }
+
+    const changeImage = event => {
+        let file = event.target.files[0];
+        const image = new FormData();
+        image.append('imageFile', file);
+        setImageData(image);
+        console.log(file);
     }
  
 
-
+    if(loader) {
     return (
         <div className="home-element-padding">
         <div className={"card-container"}>
@@ -44,7 +71,7 @@ function Profile () {
                                 <Col>
                                     <div style={{ borderRadius: '25% !important',backgroundColor: '#f5f5f5', width: '150px', height: '150px'}}>
                                         <img
-                                            src={require("../images/man-profile.webp")}
+                                            src="https://raw.githubusercontent.com/PhenoApps/Field-Book/master/.github/blank-profile.png?s=100"//{require("../images/man-profile.webp")}
                                             alt="online-auctions photo"
                                             height={'100%'}
                                             width={'100%'} 
@@ -60,28 +87,37 @@ function Profile () {
                                     </div>
                                 </Col>
                                 <Col>
+                                <form encType={"multipart/form-data"}>
                                     <div className="form-group">
                                         <div className="input-container">
                                             <label htmlFor="name" >First Name</label>
-                                            <input type ="text" className="form-control textarea" id="name" placeholder="Arif"></input>
+                                            <input type ="text" className="form-control textarea" id="fname" placeholder={user.firstName}></input>
                                         </div>
                                         <div className="input-container">
                                             <label htmlFor="name">First Name</label>
-                                            <input type="text" className="form-control textarea" id="name" placeholder="Shariar"></input>
+                                            <input type="text" className="form-control textarea" id="lname" placeholder={user.lastName}></input>
                                         </div>
                                         <div className="input-container">
                                             <label htmlFor="email">Email </label>
-                                            <input type="email" className="form-control textarea" id="email" placeholder="change Email"></input>
+                                            <input type="email" className="form-control textarea" id="mail" placeholder={user.email}></input>
                                         </div>
                                         <div className="input-container">
                                             <label htmlFor="password" >Change your Password </label>
-                                            <input type="password" className="form-control textarea" id="password" placeholder="change Password"></input>
+                                            <input type="password" className="form-control textarea" id="pwd" placeholder="password"></input>
+                                        </div>
+
+                                        <div className="form-group">
+                                            <label htmlFor="photos">Profile Picture</label>
+                                            <input type="file" className="form-control" id="photos" accept="image/png, image/gif, image/jpeg"
+                                                aria-describedby="photos" placeholder="Photos" name="photos"
+                                                onChange={changeImage} required={false} multiple={true}/>
                                         </div>
 
                                         <div className="d-grid gap-2 col-6 mx-auto text-container">
-                                            <button type="submit" className="btn btn-danger" >Save Profile</button>
+                                            <button onClick={updateProfile} type="submit" className="btn btn-danger" >Save Profile</button>
                                         </div>
                                     </div>
+                                </form>
                                 </Col>
                                 <Col>
                                     <div className="">
@@ -96,15 +132,16 @@ function Profile () {
                                     </div></Col>
                             </Row>
                         </Container>
-                        {/* <div className="d-grid gap-2 col-6 mx-auto text-container" >
+                        <div className="d-grid gap-2 col-6 mx-auto text-container" >
                             <button type="submit" className="btn btn-info text-white" onClick={saveChanges}>Save Changes</button>
-                        </div> */}
+                        </div>
 
                     </Card.Body>
                 </Card>
             </div>
         </div></div>
     );
+}
 }
 
 export default Profile;
