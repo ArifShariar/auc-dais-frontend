@@ -1,8 +1,8 @@
 import React, { Component,useState } from 'react'
 import {BsFillCreditCard2FrontFill,BsPaypal} from "react-icons/bs";
 import {Card} from "react-bootstrap";
-import {FaGooglePay} from "react-icons/fa"
-import { useBkash } from 'react-bkash'; 
+// import {FaGooglePay} from "react-icons/fa"
+// import { useBkash } from 'react-bkash'; 
 import PaymentWithCard from './PaymentWithCard';
 import PaymentWithPayPal from './PaymentWithPayPal'; 
 import PaymentWithBkash from './PaymentWithBkash';
