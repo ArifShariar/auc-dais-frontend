@@ -110,19 +110,20 @@ function Profile () {
                             <Row xs={1} md={2}>
 
                                 <Col>
-                                    <div style={{ borderRadius: '25% !important',backgroundColor: '#f5f5f5', width: '150px', height: '150px'}}>
+                                    <div style={{ borderRadius: '25% !important',backgroundColor: '#f5f5f5', width: '600px', height: '150px'}}>
                                         <img
                                             src={useauth.getImage()?useauth.getImage():"https://raw.githubusercontent.com/PhenoApps/Field-Book/master/.github/blank-profile.png?s=100"}
                                             alt="online-auctions photo"
                                             height={'100%'}
-                                            width={'100%'} 
+                                            width={'25%'} 
                                         />
                                         <div className="text-container">
                                             <p className="profile-tile"> 
-                                                Name: <br></br>
-                                                Email: <br></br>
-                                                Address: <br></br>
-                                                Contact Number: <br></br>
+                                                <b>Name</b>: {useauth.getName()}<br></br>
+                                                <b>Email</b>: {user.email}<br></br>
+                                                <b>Address</b>: {user.address}<br></br>
+                                                <b>Contact Number</b>: {user.phoneNumber}<br></br>
+                                                <b>Date of Birth</b>: {user.dateOfBirth}<br></br>
                                             </p>
                                         </div>
                                     </div>
