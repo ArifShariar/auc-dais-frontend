@@ -12,6 +12,7 @@ class AddAuctionConfirm extends React.Component{
             address, photos, tags}} = this.props;
         let auction_start_date = start_date + " " + start_time;
         let auction_end_date = end_date + " " + end_time;
+        let product_photo = localStorage.getItem('product_image');
 
         // alert("auction start date: " + auction_start_date + " auction end date: " + auction_end_date);
         let url = "http://localhost:8080/auction_products/create" ;
@@ -26,17 +27,21 @@ class AddAuctionConfirm extends React.Component{
                     minimum_price: minimum_price,
                     auction_start_date: auction_start_date,
                     auction_end_date: auction_end_date,
-                    photos: photos,
+                    photos: product_photo,
                     tags: tags,
                     address: address
 
                 }
             })
             .then(response => {
-                console.log(response)
+                console.log("Successfully added auction product");
+                console.log(response);
+                localStorage.removeItem('product_image');
             })
             .catch(error => {
-                console.log(error.response)
+                console.log("Failed to add auction product");
+                console.log(error.response);
+                localStorage.removeItem('product_image');
             });
 
 
