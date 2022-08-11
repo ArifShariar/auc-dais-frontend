@@ -112,12 +112,12 @@ function Message (){
 
                                         <ListGroup>
                                             {message.sender.id === receiver_id ?
-                                                <ListGroup.Item variant="warning w-50 align-self-start rounded-pill shadow"
+                                                <ListGroup.Item variant="warning w-50 align-self-start rounded-pill shadow text-padding"
                                                                 style={padding_top_bottom_between_text}>{message.message}
                                                 </ListGroup.Item> :
 
                                                 <ListGroup.Item key="{index}"
-                                                    variant="info w-50 align-self-end rounded-pill d-flex justify-content-end shadow"
+                                                    variant="info w-50 align-self-end rounded-pill d-flex justify-content-end shadow text-padding"
                                                     style={padding_top_bottom_between_text}>{message.message}
                                                 </ListGroup.Item>
                                             }
@@ -140,9 +140,8 @@ function Message (){
                         </div>
 
                 </Card>
-            </div>
+            </div> 
         </div>
-
     );
 }
 

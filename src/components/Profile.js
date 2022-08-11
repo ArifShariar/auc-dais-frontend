@@ -4,7 +4,6 @@ import Container from "react-bootstrap/Container";
 import {BsFillBellFill} from "react-icons/bs";
 import "./Card.css"
 import axios from "axios";
-import {ButtonGroup, ToggleButton} from "@mui/material";
 
 function Profile () {
     let user_id = localStorage.getItem('user_id');
