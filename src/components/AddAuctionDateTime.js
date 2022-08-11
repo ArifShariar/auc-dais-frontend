@@ -40,7 +40,7 @@ class AddAuctionDateTime extends React.Component{
         }
         const {values, handleChange} = this.props;
 
-        return (
+        return ( 
             <div className="card-container">
                 <div className='container-fluid' >
                     <div className="row">

@@ -15,6 +15,7 @@ function AllMessages() {
         paddingBottom: '10px'
     }
     return (
+        <div className="home-element-padding">
         <div className={"card-container"}>
             <div className={"container-fluid"}>
                 <Card className="bg-warning.bg-gradient" >
@@ -44,7 +45,7 @@ function AllMessages() {
 
             </div>
 
-        </div>
+        </div></div>
     );
 
 }

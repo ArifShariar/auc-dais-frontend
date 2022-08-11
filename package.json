@@ -17,6 +17,7 @@
     "process": "^0.11.10",
     "prop-types": "^15.8.1",
     "react": "^18.1.0",
+    "react-bkash": "^3.0.0",
     "react-bootstrap": "^2.4.0",
     "react-burger-menu": "^3.0.8",
     "react-dom": "^18.1.0",
