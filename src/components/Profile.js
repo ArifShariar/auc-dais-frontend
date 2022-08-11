@@ -2,8 +2,10 @@ import React, {useEffect, useState} from "react";
 import {Card, Col, Row} from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import {BsFillBellFill} from "react-icons/bs";
+import {useNavigate} from "react-router-dom";
 import "./Card.css"
 import axios from "axios";
+import {useAuth} from "./context/AuthProvider";
 
 function Profile () {
     let user_id = localStorage.getItem('user_id');
@@ -11,6 +13,8 @@ function Profile () {
     let [user, setUser] = useState();
     let [loader, setLoader] = useState(false);
     let [imageData, setImageData] = useState(null);
+    let imageDir = null;
+    const useauth = useAuth();
 
 
     useEffect(() => {
@@ -38,23 +42,59 @@ function Profile () {
         event.preventDefault();
         var firstname = document.getElementById('fname').value;
         var lastname = document.getElementById('lname').value;
-        var email = document.getElementById('mail').value;
+        var mail = document.getElementById('mail').value;
         var pwd = document.getElementById('pwd').value;
-        const response = await axios.post(axios.post('http://localhost:8080/files', imageData, {
-            onUploadProgress:(progressEvent) => {
-                alert("Uploading : " + ((progressEvent.loaded / progressEvent.total) * 100).toString() + "%")
+        var addr = document.getElementById('addr').value;
+
+        await axios.post('http://localhost:8080/files', imageData).then( response => {
+            if(response.data != null) {
+                if(response.status == 200) {
+                    imageDir = response.data.fileDownloadUri;
+                    console.log("Working");
+                }
             }
         }).catch(error => {
-            alert("NOt working");
-        }));
+            console.log("Not working " + error.response);
+        });
+
+        if(imageDir == null) imageDir = "";
+        const updateduser = {
+            id: user_id,
+            firstName: firstname,
+            lastName: lastname,
+            email: mail,
+            password: pwd,
+            phoneNumber: "",
+            address: addr,
+            dateOfBirth: null,
+            image: imageDir
+        };
+
+        console.log(updateduser);
+        
+        await axios.post("http://localhost:8080/users/update/" + user_token, updateduser).then(
+            response => {
+                if (response.data != null) {
+                    if (response.status == 200) {
+                        localStorage.removeItem('user_name');
+                        localStorage.removeItem('user_image');
+                        useauth.setName(response.data.firstName + " " + response.data.lastName);
+                        useauth.setImage(response.data.image);
+                        window.location.reload(false);
+                    }
+                    else {console.log("2nd axios not working");}
+                }
+            }
+        ).catch(error => {
+            console.log(error.response);
+        });
     }
 
     const changeImage = event => {
         let file = event.target.files[0];
         const image = new FormData();
-        image.append('imageFile', file);
+        image.append('file', file);
         setImageData(image);
-        console.log(file);
     }
  
 
@@ -72,7 +112,7 @@ function Profile () {
                                 <Col>
                                     <div style={{ borderRadius: '25% !important',backgroundColor: '#f5f5f5', width: '150px', height: '150px'}}>
                                         <img
-                                            src="https://raw.githubusercontent.com/PhenoApps/Field-Book/master/.github/blank-profile.png?s=100"//{require("../images/man-profile.webp")}
+                                            src={useauth.getImage()?useauth.getImage():"https://raw.githubusercontent.com/PhenoApps/Field-Book/master/.github/blank-profile.png?s=100"}
                                             alt="online-auctions photo"
                                             height={'100%'}
                                             width={'100%'} 
@@ -106,6 +146,11 @@ function Profile () {
                                         <div className="input-container">
                                             <label htmlFor="password" >Change your Password </label>
                                             <input type="password" className="form-control textarea" id="pwd" placeholder="password"></input>
+                                        </div>
+
+                                        <div className="input-container">
+                                            <label htmlFor="address">Address</label>
+                                            <input type="text" className="form-control textarea" id="addr" placeholder={user.address}></input>
                                         </div>
 
                                         <div className="form-group">

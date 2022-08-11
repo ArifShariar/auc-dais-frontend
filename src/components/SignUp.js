@@ -40,7 +40,8 @@ function SignUp() {
             phoneNumber: phone, 
             address: addr,
             password: pwd,
-            dateOfBirth: dob
+            dateOfBirth: dob,
+            image: ''
         }
 
         if (pwd !== cpwd) {
@@ -60,6 +61,7 @@ function SignUp() {
                         setPassword('');
                         setConPassword('');
                         setDob('');
+                        useauth.setImage('');
                         // useauth.login(response.data.token);
                         
                         navigate('/login', {

@@ -11,7 +11,7 @@ function NavBar() {
     const navigate = useNavigate();
     const useauth = useAuth();
     let searchResult = [];
-    console.log('in navbar'+useAuth);
+    //console.log('in navbar'+useAuth);
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -86,8 +86,8 @@ function NavBar() {
                                 <NavDropdown title={
                                     <span className='text-white'>
                                         {useauth.getName()}
-                                        <Image className="thumbnail-image" 
-                                            src="https://raw.githubusercontent.com/PhenoApps/Field-Book/master/.github/blank-profile.png?s=100"
+                                        <Image className="thumbnail-image"
+                                            src={useauth.getImage()?useauth.getImage():"https://raw.githubusercontent.com/PhenoApps/Field-Book/master/.github/blank-profile.png?s=100"}
                                             roundedCircle
                                             alt="user pic"
                                             style={{ width: '30px', height: '25px', margin:'2px 0px 0px 10px'}}

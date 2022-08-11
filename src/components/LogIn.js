@@ -14,7 +14,7 @@ function LogInPage() {
     const useauth = useAuth();
     const location = useLocation();
 
-    const submitForm = async event => {
+    const submitForm = async(event) => {
         event.preventDefault();
         var email = document.getElementById("email").value;
         var password = document.getElementById("password").value;
@@ -35,7 +35,7 @@ function LogInPage() {
                         //const redirectpath = location.state.path;
                         //alert(redirectpath);
 
-                        navigate('/?id='+response.data.user.id, {
+                        navigate('/', {
                             state: { 
                                     id: response.data.user.id,
                                     created: false,
@@ -48,7 +48,7 @@ function LogInPage() {
                 }
             }
         ).catch(error => {
-        console.log(error.response)
+            console.log(error.response)
             // check if the error code is 5**
             if(error.response != null) {
                 if (error.response.status >= 500) {
@@ -58,6 +58,7 @@ function LogInPage() {
                     notify();
                 }
             }
+            else    {console.log("login response is null");}
         });
     }
 
