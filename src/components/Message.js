@@ -6,12 +6,15 @@ import InputGroup from "react-bootstrap/InputGroup";
 import axios from "axios";
 import {clear} from "@testing-library/user-event/dist/clear";
 import {toast} from "react-toastify";
+import {useLocation} from "react-router-dom";
 
 
 function Message (){
+    const{state} = useLocation();
 
     let sender_id = localStorage.getItem('user_id');
-    let receiver_id = 2;
+
+    let receiver_id = state.other;
 
     const [message, setMessage] = useState([]);
 
@@ -25,7 +28,6 @@ function Message (){
             notify_error("Error fetching messages");
         })
 
-
     }
 
     useEffect( () =>{
@@ -35,7 +37,7 @@ function Message (){
         axios.put(url).then(r => {
             console.log(r);
         });
-    },[] );
+    } );
 
     const padding_top ={
         paddingTop: '10px'
@@ -110,12 +112,12 @@ function Message (){
 
                                         <ListGroup>
                                             {message.sender.id === receiver_id ?
-                                                <ListGroup.Item variant="warning w-50 align-self-start rounded-pill shadow"
+                                                <ListGroup.Item variant="warning w-50 align-self-start rounded-pill shadow text-padding"
                                                                 style={padding_top_bottom_between_text}>{message.message}
                                                 </ListGroup.Item> :
 
                                                 <ListGroup.Item key="{index}"
-                                                    variant="info w-50 align-self-end rounded-pill d-flex justify-content-end shadow"
+                                                    variant="info w-50 align-self-end rounded-pill d-flex justify-content-end shadow text-padding"
                                                     style={padding_top_bottom_between_text}>{message.message}
                                                 </ListGroup.Item>
                                             }
@@ -138,9 +140,8 @@ function Message (){
                         </div>
 
                 </Card>
-            </div>
+            </div> 
         </div>
-
     );
 }
 
