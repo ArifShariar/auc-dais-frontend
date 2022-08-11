@@ -6,12 +6,15 @@ import InputGroup from "react-bootstrap/InputGroup";
 import axios from "axios";
 import {clear} from "@testing-library/user-event/dist/clear";
 import {toast} from "react-toastify";
+import {useLocation} from "react-router-dom";
 
 
 function Message (){
+    const{state} = useLocation();
 
     let sender_id = localStorage.getItem('user_id');
-    let receiver_id = 2;
+
+    let receiver_id = state.other;
 
     const [message, setMessage] = useState([]);
 
@@ -25,7 +28,6 @@ function Message (){
             notify_error("Error fetching messages");
         })
 
-
     }
 
     useEffect( () =>{
@@ -35,7 +37,7 @@ function Message (){
         axios.put(url).then(r => {
             console.log(r);
         });
-    },[] );
+    } );
 
     const padding_top ={
         paddingTop: '10px'

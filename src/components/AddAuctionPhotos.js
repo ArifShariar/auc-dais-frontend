@@ -2,18 +2,49 @@ import React from "react";
 import {Card} from "react-bootstrap";
 import './Card.css'
 import {toast} from "react-toastify";
+import axios from "axios";
 
 
 class AddAuctionPhotos extends React.Component{
-    continue = e => {
-        const {photos} = this.props.values;
-        if (photos.length > 0) {
-            e.preventDefault();
-            this.props.nextStep();
-        } else {
-            e.preventDefault();
-            this.notify();
+    constructor(props) {
+        super(props);
+        this.state = {
+            photos: '',
         }
+        this.handleInputChange = this.handleInputChange.bind(this);
+    }
+
+
+    handleInputChange(event) {
+        this.setState({
+            photos: event.target.files[0],
+        })
+    }
+
+
+    submit() {
+
+        const data = new FormData();
+        data.append('file', this.state.photos);
+        console.warn(this.state.photos);
+
+        let url = "http://localhost:8080/files";
+        axios.post(url, data, {
+
+        }).then(response => {
+            console.log(response);
+            toast.success("Photos uploaded successfully");
+            this.props.nextStep();
+        });
+
+        // const {photos} = this.props.values;
+        // if (photos.length > 0) {
+        //     e.preventDefault();
+        //     this.props.nextStep();
+        // } else {
+        //     e.preventDefault();
+        //     this.notify();
+        // }
     }
 
     notify = () => {
@@ -51,11 +82,11 @@ class AddAuctionPhotos extends React.Component{
                                     <label htmlFor="photos">Auction Product Photos*</label>
                                     <input type="file" className="form-control" id="photos" accept="image/png, image/gif, image/jpeg"
                                         aria-describedby="photos" placeholder="Photos" name="photos"
-                                        onChange={handleChange('photos')} defaultValue={values.photos} required={true} multiple={true}/>
+                                        onChange={this.handleInputChange} defaultValue={values.photos} required={true} multiple={true}/>
                                 </div>
 
                                 <div className="d-grid gap-2 col-6 mx-auto text-container" style={marginTop}>
-                                    <button type="submit" className="btn btn-primary" onClick={this.continue}>Next</button>
+                                    <button type="submit" className="btn btn-primary" onClick={()=>this.submit()}>Next</button>
                                 </div>
                                 <div className="d-grid gap-2 col-6 mx-auto text-container" style={marginTop}>
                                     <button type="submit" className="btn btn-danger" onClick={this.back}>Back</button>

@@ -50,7 +50,7 @@ function App() {
             <Route path="/auction/:id" element={<RequireAuth><ShowAuctionDetails/></RequireAuth>} />
             <Route path="/auction/:id/rating" element={<RequireAuth><RatingReviewAdd/></RequireAuth>} />
             <Route path="/search"  element={<SearchResults/>}/>
-            <Route path="/message" element={<Message/>}/>
+            <Route path="/messages/message" element={<Message/>}/>
             <Route path="/messages" element={<AllMessages/>}/>
             <Route path="/profile" element={<RequireAuth><Profile/></RequireAuth>}/>
             <Route path="/chatroom" element={<ChatRoom/>} />
