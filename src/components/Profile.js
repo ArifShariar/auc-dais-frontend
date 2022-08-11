@@ -71,11 +71,11 @@ function Profile () {
         };
 
         console.log(updateduser);
-        
+
         await axios.post("http://localhost:8080/users/update/" + user_token, updateduser).then(
             response => {
                 if (response.data != null) {
-                    if (response.status == 200) {
+                    if (response.status === 200) {
                         localStorage.removeItem('user_name');
                         localStorage.removeItem('user_image');
                         useauth.setName(response.data.firstName + " " + response.data.lastName);
@@ -96,7 +96,7 @@ function Profile () {
         image.append('file', file);
         setImageData(image);
     }
- 
+
 
     if(loader) {
     return (
@@ -137,7 +137,7 @@ function Profile () {
                                             <input type ="text" className="form-control textarea" id="fname" placeholder={user.firstName}></input>
                                         </div>
                                         <div className="input-container">
-                                            <label htmlFor="name">First Name</label>
+                                            <label htmlFor="name">Last Name</label>
                                             <input type="text" className="form-control textarea" id="lname" placeholder={user.lastName}></input>
                                         </div>
                                         <div className="input-container">
@@ -180,16 +180,12 @@ function Profile () {
                                 </Col>
                             </Row>
                         </Container>
-                        {/* <div className="d-grid gap-2 col-6 mx-auto text-container" >
-                            <button type="submit" className="btn btn-info text-white" onClick={saveChanges}>Save Changes</button>
-                        </div> */}
-
-                    </Card.Body>
-                </Card>
-            </div>
-        </div></div>
-    );
-}
+                            </Card.Body>
+                        </Card>
+                    </div>
+                </div></div>
+        );
+    }
 }
 
 export default Profile;
