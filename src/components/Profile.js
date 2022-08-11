@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 import {Card, Col, Row} from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import {BsFillBellFill} from "react-icons/bs";
-import {useNavigate} from "react-router-dom";
 import "./Card.css"
 import axios from "axios";
 import {useAuth} from "./context/AuthProvider";
@@ -166,17 +165,6 @@ function Profile () {
                                         </div>
                                     </div>
                                 </form>
-                                </Col>
-                                <Col>
-                                    <div className="">
-                                        <div className="input-container">
-                                            <label>Do you like get email about ongoing auctions?<br/>Click the Bell <BsFillBellFill type="submit" /></label>
-                                        </div>
-
-                                        <div className="input-container">
-                                            <label>Do you like to get promotional mail? Click <button type="button" className="btn btn-outline-warning">Yes</button> ! </label>
-                                        </div>
-                                    </div>
                                 </Col>
                             </Row>
                         </Container>
