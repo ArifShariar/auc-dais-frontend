@@ -98,6 +98,7 @@ function Message (){
 
 
     return (
+        <div className="home-element-padding">
             <div className="card-container">
                 <Card className={"bg-warning.bg-gradient"}>
                     <Card.Header className={"bg-warning text-white text-center"}> Send Message</Card.Header>
@@ -138,7 +139,7 @@ function Message (){
 
                 </Card>
             </div> 
-
+        </div>
     );
 }
 
