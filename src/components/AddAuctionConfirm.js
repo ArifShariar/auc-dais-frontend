@@ -53,6 +53,7 @@ class AddAuctionConfirm extends React.Component{
         const {values : {product_name, product_description, minimum_price, start_date, start_time, end_date, end_time,
         auction_type, address, photos, tags}} = this.props;
         return (
+            
             <div className="card-container">
                 <div className='container-fluid' >
                     <div className="row">

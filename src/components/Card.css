@@ -86,3 +86,28 @@
 .profile-tile{
     padding-top: 10%;
 }
+.payment-method{
+    padding-top: 5%;
+}
+a.link {
+    color:green;
+    background-color :green, 
+};
+
+a.visited {
+    color: pink;
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a.hover {
+    color: red;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+a:active {
+    color: brown;
+    background-color: transparent;
+    text-decoration: underline;
+}
