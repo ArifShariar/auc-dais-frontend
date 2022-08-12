@@ -51,7 +51,7 @@ function LiveAuctions (){
     }
 
     const viewAndBid = (auction_id) => {
-        alert("View and Bid");
+        navigate("/liveAuction", {state: {auctionId: auction_id}});
     }
 
     useEffect(() => {
@@ -104,4 +104,4 @@ function LiveAuctions (){
     );
 }
 
-export default LiveAuctions
+export default LiveAuctions;

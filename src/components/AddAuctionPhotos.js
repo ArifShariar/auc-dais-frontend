@@ -78,27 +78,27 @@ class AddAuctionPhotos extends React.Component{
                 <div className='container-fluid' >
                     <div className="row">
                         <div className=" col-sm-12">
-                        <Card className=" bg-warning.bg-gradient">
-                            <Card.Header className={"bg-warning text-white text-center"}> Add Photos </Card.Header>
-                             <Card.Body>
-                            <form  method="POST" encType="multipart/form-data">
-                                <div className="form-group">
-                                    <label htmlFor="photos">Auction Product Photos*</label>
-                                    <input type="file" className="form-control" id="photos" accept="image/png, image/gif, image/jpeg"
-                                        aria-describedby="photos" placeholder="Photos" name="photos"
-                                        onChange={this.handleInputChange} defaultValue={values.photos} required={true} multiple={true}/>
-                                </div>
+                            <Card className=" bg-warning.bg-gradient">
+                                <Card.Header className={"bg-warning text-white text-center"}> Add Photos </Card.Header>
+                                <Card.Body>
+                                    <form  method="POST" encType="multipart/form-data">
+                                        <div className="form-group">
+                                            <label htmlFor="photos">Auction Product Photos*</label>
+                                            <input type="file" className="form-control" id="photos" accept="image/png, image/gif, image/jpeg"
+                                                   aria-describedby="photos" placeholder="Photos" name="photos"
+                                                   onChange={this.handleInputChange} defaultValue={values.photos} required={true} multiple={true}/>
+                                        </div>
 
-                                <div className="d-grid gap-2 col-6 mx-auto text-container" style={marginTop}>
-                                    <button type="submit" className="btn btn-primary" onClick={this.submit}>Next</button>
-                                </div>
-                                <div className="d-grid gap-2 col-6 mx-auto text-container" style={marginTop}>
-                                    <button type="submit" className="btn btn-danger" onClick={this.back}>Back</button>
-                                </div>
+                                        <div className="d-grid gap-2 col-6 mx-auto text-container" style={marginTop}>
+                                            <button type="submit" className="btn btn-primary" onClick={this.submit}>Next</button>
+                                        </div>
+                                        <div className="d-grid gap-2 col-6 mx-auto text-container" style={marginTop}>
+                                            <button type="submit" className="btn btn-danger" onClick={this.back}>Back</button>
+                                        </div>
 
-                            </form>
-                            </Card.Body>
-                        </Card>
+                                    </form>
+                                </Card.Body>
+                            </Card>
                         </div>
                     </div>
                 </div>

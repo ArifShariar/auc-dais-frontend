@@ -26,6 +26,7 @@ import ChatRoom from "./components/ChatRoom";
 import SideBar from "./components/SideBar";
 import RatingReviewAdd from "./components/RatingReviewAdd";
 import Payment from './components/Payment';
+import WonAuctions from "./components/WonAuctions";
 import UserSettings from './components/UserSettings';
 
 // We may need to get rid of RequireAuth and use PersistLogin instead
@@ -45,17 +46,18 @@ function App() {
             <Route path="/history" element={<RequireAuth><History/></RequireAuth>}/>
             <Route path="/location" element={<RequireAuth><Location/></RequireAuth>}/>
             <Route path="/liveAuctions" element={<RequireAuth><LiveAuctions/></RequireAuth>}/>
-            <Route path="/liveAuctions/liveAuction" element={<RequireAuth><LiveAuction state={state}/></RequireAuth>}/>
+            <Route path="/liveAuction" element={<RequireAuth><LiveAuction/></RequireAuth>}/>
             <Route path="/savedAuctions" element={<RequireAuth><SavedAuctions/></RequireAuth>}/>
             <Route path="/addAuction" element={<RequireAuth><AddAuction/></RequireAuth>}/>
             <Route path="/auction/:id" element={<RequireAuth><ShowAuctionDetails/></RequireAuth>} />
             <Route path="/auction/:id/rating" element={<RequireAuth><RatingReviewAdd/></RequireAuth>} />
+            <Route path="/wonAuctions" element={<RequireAuth><WonAuctions/></RequireAuth>} />
             <Route path="/search"  element={<SearchResults/>}/>
             <Route path="/messages/message" element={<Message/>}/>
             <Route path="/messages" element={<AllMessages/>}/>
             <Route path="/profile" element={<RequireAuth><Profile/></RequireAuth>}/>
             <Route path="/chatroom" element={<ChatRoom/>} />
-            <Route path="/payment" element={<Payment/>} />
+            <Route path="/wonAuctions/payment" element={<Payment/>} />
             <Route path="/settings" element={<UserSettings/>} />
             <Route path="/" element={<Home />} />
         </Routes>
