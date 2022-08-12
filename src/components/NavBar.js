@@ -102,7 +102,7 @@ function NavBar() {
                                     </NavDropdown.Item>
 
                                     <NavDropdown.Item className="nav-item">
-                                        <Link to={""} className='nav-link text-dark'>Settings</Link>
+                                        <Link to={"settings"} className='nav-link text-dark'>Settings</Link>
                                     </NavDropdown.Item>
 
                                     <NavDropdown.Item className="nav-item">

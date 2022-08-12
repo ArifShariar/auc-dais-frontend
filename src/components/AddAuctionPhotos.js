@@ -9,32 +9,36 @@ class AddAuctionPhotos extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            photos: '',
+            photos: null,
         }
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.submit = this.submit.bind(this);
     }
 
 
     handleInputChange(event) {
         this.setState({
             photos: event.target.files[0],
-        })
+        });
     }
 
 
-    submit() {
+    async submit (event) {
+        event.preventDefault();
 
         const data = new FormData();
         data.append('file', this.state.photos);
         console.warn(this.state.photos);
 
         let url = "http://localhost:8080/files";
-        axios.post(url, data, {
-
-        }).then(response => {
+        await axios.post(url, data).then(response => {
             console.log(response);
             toast.success("Photos uploaded successfully");
+            localStorage.setItem('product_image', response.data.fileDownloadUri);
             this.props.nextStep();
+        }).catch(error =>{
+            console.log(error.response);
+            console.log("Failed to upload the product image");
         });
 
         // const {photos} = this.props.values;
@@ -86,7 +90,7 @@ class AddAuctionPhotos extends React.Component{
                                 </div>
 
                                 <div className="d-grid gap-2 col-6 mx-auto text-container" style={marginTop}>
-                                    <button type="submit" className="btn btn-primary" onClick={()=>this.submit()}>Next</button>
+                                    <button type="submit" className="btn btn-primary" onClick={this.submit}>Next</button>
                                 </div>
                                 <div className="d-grid gap-2 col-6 mx-auto text-container" style={marginTop}>
                                     <button type="submit" className="btn btn-danger" onClick={this.back}>Back</button>
