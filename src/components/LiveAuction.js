@@ -6,6 +6,7 @@ import {useLocation, useNavigate} from "react-router-dom";
 import {toast} from "react-toastify";
 import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
+import {clear} from "@testing-library/user-event/dist/clear";
 
 function LiveAuction () {
     const {state} = useLocation();
@@ -13,7 +14,7 @@ function LiveAuction () {
     const navigate = useNavigate();
     let [auction, setAuction] = useState([]);
     let auction_id = state.auctionId;
-    let my_last_bid = 0;
+    let [lastBid, setLastBid] = useState(0);
     let [chat, setChat] = useState([]);
 
     const fetchMessages = () =>{
@@ -24,6 +25,15 @@ function LiveAuction () {
             console.log("chat fetched");
         })
 
+    }
+
+    const fetchMyLastBid = () =>{
+        let url = "http://localhost:8080/history/get/last/user/"+ user_id +"/auction/"+ auction_id +"/" + localStorage.getItem('user');
+        axios.get(url).then(r => {
+            setLastBid(r.data);
+        }).catch(e => {
+            toast.error("Error fetching last bid");
+        })
     }
 
 
@@ -38,8 +48,29 @@ function LiveAuction () {
 
     }
 
-    const sendMessage = (message) => {
-        alert(user_id);
+    const sendMessage = () => {
+        let message = document.getElementById("message");
+        let url = "http://localhost:8080/chatroom/send/"+ auction_id +"/"+ user_id +"/" + localStorage.getItem('user');
+
+        if(message.value === "" || message.value === null || message.value === undefined){
+            toast.error("Message cannot be empty");
+        }
+        else{
+            axios({
+                method: 'post',
+                url: url,
+                headers: {},
+                data: {
+                    message: message.value,
+                }
+            }).then(response => {
+              if (response.data!=null){
+                  clear(document.getElementById("message"));
+              }
+            }).catch(error => {
+                toast.error("Error sending message");
+            })
+        }
     }
 
     const placeBid = () => {
@@ -66,7 +97,6 @@ function LiveAuction () {
                   if (response.status === 200){
                       toast.success("Bid placed");
                         document.getElementById("bidAmount").value = "";
-                        my_last_bid = bid_amount;
 
                   }
                 }).catch(error => {
@@ -81,6 +111,7 @@ function LiveAuction () {
     useEffect(() => {
         fetchLiveAuction();
         fetchMessages();
+        fetchMyLastBid();
     },[]);
 
     const padding_top ={
@@ -156,7 +187,7 @@ function LiveAuction () {
                                 <div className="col-md-4"> </div>
                                 <div className="col-md-4">
                                     <p className="bg-success bg-gradient text-white text-center  rounded-pill">
-                                        ${my_last_bid}
+                                        ${lastBid.bid_amount}
                                     </p>
                                 </div>
                             </div>
