@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react'
-import {Card,Button} from "react-bootstrap";
-
+import {Card, Button, ListGroup} from "react-bootstrap";
 import './Card.css'
 import axios from "axios";
-import Message from './Message';
 import {useLocation, useNavigate} from "react-router-dom";
 import {toast} from "react-toastify";
+import InputGroup from "react-bootstrap/InputGroup";
+import Form from "react-bootstrap/Form";
 
 function LiveAuction () {
     const {state} = useLocation();
@@ -14,6 +14,18 @@ function LiveAuction () {
     let [auction, setAuction] = useState([]);
     let auction_id = state.auctionId;
     let my_last_bid = 0;
+    let [chat, setChat] = useState([]);
+
+    const fetchMessages = () =>{
+        let url = "http://localhost:8080/chatroom/get/all/" + auction_id;
+        axios.get(url).then(r => {
+            setChat(r.data);
+        }).then(e => {
+            console.log("chat fetched");
+        })
+
+    }
+
 
     const fetchLiveAuction = () => {
         let url = "http://localhost:8080/auction_products/auction/" + auction_id;
@@ -24,6 +36,10 @@ function LiveAuction () {
             toast.error("Error fetching auction");
         });
 
+    }
+
+    const sendMessage = (message) => {
+        alert(user_id);
     }
 
     const placeBid = () => {
@@ -64,7 +80,17 @@ function LiveAuction () {
     // TODO: REMOVE [] from useEffect
     useEffect(() => {
         fetchLiveAuction();
+        fetchMessages();
     },[]);
+
+    const padding_top ={
+        paddingTop: '10px'
+    }
+
+    const padding_top_bottom_between_text ={
+        paddingTop: '10px',
+        paddingBottom: '10px'
+    }
 
 
 
@@ -163,13 +189,49 @@ function LiveAuction () {
                     </div>
                 </div>
                 <Card className=" bg-warning.bg-gradient">
-                        <Card.Header className={"bg-warning text-white text-center"}> Chat Room </Card.Header>
-                         <Card.Body>
-                            <div className=''>
-                                {/*<Message/>*/}
+                    <Card.Header className={"bg-warning text-white text-center"}> Chat Room </Card.Header>
+                     <Card.Body>
+                        <div className=''>
+                            <div className='message-container'>
+                                {chat.length === 0 ? <div>No messages</div> :
+
+                                    chat.map((chat, index) => {
+                                        return(
+
+                                            <ListGroup>
+                                                {Number(chat.sender.id) === Number(user_id) ?
+
+                                                    <ListGroup.Item key="{index}"
+                                                                    variant="info w-50 align-self-end rounded-pill d-flex justify-content-end shadow text-padding"
+                                                                    style={padding_top_bottom_between_text}>{chat.message}
+                                                    </ListGroup.Item>:
+
+                                                    <ListGroup.Item variant="warning w-50 align-self-start rounded-pill shadow text-padding"
+                                                                    style={padding_top_bottom_between_text}><b>{chat.sender.firstName +' '+ chat.sender.lastName} :</b> {chat.message}
+                                                    </ListGroup.Item>
+
+
+                                                }
+                                            </ListGroup>
+                                        );
+                                    })
+                                }
+
+                                <div style={padding_top}>
+                                    <InputGroup className="mb-3" size="lg">
+                                        <Form.Control
+                                            placeholder="Type Message..."
+                                            aria-label="Type Message..."
+                                            aria-describedby="basic-addon2"
+                                            id = "message"
+                                        />
+                                        <Button type={"submit"} variant="primary" onClick={sendMessage}>Send</Button>
+                                    </InputGroup>
+                                </div>
                             </div>
-                        </Card.Body>
-                    </Card>
+                        </div>
+                    </Card.Body>
+                </Card>
             </div>
         </div></div>
     )
