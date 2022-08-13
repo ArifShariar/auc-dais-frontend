@@ -33,7 +33,7 @@ function WonAuctions (){
     }
 
     const viewAndBid = (auction_id) => {
-        alert("View and Bid");
+        navigate("/auction/" + auction_id, {state: {auctionId: auction_id}});
     }
 
     useEffect(() => {
