@@ -28,6 +28,7 @@ import RatingReviewAdd from "./components/RatingReviewAdd";
 import Payment from './components/Payment';
 import WonAuctions from "./components/WonAuctions";
 import UserSettings from './components/UserSettings';
+import MyAuctions from "./components/MyAuctions";
 
 // We may need to get rid of RequireAuth and use PersistLogin instead
 toast.configure();
@@ -52,6 +53,7 @@ function App() {
             <Route path="/auction/:id" element={<RequireAuth><ShowAuctionDetails/></RequireAuth>} />
             <Route path="/auction/:id/rating" element={<RequireAuth><RatingReviewAdd/></RequireAuth>} />
             <Route path="/wonAuctions" element={<RequireAuth><WonAuctions/></RequireAuth>} />
+            <Route path="/myAuctions" element={<RequireAuth><MyAuctions/></RequireAuth>} />
             <Route path="/search"  element={<SearchResults/>}/>
             <Route path="/messages/message" element={<Message/>}/>
             <Route path="/messages" element={<AllMessages/>}/>
