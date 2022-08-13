@@ -104,7 +104,7 @@ function Message (){
             <div className="card-container">
                 <Card className={"bg-warning.bg-gradient"}>
                     <Card.Header className={"bg-warning text-white text-center"}> Send Message</Card.Header>
-                        <div className='message-container'>
+                        <div className='message-container overflow-auto'>
                             {message.length === 0 ? <div>No messages</div> :
 
                                 message.map((message, index) => {
