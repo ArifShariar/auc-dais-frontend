@@ -222,8 +222,8 @@ function LiveAuction () {
                 <Card className=" bg-warning.bg-gradient">
                     <Card.Header className={"bg-warning text-white text-center"}> Chat Room </Card.Header>
                      <Card.Body>
-                        <div className=''>
-                            <div className='message-container'>
+                        <div>
+                            <div className='message-container overflow-auto '>
                                 {chat.length === 0 ? <div>No messages</div> :
 
                                     chat.map((chat, index) => {
