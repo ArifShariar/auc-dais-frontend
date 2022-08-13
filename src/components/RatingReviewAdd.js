@@ -46,8 +46,8 @@ function RatingReviewAdd() {
           )
         })}
       </div>
-      <div class="form-group"> 
-        <textarea class="form-control textarea" id="textarea1" rows="3" placeholder="What's your experience?"></textarea>
+      <div className="form-group">
+        <textarea className="form-control textarea" id="textarea1" rows="3" placeholder="What's your experience?"></textarea>
         <div className="d-grid gap-2 col-6 mx-auto text-container">
             <button type="submit" className="btn btn-success" >Submit</button>
         </div>

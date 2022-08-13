@@ -15,7 +15,7 @@ import Location from './components/Location';
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import AddAuction from "./components/AddAuction";
 import Home from './components/pages/Home';
-import ShowAuctionDetails from './components/pages/ShowAuctionDetails';
+import ShowAuctionDetails from './components/ShowAuctionDetails';
 import SearchResults from "./components/SearchResults";
 import {AuthProvider} from "./components/context/AuthProvider"
 import { RequireAuth } from './components/RequireAuth';
@@ -33,7 +33,6 @@ import MyAuctions from "./components/MyAuctions";
 // We may need to get rid of RequireAuth and use PersistLogin instead
 toast.configure();
 function App() {
-  const state = {}
   return (
     <AuthProvider>
     <Router>
