@@ -29,15 +29,11 @@ function MyAuctions(){
 
 
     const view = (auction_id) => {
-        alert("View and Bid : " + auction_id);
+        navigate("/auction/" + auction_id, {state: {auctionId: auction_id}});
     }
 
     const update = (auction_id) => {
-        alert("Update : " + auction_id);
-    }
-
-    const deleteAuction = (auction_id) => {
-        alert("Delete : " + auction_id);
+        navigate("/update/" + auction_id, {state: {auctionId: auction_id}});
     }
 
     useEffect(() => {
@@ -70,7 +66,6 @@ function MyAuctions(){
                                                         <p>End Date: {auction.auction_end_date}</p>
                                                         <Button variant="secondary" onClick={()=>view(auction.id)} id={"view"}>View</Button>{' '}
                                                         <Button variant="info" onClick={()=>update(auction.id)} id={"payment"}>Update</Button>{' '}
-                                                        <Button variant="danger" onClick={()=>deleteAuction(auction.id)} id={"deleteAuction"}>Delete</Button>{' '}
 
                                                     </div>
                                                 </div>

@@ -110,6 +110,18 @@ function ShowAuctionDetails() {
                                             </Card>
                                         </div>
                                     </div>
+
+
+                                    <div className="row">
+                                        <div className=" col-sm-12">
+                                            <Card className=" bg-warning.bg-gradient">
+                                                <Card.Header className={"bg-secondary text-white text-center"}> Leave Us a Review</Card.Header>
+                                                <Card.Body >
+                                                    <RatingReviewAdd/>
+                                                </Card.Body>
+                                            </Card>
+                                        </div>
+                                    </div>
                                 </Card.Body>
                             </Card>
                         </div>
