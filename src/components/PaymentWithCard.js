@@ -20,7 +20,7 @@ function PaymentWithCard() {
                 </div>
                 <input type="number" className="form-control rounded-pill" id="cardnumber" placeholder="Card Number"/>
             </div>
-            <div class="form-group d-flex flex-row justify-content-between">
+            <div className="form-group d-flex flex-row justify-content-between">
                 {/* <input type="date" className="form-control rounded-pill" id="expiration_date" placeholder="Expiration month"/> */}
                 <input
                     type="text"
@@ -36,17 +36,17 @@ function PaymentWithCard() {
                 />
                 <input type="number" className="form-control rounded-pill" id="cvv" placeholder="cvv"/>               
             </div>
-            <div class="form-group d-flex flex-row justify-content-between"> 
+            <div className="form-group d-flex flex-row justify-content-between">
                 <input type="text" className="form-control rounded-pill" id="addr1" placeholder="Address Line 1"/>
                 <input type="text" className="form-control rounded-pill" id="addr2" placeholder="Address Line 2"/>               
             </div>
-            <div class="form-group">
+            <div className="form-group">
                 <input type="text" className="form-control rounded-pill text-center" id="city" aria-describedby="city" placeholder="City"/>
             </div>
-            <div class="form-group">
+            <div className="form-group">
                 <input type="text" className="form-control rounded-pill text-center" id="postal_code" aria-describedby="postal_code" placeholder="Postal Code"/>
             </div>
-            <div class="form-group">
+            <div className="form-group">
                 <input type="text" className="form-control rounded-pill text-center" id="country" aria-describedby="country" placeholder="Country"/>
             </div>
             <hr></hr>
@@ -70,4 +70,4 @@ function PaymentWithCard() {
   )
 }
 
-export default PaymentWithCard
+export default PaymentWithCard;
