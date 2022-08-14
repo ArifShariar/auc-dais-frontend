@@ -61,7 +61,7 @@ function AllMessages() {
                     { message.length === 0 ? <div className="text-center">No messages</div> :
                         message.map(message => {
                             return (
-                                <ListGroup id={message.id}>
+                                <ListGroup key={message.id}>
                                     <ListGroup.Item onClick={()=> showMessage(message.receiver.id, message.sender.id)}
                                                     className="d-flex justify-content-between align-items-start">
 
