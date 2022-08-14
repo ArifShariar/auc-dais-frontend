@@ -40,10 +40,11 @@ function ShowMyAuctionDetails() {
 
                                 <Card.Header className={"bg-warning text-white text-center"}>{auction.product_name}</Card.Header>
                                 <Card.Body >
-                                    <div className="card-image-container text-center">
+                                    <div className="card-image-container">
                                         <img
                                             src={auction.photos}
                                             alt="Product image"
+                                            className={"text-center"}
                                         />
                                     </div>
                                     <div className="row">

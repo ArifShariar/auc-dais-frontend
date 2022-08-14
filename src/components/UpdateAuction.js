@@ -64,7 +64,7 @@ function UpdateAuction () {
             toast.error("Error updating auction");
         });
 
-        navigate("/auction/" + auction_id, {state: {auctionId: auction_id}});
+        navigate("/myAuctions/myAuction/" + auction_id, {state: {auctionId: auction_id}});
 
 
 
