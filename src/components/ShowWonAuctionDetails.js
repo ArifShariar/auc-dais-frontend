@@ -8,6 +8,8 @@ import {toast} from "react-toastify";
 function ShowAuctionDetails() {
     const {state} = useLocation();
     let auction_id = state.auctionId;
+    // store auction_id in local storage
+    localStorage.setItem('auction_id', auction_id);
     let user_id = localStorage.getItem('user_id');
     const navigate = useNavigate();
     const [auction, setAuction] = useState([]);
