@@ -29,7 +29,7 @@ function MyAuctions(){
 
 
     const view = (auction_id) => {
-        navigate("/auction/" + auction_id, {state: {auctionId: auction_id}});
+        navigate("/myAuctions/myAuction/" + auction_id, {state: {auctionId: auction_id}});
     }
 
     const update = (auction_id) => {
