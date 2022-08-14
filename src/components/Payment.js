@@ -1,4 +1,4 @@
-import React, { Component,useState } from 'react'
+import React, {Component, useEffect, useState} from 'react'
 import {BsFillCreditCard2FrontFill,BsPaypal} from "react-icons/bs";
 import {Card} from "react-bootstrap";
 // import {FaGooglePay} from "react-icons/fa"
@@ -69,6 +69,10 @@ function Payment(){
         setPaypal(false);
         setBkash(true)
     }
+
+    useEffect(() => {
+        handleCardClick();
+    }, []);
 
     return (
         <div className="home-element-padding">
