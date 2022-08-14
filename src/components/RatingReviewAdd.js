@@ -33,7 +33,7 @@ function RatingReviewAdd() {
     const submitReview = () => {
         let review = document.getElementById("review").value;
         alert(`You have rated stars:` + currentValue + ` and wrote: ` + review + ` on product with id: ` + auction_id);
-        let url = "http://localhost:8080/ratingReview/create/" + user_id + "/" + auction_id;
+        let url = "http://localhost:8080/ratingReview/create/" + user_id +"/" + auction_id;
         axios({
             method: 'post',
             url: url,

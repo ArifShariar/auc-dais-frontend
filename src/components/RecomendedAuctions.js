@@ -17,12 +17,24 @@ function Carousels () {
 
 
     const randomAuctions = () => {
-        let url = "http://localhost:8080/auction_products/auction/random/" + user_id;
-        axios.get(url).then(r => {
-            setAuctions(r.data);
-        }).catch(e => {
-            toast.error("Error fetching auctions");
-        })
+
+        if (user_id === null) {
+            let url = "http://localhost:8080/auction_products/auction/random";
+            axios.get(url).then(r => {
+                setAuctions(r.data);
+            }).catch(e => {
+                toast.error("Error fetching auctions");
+            })
+        }
+        else{
+            let url = "http://localhost:8080/auction_products/auction/random/" + user_id;
+            axios.get(url).then(r => {
+                setAuctions(r.data);
+            }).catch(e => {
+                toast.error("Error fetching auctions");
+            })
+        }
+
 
     }
 

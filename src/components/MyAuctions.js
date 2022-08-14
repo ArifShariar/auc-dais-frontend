@@ -48,7 +48,7 @@ function MyAuctions(){
                         <div className=" col-sm-12">
                             <Card className=" bg-warning.bg-gradient">
                                 <Card.Header className={"bg-warning text-white text-center"}> My Auctions </Card.Header>
-                                {auctions.length === 0 ? <Card.Body> No Auctions </Card.Body> :
+                                {auctions.length === 0 ? <Card.Body className={"text-center"}> No Auctions </Card.Body> :
                                     auctions.map(auction => {
                                         return(
                                             <Card.Body key={auction.id}>
