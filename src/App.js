@@ -31,7 +31,7 @@ import UserSettings from './components/UserSettings';
 import MyAuctions from "./components/MyAuctions";
 import UpdateAuction from "./components/UpdateAuction";
 import ShowWonAuctionDetails from "./components/ShowWonAuctionDetails";
-import ShowMyAuctionDetails from "./components/ShowMyAuctionDetials";
+import ShowMyAuctionDetails from "./components/ShowMyAuctionDetails";
 
 // We may need to get rid of RequireAuth and use PersistLogin instead
 toast.configure();
