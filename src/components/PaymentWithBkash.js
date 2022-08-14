@@ -1,6 +1,9 @@
 import React from 'react'
 
 function PaymentWithBkash() {
+    const payWithBkash = () => {
+
+    }
     return (
         <div className='payment-method'>
             <h3 className='text-center'> Payment with Bkash</h3>
@@ -12,11 +15,9 @@ function PaymentWithBkash() {
                     <input type="text" className="form-control rounded-pill" id="trx_id" aria-describedby="name" placeholder="Trx Number"/>
                 </div>
                 <div className="form-group d-flex flex-row justify-content-between">
-                    <input type="text" className="form-control rounded-pill" id="amount" aria-describedby="name" placeholder="amount"/>
+                    <input type="text" className="form-control rounded-pill" id="amount" aria-describedby="name" placeholder="Amount"/>
                 </div>
-                <div className="form-group d-flex flex-row justify-content-between">
-                    <input type="password" className="form-control rounded-pill" id="pin" placeholder="Enter Pin"/>
-                </div>
+
                 <hr/>
                 <hr></hr>
                 <div className="message-container">
@@ -32,7 +33,7 @@ function PaymentWithBkash() {
                     </div>
                 </div>
                 <div className="d-grid gap-2 col-6 mx-auto text-container" >
-                    <button type="submit" className="btn btn-danger">Confirm Payment</button>
+                    <button type="submit" className="btn btn-danger" onClick={payWithBkash}>Confirm Payment</button>
                 </div>
             </form>
         </div>
