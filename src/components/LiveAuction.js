@@ -248,20 +248,22 @@ function LiveAuction () {
                                     })
                                 }
 
-                                <div style={padding_top}>
-                                    <InputGroup className="mb-3" size="lg">
-                                        <Form.Control
-                                            placeholder="Type Message..."
-                                            aria-label="Type Message..."
-                                            aria-describedby="basic-addon2"
-                                            id = "message"
-                                        />
-                                        <Button type={"submit"} variant="primary" onClick={sendMessage}>Send</Button>
-                                    </InputGroup>
-                                </div>
                             </div>
                         </div>
                     </Card.Body>
+                </Card>
+                <Card className={'bg-warning.bg-gradient'}>
+                    <div style={padding_top}>
+                        <InputGroup className="mb-3" size="lg">
+                            <Form.Control
+                                placeholder="Type Message..."
+                                aria-label="Type Message..."
+                                aria-describedby="basic-addon2"
+                                id = "message"
+                            />
+                            <Button type={"submit"} variant="primary" onClick={sendMessage}>Send</Button>
+                        </InputGroup>
+                    </div>
                 </Card>
             </div>
         </div></div>
