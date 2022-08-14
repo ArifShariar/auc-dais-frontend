@@ -1,8 +1,49 @@
 import React from 'react'
+import {useLocation} from "react-router-dom";
+import {useEffect, useState} from "react";
+import axios from "axios";
+import {toast} from "react-toastify";
+import {Button} from "react-bootstrap";
 
 
 
 function PaymentWithCard() {
+
+    let user_id = localStorage.getItem('user_id');
+    const {state} = useLocation();
+    let [wonAuction, setWonAuction] = useState([]);
+
+    let won_auction_id = localStorage.getItem('won_auction_id');
+
+    const fetchAuction = () => {
+        let url = "http://localhost:8080/won_auctions/get/" + won_auction_id;
+        axios.get(url).then(r => {
+            setWonAuction(r.data);
+        }).catch(e => {
+            toast.error("Error fetching auction");
+        })
+    }
+
+    const payWithCard = () => {
+        let url = "http://localhost:8080/won_auctions/pay/" + won_auction_id;
+        axios({
+            method: 'put',
+            url: url,
+            data: {
+                paymentMethod : "CARD"
+            }
+
+        });
+
+        toast.success("Payment successful");
+    }
+
+    useEffect(() => {
+        fetchAuction();
+    }, []);
+
+
+
     return (
         <div className='payment-method'>
             <h3 className='text-center'> Payment with Credit Card</h3>
@@ -52,18 +93,14 @@ function PaymentWithCard() {
                 <hr></hr>
                 <div className="message-container">
                     <h4>Payment Details</h4>
-                    <div className="form-group d-flex flex-row justify-content-between">
-                        <p>Account type</p>
-                        <p> account type cost</p>
-                    </div>
                     <hr></hr>
                     <div className="form-group d-flex flex-row justify-content-between">
                         <p>total</p>
-                        <p>100000000000 $</p>
+                        <p>{wonAuction.bid} $</p>
                     </div>
                 </div>
                 <div className="d-grid gap-2 col-6 mx-auto text-container" >
-                    <button type="submit" className="btn btn-danger">Confirm Payment</button>
+                    <Button variant="danger" onClick={payWithCard}>Confirm Payment</Button>
                 </div>
             </form>
         </div>

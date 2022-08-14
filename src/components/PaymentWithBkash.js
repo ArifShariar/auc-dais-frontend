@@ -48,22 +48,18 @@ function PaymentWithBkash() {
             <h3 className='text-center'> Payment with Bkash</h3>
             <form className='payment-method'>
                 <div className="form-group d-flex flex-row justify-content-between">
-                    <input type="number" className="form-control rounded-pill" id="phonenumber" placeholder="Phone Number" required="true"/>
+                    <input type="number" className="form-control rounded-pill" id="phonenumber" placeholder="Phone Number" required={true}/>
                 </div>
                 <div className="form-group d-flex flex-row justify-content-between">
-                    <input type="text" className="form-control rounded-pill" id="trx_id" aria-describedby="name" placeholder="Trx Number" required="true"/>
+                    <input type="text" className="form-control rounded-pill" id="trx_id" aria-describedby="name" placeholder="Trx Number" required={true}/>
                 </div>
                 <div className="form-group d-flex flex-row justify-content-between">
-                    <input type="text" className="form-control rounded-pill" id="amount" aria-describedby="name" placeholder="Amount" required="true"/>
+                    <input type="text" className="form-control rounded-pill" id="amount" aria-describedby="name" placeholder="Amount" required={true}/>
                 </div>
 
                 <hr></hr>
                 <div className="message-container">
                     <h4>Payment Details</h4>
-                    <div className="form-group d-flex flex-row justify-content-between">
-                        <p>Account type</p>
-                        <p> account type cost</p>
-                    </div>
                     <hr></hr>
                     <div className="form-group d-flex flex-row justify-content-between">
                         <p>total</p>
