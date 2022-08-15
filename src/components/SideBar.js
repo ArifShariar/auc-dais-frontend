@@ -1,12 +1,14 @@
 import React from 'react'
 import "./SideBar.css"
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 
 function SideBar() {
     let currentYear = new Date().getFullYear();
     let githubLink = "https://github.com/ArifShariar/";
     let gitHubIcon = "https://img.icons8.com/bubbles/50/000000/github.png";
+    const location = useLocation();
     return (
+        !['/email_verification'].includes(location.pathname)?
         <div className='sidebar-container'>
             <div className ="sidenav" >
                 <Link to={"addAuction"} className={"nav-link text-white"}>Add Auction</Link>
@@ -21,7 +23,7 @@ function SideBar() {
                 </p>
             </div>
         </div>
-        
+        :null
     );
 }
 export default SideBar;

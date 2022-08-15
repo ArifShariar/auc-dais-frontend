@@ -64,7 +64,7 @@ function SignUp() {
                         useauth.setImage('');
                         // useauth.login(response.data.token);
                         
-                        navigate('/login', {
+                        navigate('/email_verification', {
                                 state: {
                                     created: true,
                                     name: fname
@@ -107,6 +107,7 @@ function SignUp() {
     }
 
     return(
+        !useauth.isLogin()?(
         <div className="home-element-padding">
         <div className="card-container">
             <div className='container-fluid' >
@@ -178,7 +179,7 @@ function SignUp() {
                 </div>
             </div>
             <ToastContainer/>
-        </div> </div>
+        </div> </div>):window.location.replace("http://localhost:3000")
     );
 }
 

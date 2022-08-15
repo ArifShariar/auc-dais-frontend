@@ -7,7 +7,7 @@ import {useNavigate, useLocation} from "react-router-dom";
 import {useAuth} from "./context/AuthProvider";
 
 function LogInPage() {
-    const navigate = useNavigate();
+    let navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [user, setUser] = useState('');
@@ -82,6 +82,7 @@ function LogInPage() {
     }
 
     return (
+        !useauth.isLogin()?(
         <div className="home-element-padding">
         <div className="card-container">
             <div className='container-fluid' >
@@ -124,7 +125,7 @@ function LogInPage() {
                 </div>
             </div>
             <ToastContainer/>
-        </div></div>
+        </div></div>):window.location.replace("http://localhost:3000")
     )
 }
 
