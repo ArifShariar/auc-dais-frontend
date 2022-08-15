@@ -12,7 +12,7 @@ import LiveAuctions from "./components/LiveAuctions";
 import LiveAuction from "./components/LiveAuction";
 import SavedAuctions from "./components/SavedAuctions";
 import Location from './components/Location';
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import {BrowserRouter as Router, Routes, Route, useLocation} from "react-router-dom";
 import AddAuction from "./components/AddAuction";
 import Home from './components/pages/Home';
 import ShowAuctionDetails from './components/ShowAuctionDetails';
@@ -29,6 +29,7 @@ import Payment from './components/Payment';
 import WonAuctions from "./components/WonAuctions";
 import UserSettings from './components/UserSettings';
 import MyAuctions from "./components/MyAuctions";
+import VerifyEmail from "./components/VerifyEmail";
 
 // We may need to get rid of RequireAuth and use PersistLogin instead
 toast.configure();
@@ -60,6 +61,7 @@ function App() {
             <Route path="/chatroom" element={<ChatRoom/>} />
             <Route path="/wonAuctions/payment" element={<Payment/>} />
             <Route path="/settings" element={<UserSettings/>} />
+            <Route path="/email_verification" element={<VerifyEmail/>}/>
             <Route path="/" element={<Home />} />
         </Routes>
     </Router>

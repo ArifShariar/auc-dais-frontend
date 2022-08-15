@@ -69,7 +69,7 @@ function AllMessages() {
                                             <div className="fw-bold">
                                                 {/* print the receiver / sender name, but it will not be the user's name */}
                                                 {message.sender.firstName + " " + message.sender.lastName} and {message.receiver.firstName + " " + message.receiver.lastName}
-
+                                                <span>&emsp;&emsp;&emsp;{(message.sender.id == user_id)?"":(message.read?"":"[Unread]")}</span>
                                             </div>
                                             {message.message}
                                         </div>

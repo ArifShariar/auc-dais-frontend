@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavDropdown, Navbar, Nav, Form, Button, Image } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Link, useNavigate} from "react-router-dom";
+import {Link, useNavigate, useLocation} from "react-router-dom";
 import axios from "axios";
 import { useAuth } from './context/AuthProvider';
 import "./SideBar.css"
@@ -11,6 +11,7 @@ function NavBar() {
     const navigate = useNavigate();
     const useauth = useAuth();
     let searchResult = [];
+    const location = useLocation();
     //console.log('in navbar'+useAuth);
 
     const onSubmit = (e) => {
@@ -40,6 +41,7 @@ function NavBar() {
     }
 
     return (
+        !['/email_verification'].includes(location.pathname)?
         <Navbar collapseOnSelect expand="lg" sticky="top">
                 <img
                     src={require("../images/auction-logo.webp")}
@@ -113,6 +115,7 @@ function NavBar() {
                         )
                     }
         </Navbar>
+        : null
     )
 
 }
