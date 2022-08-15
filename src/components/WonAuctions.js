@@ -27,13 +27,13 @@ function WonAuctions (){
 
     }
 
-    const payment = (auction_id) => {
-        navigate('payment', {state: {auction_id: auction_id}});
+    const payment = (id) => {
+        navigate('payment', {state: {won_auction_id: id}});
 
     }
 
     const viewAndBid = (auction_id) => {
-        navigate("/auction/" + auction_id, {state: {auctionId: auction_id}});
+        navigate("/wonAuctions/auction/" + auction_id, {state: {auctionId: auction_id}});
     }
 
     useEffect(() => {
@@ -48,7 +48,7 @@ function WonAuctions (){
                         <div className=" col-sm-12">
                             <Card className=" bg-warning.bg-gradient">
                                 <Card.Header className={"bg-warning text-white text-center"}> Won Auctions </Card.Header>
-                                {auctions.length === 0 ? <Card.Body> No Won auctions </Card.Body> :
+                                {auctions.length === 0 ? <Card.Body className={"text-center"}> No Won auctions </Card.Body> :
                                     auctions.map(auction => {
                                         return(
                                             <Card.Body key={auction.id}>
@@ -65,7 +65,7 @@ function WonAuctions (){
                                                         <p>Start Date: {auction.auctionProduct.auction_start_date}</p>
                                                         <p>End Date: {auction.auctionProduct.auction_end_date}</p>
                                                         <Button variant="secondary" onClick={()=>viewAndBid(auction.auctionProduct.id)} id={"view"}>View</Button>{' '}
-                                                        <Button variant="info" onClick={()=>payment(auction.auctionProduct.id)} id={"payment"}>Proceed to Pay</Button>{' '}
+                                                        <Button variant="info" onClick={()=>payment(auction.id)} id={"payment"}>Proceed to Pay</Button>{' '}
 
                                                     </div>
                                                 </div>

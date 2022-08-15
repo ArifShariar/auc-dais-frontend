@@ -5,7 +5,7 @@ import {useLocation, useNavigate} from "react-router-dom";
 import axios from "axios";
 import {toast} from "react-toastify";
 
-function ShowAuctionDetails() {
+function ShowMyAuctionDetails() {
     const {state} = useLocation();
     let auction_id = state.auctionId;
     let user_id = localStorage.getItem('user_id');
@@ -20,11 +20,6 @@ function ShowAuctionDetails() {
         }).catch(e => {
             toast.error("Error fetching auction");
         });
-    }
-
-    const messageSeller = (seller_id) => {
-        //navigate('message', {state: {user: id1, other: id2}});
-        navigate('message', {state: {user: user_id, other: seller_id}});
     }
 
     useEffect(() => {
@@ -45,10 +40,11 @@ function ShowAuctionDetails() {
 
                                 <Card.Header className={"bg-warning text-white text-center"}>{auction.product_name}</Card.Header>
                                 <Card.Body >
-                                    <div className="card-image-container text-center">
+                                    <div className="card-image-container">
                                         <img
                                             src={auction.photos}
                                             alt="Product image"
+                                            className={"text-center"}
                                         />
                                     </div>
                                     <div className="row">
@@ -110,11 +106,6 @@ function ShowAuctionDetails() {
                                                         <div className="col-md-4"> <p className="bg-secondary bg-gradient text-white  rounded-pill  text-padding">
                                                             {auction.auction_end_date}  </p> </div>
                                                     </div>
-
-                                                    <div className="row  rounded-pill " >
-                                                        <Button className="bg-danger bg-gradient text-white  rounded-pill  text-padding" onClick={() => messageSeller(auction.owner.id) }>Message the seller</Button>
-                                                    </div>
-
                                                 </Card.Body>
                                             </Card>
                                         </div>
@@ -130,4 +121,4 @@ function ShowAuctionDetails() {
     )
 }
 
-export default ShowAuctionDetails;
+export default ShowMyAuctionDetails;

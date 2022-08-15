@@ -19,7 +19,6 @@ function AllMessages() {
 
         axios.get(url).then(r => {
             setMessage(r.data);
-            console.log(r.data);
         }).catch(e => {
             notify_error("Error fetching messages");
         });
@@ -37,7 +36,7 @@ function AllMessages() {
 
     useEffect(() => {
         fetchMessages();
-    },[]);
+    });
 
     const notify_error = (error_message) =>{
         toast.error(error_message,

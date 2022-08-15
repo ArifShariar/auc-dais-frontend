@@ -29,15 +29,11 @@ function MyAuctions(){
 
 
     const view = (auction_id) => {
-        alert("View and Bid : " + auction_id);
+        navigate("/myAuctions/myAuction/" + auction_id, {state: {auctionId: auction_id}});
     }
 
     const update = (auction_id) => {
-        alert("Update : " + auction_id);
-    }
-
-    const deleteAuction = (auction_id) => {
-        alert("Delete : " + auction_id);
+        navigate("/update/" + auction_id, {state: {auctionId: auction_id}});
     }
 
     useEffect(() => {
@@ -52,7 +48,7 @@ function MyAuctions(){
                         <div className=" col-sm-12">
                             <Card className=" bg-warning.bg-gradient">
                                 <Card.Header className={"bg-warning text-white text-center"}> My Auctions </Card.Header>
-                                {auctions.length === 0 ? <Card.Body> No Auctions </Card.Body> :
+                                {auctions.length === 0 ? <Card.Body className={"text-center"}> No Auctions </Card.Body> :
                                     auctions.map(auction => {
                                         return(
                                             <Card.Body key={auction.id}>
@@ -70,7 +66,6 @@ function MyAuctions(){
                                                         <p>End Date: {auction.auction_end_date}</p>
                                                         <Button variant="secondary" onClick={()=>view(auction.id)} id={"view"}>View</Button>{' '}
                                                         <Button variant="info" onClick={()=>update(auction.id)} id={"payment"}>Update</Button>{' '}
-                                                        <Button variant="danger" onClick={()=>deleteAuction(auction.id)} id={"deleteAuction"}>Delete</Button>{' '}
 
                                                     </div>
                                                 </div>

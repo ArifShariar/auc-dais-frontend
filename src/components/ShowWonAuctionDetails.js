@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Card} from "react-bootstrap";
+import {Card} from "react-bootstrap";
 import RatingReviewAdd from "./RatingReviewAdd";
 import {useLocation, useNavigate} from "react-router-dom";
 import axios from "axios";
@@ -8,6 +8,8 @@ import {toast} from "react-toastify";
 function ShowAuctionDetails() {
     const {state} = useLocation();
     let auction_id = state.auctionId;
+    // store auction_id in local storage
+    localStorage.setItem('auction_id', auction_id);
     let user_id = localStorage.getItem('user_id');
     const navigate = useNavigate();
     const [auction, setAuction] = useState([]);
@@ -20,11 +22,6 @@ function ShowAuctionDetails() {
         }).catch(e => {
             toast.error("Error fetching auction");
         });
-    }
-
-    const messageSeller = (seller_id) => {
-        //navigate('message', {state: {user: id1, other: id2}});
-        navigate('message', {state: {user: user_id, other: seller_id}});
     }
 
     useEffect(() => {
@@ -111,10 +108,18 @@ function ShowAuctionDetails() {
                                                             {auction.auction_end_date}  </p> </div>
                                                     </div>
 
-                                                    <div className="row  rounded-pill " >
-                                                        <Button className="bg-danger bg-gradient text-white  rounded-pill  text-padding" onClick={() => messageSeller(auction.owner.id) }>Message the seller</Button>
-                                                    </div>
+                                                </Card.Body>
+                                            </Card>
+                                        </div>
+                                    </div>
 
+
+                                    <div className="row">
+                                        <div className=" col-sm-12">
+                                            <Card className=" bg-warning.bg-gradient">
+                                                <Card.Header className={"bg-secondary text-white text-center"}> Leave Us a Review</Card.Header>
+                                                <Card.Body >
+                                                    <RatingReviewAdd/>
                                                 </Card.Body>
                                             </Card>
                                         </div>
