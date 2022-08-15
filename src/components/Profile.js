@@ -96,6 +96,39 @@ function Profile () {
     }
 
 
+    const deletePicture = async(event) => {
+        let flag = false;
+        var user_image;
+        await axios.post("http://localhost:8080/users/delete/photo/" + useauth.isLogin(), {id: user_id}).then(
+            response => {
+                if(response.data != null) {
+                    if(response.status === 200) {
+                        user_image = useauth.getImage();
+                        useauth.setImage("");
+                        flag = true;
+                    }
+                }
+            }
+        ).catch(error => {
+            console.log(error.response);
+        });
+        console.log("flag is: " + flag);
+        if(flag) {
+            console.log("image is: " + user_image);
+            await axios.post("http://localhost:8080/files/delete", {fileName: user_image}).then(
+                response => {
+                    window.location.reload(false);
+                    console.log("Image delete successful")
+                }
+            ).catch (
+                error => {
+                    console.log("Image delete unsuccessful");
+                }
+            )
+        }
+    }
+
+
     if(loader) {
     return (
         <div className="home-element-padding">
@@ -122,6 +155,8 @@ function Profile () {
                                                 <b>Address</b>: {user.address}<br></br>
                                                 <b>Contact Number</b>: {user.phoneNumber}<br></br>
                                                 <b>Date of Birth</b>: {user.dateOfBirth}<br></br>
+                                                <br></br>
+                                                <button onClick={deletePicture} type="submit" className="btn btn-danger" >Delete Photo</button>
                                             </p>
                                         </div>
                                     </div>
