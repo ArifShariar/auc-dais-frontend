@@ -4,6 +4,8 @@ import Container from "react-bootstrap/Container";
 import "./Card.css"
 import axios from "axios";
 import {useAuth} from "./context/AuthProvider";
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Profile () {
     let user_id = localStorage.getItem('user_id');
@@ -80,7 +82,12 @@ function Profile () {
                         useauth.setImage(response.data.image);
                         window.location.reload(false);
                     }
-                    else {console.log("2nd axios not working");}
+                    else if (response.status == 403) {
+                        notify("Session Timeout");
+                        event.preventDefault();
+                        useauth.logout();
+                        window.location.replace("http://localhost:3000");
+                    }
                 }
             }
         ).catch(error => {
@@ -107,6 +114,12 @@ function Profile () {
                         useauth.setImage("");
                         flag = true;
                     }
+                    else if (response.status === 403) {
+                        notify("Session Timeout");
+                        event.preventDefault();
+                        useauth.logout();
+                        window.location.replace("http://localhost:3000");
+                    }
                 }
             }
         ).catch(error => {
@@ -122,10 +135,25 @@ function Profile () {
                 }
             ).catch (
                 error => {
+                    notify("No image to delete")
                     console.log("Image delete unsuccessful");
                 }
             )
         }
+    }
+
+    const notify = (msg) => {
+        toast.error(msg,
+            {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: false,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+            },
+        );
     }
 
 
