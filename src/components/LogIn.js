@@ -14,7 +14,7 @@ function LogInPage() {
     const useauth = useAuth();
     const location = useLocation();
 
-    const submitForm = async event => {
+    const submitForm = async(event) => {
         event.preventDefault();
         var email = document.getElementById("email").value;
         var password = document.getElementById("password").value;
@@ -25,10 +25,7 @@ function LogInPage() {
                         setEmail('');
                         setPassword('');
                         // Saving token in the local storage.
-                        useauth.login(response.data.token, response.data.user.id);
-
-                        console.log("The token generated for user: " + response.data.token);
-                        console.log(response.data);
+                        useauth.login(response);
 
                         /*===== Here I'm trying to redirect to the page the user clicked before loging in ====*/
                         /*===== Though not that necessary still a nice feature to have. ====*/
@@ -38,9 +35,9 @@ function LogInPage() {
                         //const redirectpath = location.state.path;
                         //alert(redirectpath);
 
-                        navigate('/?id='+response.data.id, {
+                        navigate('/', {
                             state: { 
-                                    id: response.data.id,
+                                    id: response.data.user.id,
                                     created: false,
                                     name: response.data.firstName
                                 },
@@ -51,7 +48,7 @@ function LogInPage() {
                 }
             }
         ).catch(error => {
-        console.log(error.response)
+            console.log(error.response)
             // check if the error code is 5**
             if(error.response != null) {
                 if (error.response.status >= 500) {
@@ -61,6 +58,7 @@ function LogInPage() {
                     notify();
                 }
             }
+            else    {console.log("login response is null");}
         });
     }
 
@@ -84,6 +82,7 @@ function LogInPage() {
     }
 
     return (
+        <div className="home-element-padding">
         <div className="card-container">
             <div className='container-fluid' >
                 <div className="row">
@@ -125,7 +124,7 @@ function LogInPage() {
                 </div>
             </div>
             <ToastContainer/>
-        </div>
+        </div></div>
     )
 }
 

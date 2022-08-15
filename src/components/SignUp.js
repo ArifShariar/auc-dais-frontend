@@ -40,7 +40,8 @@ function SignUp() {
             phoneNumber: phone, 
             address: addr,
             password: pwd,
-            dateOfBirth: dob
+            dateOfBirth: dob,
+            image: ''
         }
 
         if (pwd !== cpwd) {
@@ -60,6 +61,7 @@ function SignUp() {
                         setPassword('');
                         setConPassword('');
                         setDob('');
+                        useauth.setImage('');
                         // useauth.login(response.data.token);
                         
                         navigate('/login', {
@@ -105,6 +107,7 @@ function SignUp() {
     }
 
     return(
+        <div className="home-element-padding">
         <div className="card-container">
             <div className='container-fluid' >
                 <div className="row">
@@ -175,7 +178,7 @@ function SignUp() {
                 </div>
             </div>
             <ToastContainer/>
-        </div>
+        </div> </div>
     );
 }
 
