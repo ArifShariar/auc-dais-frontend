@@ -40,7 +40,7 @@ function Message (){
         axios.get(url).then(r => {
             setMessage(r.data);
         }).catch(e => {
-            notify_error("Error fetching messages");
+            // notify_error("Error fetching messages");
         })
 
     }

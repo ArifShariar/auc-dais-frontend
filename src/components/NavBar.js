@@ -75,7 +75,7 @@ function NavBar() {
                 </Navbar.Brand>
 
                 <Navbar.Collapse className="d-flex justify-content-center">
-                     <Form className="d-flex">
+                     <Form className="d-flex"> 
                             <Form.Control
                                 type="search"
                                 placeholder="Enter Keyword"
@@ -84,11 +84,32 @@ function NavBar() {
                                 id="search_keyword"
                                 name="search_keyword"
                             />
-                            <div className="d-grid gap-2 mx-auto bg-danger text-white ">
+                            <div className="d-grid gap-2 ml-auto bg-danger text-white ">
                                 <Button type="submit" className="btn btn-danger"
                                         onClick={onSubmit}> Search</Button>
                             </div>
-                        </Form>
+                        </Form> 
+                    </Nav>    
+                            
+                </Navbar.Collapse>
+                <Navbar.Collapse id="responsive-navbar-nav">
+                    {!useauth.isLogin() && (
+                                <Nav className="mx-auto">
+                                    <Link to={"login"} className={"nav-link text-white"}>Log In</Link>
+                                    <Link to={"signup"} className={"nav-link text-white"}>Sign Up</Link>
+                                </Nav>
+                            )
+                        }
+
+                        {useauth.isLogin() && (
+                                <Nav className="mx-auto">
+                                    <Link to={"profile"} className={"nav-link text-white"}>Profile</Link>
+                                    <Link to={""} className={"nav-link text-white"} onClick={handleLogout}>Logout</Link>
+                                </Nav>
+                            )
+                        }
+                </Navbar.Collapse>
+            </Container> 
                 </Navbar.Collapse>
 
 
@@ -130,7 +151,7 @@ function NavBar() {
                                 </NavDropdown>
                             </Nav>
                         )
-                    }
+                    } 
         </Navbar>
         : null
     )
