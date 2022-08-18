@@ -36,6 +36,10 @@ function MyAuctions(){
         navigate("/update/" + auction_id, {state: {auctionId: auction_id}});
     }
 
+    const stat = (auction_id) => {
+        navigate("/statistics/" + auction_id, {state: {auctionId: auction_id}});
+    }
+
     useEffect(() => {
         fetchWonAuctions();
     },[]);
@@ -65,7 +69,8 @@ function MyAuctions(){
                                                         <p>Start Date: {auction.auction_start_date}</p>
                                                         <p>End Date: {auction.auction_end_date}</p>
                                                         <Button variant="secondary" onClick={()=>view(auction.id)} id={"view"}>View</Button>{' '}
-                                                        <Button variant="info" onClick={()=>update(auction.id)} id={"payment"}>Update</Button>{' '}
+                                                        <Button variant="info" onClick={()=>update(auction.id)} id={"update"}>Update</Button>{' '}
+                                                        <Button variant="success" onClick={()=>stat(auction.id)} id={"stat"}>Stat</Button>{' '}
 
                                                     </div>
                                                 </div>

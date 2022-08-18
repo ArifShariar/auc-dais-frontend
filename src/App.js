@@ -33,6 +33,7 @@ import VerifyEmail from "./components/VerifyEmail";
 import UpdateAuction from "./components/UpdateAuction";
 import ShowWonAuctionDetails from "./components/ShowWonAuctionDetails";
 import ShowMyAuctionDetails from "./components/ShowMyAuctionDetails";
+import {AuctionStats} from "./components/AuctionStats";
 
 // We may need to get rid of RequireAuth and use PersistLogin instead
 toast.configure();
@@ -70,6 +71,7 @@ function App() {
             <Route path="/settings" element={<UserSettings/>} />
             <Route path="/email_verification" element={<VerifyEmail/>}/>
             <Route path="/" element={<Home />} />
+            <Route path="/statistics/:id" element={<AuctionStats/>} />
         </Routes>
     </Router>
     </AuthProvider>
