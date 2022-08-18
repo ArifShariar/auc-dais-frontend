@@ -4,6 +4,8 @@ import Container from "react-bootstrap/Container";
 import "./Card.css"
 import axios from "axios";
 import {useAuth} from "./context/AuthProvider";
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Profile () {
     let user_id = localStorage.getItem('user_id');
@@ -80,7 +82,12 @@ function Profile () {
                         useauth.setImage(response.data.image);
                         window.location.reload(false);
                     }
-                    else {console.log("2nd axios not working");}
+                    else if (response.status == 403) {
+                        notify("Session Timeout");
+                        event.preventDefault();
+                        useauth.logout();
+                        window.location.replace("http://localhost:3000");
+                    }
                 }
             }
         ).catch(error => {
@@ -93,6 +100,60 @@ function Profile () {
         const image = new FormData();
         image.append('file', file);
         setImageData(image);
+    }
+
+
+    const deletePicture = async(event) => {
+        let flag = false;
+        var user_image;
+        await axios.post("http://localhost:8080/users/delete/photo/" + useauth.isLogin(), {id: user_id}).then(
+            response => {
+                if(response.data != null) {
+                    if(response.status === 200) {
+                        user_image = useauth.getImage();
+                        useauth.setImage("");
+                        flag = true;
+                    }
+                    else if (response.status === 403) {
+                        notify("Session Timeout");
+                        event.preventDefault();
+                        useauth.logout();
+                        window.location.replace("http://localhost:3000");
+                    }
+                }
+            }
+        ).catch(error => {
+            console.log(error.response);
+        });
+        console.log("flag is: " + flag);
+        if(flag) {
+            console.log("image is: " + user_image);
+            await axios.post("http://localhost:8080/files/delete", {fileName: user_image}).then(
+                response => {
+                    window.location.reload(false);
+                    console.log("Image delete successful")
+                }
+            ).catch (
+                error => {
+                    notify("No image to delete")
+                    console.log("Image delete unsuccessful");
+                }
+            )
+        }
+    }
+
+    const notify = (msg) => {
+        toast.error(msg,
+            {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: false,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+            },
+        );
     }
 
 
@@ -122,6 +183,8 @@ function Profile () {
                                                 <b>Address</b>: {user.address}<br></br>
                                                 <b>Contact Number</b>: {user.phoneNumber}<br></br>
                                                 <b>Date of Birth</b>: {user.dateOfBirth}<br></br>
+                                                <br></br>
+                                                <button onClick={deletePicture} type="submit" className="btn btn-danger" >Delete Photo</button>
                                             </p>
                                         </div>
                                     </div>
