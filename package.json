@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
+    "@mapbox/mapbox-gl-geocoder": "^5.0.1",
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.9.3",
     "@testing-library/jest-dom": "^5.16.4",
@@ -17,18 +18,21 @@
     "faker": "^6.6.6",
     "holderjs": "^2.9.9",
     "jquery": "^3.4.1",
+    "leaflet": "^1.8.0",
+    "mapbox-gl": "^2.10.0",
     "process": "^0.11.10",
     "prop-types": "^15.8.1",
-    "react": "^18.1.0",
+    "react": "^18.2.0",
     "react-bkash": "^3.0.0",
     "react-bootstrap": "^2.4.0",
     "react-burger-menu": "^3.0.8",
     "react-chartjs-2": "^4.3.1",
     "react-charts": "^3.0.0-beta.47",
-    "react-dom": "^18.1.0",
+    "react-dom": "^18.2.0",
     "react-geocode": "^0.2.3",
     "react-google-autocomplete": "^2.7.0",
     "react-icons": "^4.4.0",
+    "react-leaflet": "^4.0.2",
     "react-map-gl": "^7.0.17",
     "react-router-dom": "^6.3.0",
     "react-scripts": "^2.1.8",
@@ -63,5 +67,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/leaflet": "^1.7.11"
   }
 }
