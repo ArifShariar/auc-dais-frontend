@@ -33,6 +33,7 @@ import VerifyEmail from "./components/VerifyEmail";
 import UpdateAuction from "./components/UpdateAuction";
 import ShowWonAuctionDetails from "./components/ShowWonAuctionDetails";
 import ShowMyAuctionDetails from "./components/ShowMyAuctionDetails";
+import MapAucDais from "./components/MapAucDais";
 import {AuctionStats} from "./components/AuctionStats";
 
 // We may need to get rid of RequireAuth and use PersistLogin instead
@@ -72,6 +73,7 @@ function App() {
             <Route path="/email_verification" element={<VerifyEmail/>}/>
             <Route path="/" element={<Home />} />
             <Route path="/statistics/:id" element={<AuctionStats/>} />
+            <Route path="/map" element={<MapAucDais/>}/>
         </Routes>
     </Router>
     </AuthProvider>

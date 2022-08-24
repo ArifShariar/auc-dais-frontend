@@ -19,13 +19,11 @@
     "jquery": "^3.4.1",
     "process": "^0.11.10",
     "prop-types": "^15.8.1",
-    "react": "^18.1.0",
     "react-bkash": "^3.0.0",
     "react-bootstrap": "^2.4.0",
     "react-burger-menu": "^3.0.8",
     "react-chartjs-2": "^4.3.1",
     "react-charts": "^3.0.0-beta.47",
-    "react-dom": "^18.1.0",
     "react-geocode": "^0.2.3",
     "react-google-autocomplete": "^2.7.0",
     "react-icons": "^4.4.0",
@@ -52,16 +50,9 @@
       "react-app/jest"
     ]
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ]
 }
