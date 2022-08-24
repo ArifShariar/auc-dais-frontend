@@ -33,6 +33,13 @@ function Map() {
 
         }));
 
+        if (!map.current) return; // wait for map to initialize
+        map.current.on('move', () => {
+            setLng(map.current.getCenter().lng.toFixed(4));
+            setLat(map.current.getCenter().lat.toFixed(4));
+            setZoom(map.current.getZoom().toFixed(2));
+        });
+
 
         // add zoom and rotation controls
         map.current.addControl(new mapboxgl.NavigationControl());
@@ -53,6 +60,9 @@ function Map() {
                                 <Card.Body>
                                     <div>
                                         <div ref={mapContainer} className="map-container" />
+                                        <div className="sidebar">
+                                            Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
+                                        </div>
                                     </div>
 
                                 </Card.Body>
