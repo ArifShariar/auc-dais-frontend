@@ -12,7 +12,7 @@ function Map() {
     const map = useRef(null);
     const [lng, setLng] = useState(-70.9);
     const [lat, setLat] = useState(42.35);
-    const [zoom, setZoom] = useState(9);
+    const [zoom, setZoom] = useState(1);
 
     useEffect(() => {
         if (map.current) return; // initialize map only once
@@ -20,9 +20,27 @@ function Map() {
             container: mapContainer.current,
             style: 'mapbox://styles/mapbox/streets-v11',
             center: [lng, lat],
-            zoom: zoom
+            zoom: zoom,
+            projection: 'globe',
         });
+
+        // locate user
+        map.current.addControl(new mapboxgl.GeolocateControl({
+            positionOptions: {
+                enableHighAccuracy: true
+            },
+            trackUserLocation: true
+
+        }));
+
+
+        // add zoom and rotation controls
+        map.current.addControl(new mapboxgl.NavigationControl());
     },[]);
+
+    const locateUser = (e) => {
+        alert("lng:" + e.coords.longitude + ", lat:" + e.coords.latitude);
+    }
 
     return (
         <div className="home-element-padding">
