@@ -48,8 +48,7 @@
   flex-direction: column;
  }
 
-
- .leaflet-container {
-  width: 100wh; 
-  height: 100vh;
+.map-container {
+  height: 400px;
 }
+

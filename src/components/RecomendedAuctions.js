@@ -68,7 +68,7 @@ function Carousels () {
                     </div> :
                     auctions.map(auction => {
                         return(
-                            <div className="row">
+                            <div className="row" key={auction.id}>
                                 <div className=" col-sm-12">
                                     <Card className=" bg-warning.bg-gradient">
                                         <Card.Header className={"bg-warning text-white text-center"}>{auction.product_name}</Card.Header>
