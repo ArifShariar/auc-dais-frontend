@@ -40,6 +40,20 @@ function MyAuctions(){
         navigate("/statistics/" + auction_id, {state: {auctionId: auction_id}});
     }
 
+    const deleteAuction = (auction_id) => {
+        axios.post("http://localhost:8080/auction_products/delete/" + auction_id).then
+        (response => {
+            if(response.data != null) {
+                if(response.status === 200) {
+                    window.location.reload(false);
+                }
+                else {
+                    alert("Failed to delete");
+                }
+            }
+        });
+    }
+
     useEffect(() => {
         fetchWonAuctions();
     },[]);
@@ -71,6 +85,7 @@ function MyAuctions(){
                                                         <Button variant="secondary" onClick={()=>view(auction.id)} id={"view"}>View</Button>{' '}
                                                         <Button variant="info" onClick={()=>update(auction.id)} id={"update"}>Update</Button>{' '}
                                                         <Button variant="success" onClick={()=>stat(auction.id)} id={"stat"}>Stat</Button>{' '}
+                                                        <Button variant="danger" onClick={()=>deleteAuction(auction.id)}>Delete</Button>
 
                                                     </div>
                                                 </div>

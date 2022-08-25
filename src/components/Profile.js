@@ -46,7 +46,7 @@ function Profile () {
         var lastname = document.getElementById('lname').value;
         var mail = document.getElementById('mail').value;
         var pwd = document.getElementById('pwd').value;
-        var addr = document.getElementById('addr').value;
+        var addr = document.getElementById('address').value
 
         await axios.post('http://localhost:8080/files', imageData).then( response => {
             if(response.data != null) {

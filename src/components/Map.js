@@ -95,53 +95,53 @@ function Map() {
         }
 
         if(localStorage.getItem('userGPS') === "false" && map.current) {
-        map.current.on('click', (event) => {
-            setClicked(true);
-            if (map.current.getLayer('point'))  map.current.removeLayer('point');
-            const coords = Object.keys(event.lngLat).map((key) => event.lngLat[key]);
-            const end = {
-                type: 'FeatureCollection',
-                features: [{
-                    type: 'Feature',
-                    properties: {},
-                    geometry: {
-                        type: 'Point',
-                        coordinates: coords
-                    }
-                }]
-            };
-
-            // end Changes based on the click
-            if (map.current.getLayer('end')) {
-                map.current.getSource('end').setData(end);
-                setLat(coords[1]);
-                setLng(coords[0]);
-            }
-            else {
-                map.current.addLayer({
-                    id: 'end',
-                    type: 'circle',
-                    source: {
-                        type: 'geojson',
-                        data: {
-                            type: 'FeatureCollection',
-                            features: [{
-                                type: 'Feature',
-                                properties: {},
-                                geometry: {
-                                    type: 'Point',
-                                    coordinates: coords
-                                }
-                            }]
+            map.current.on('click', (event) => {
+                setClicked(true);
+                if (map.current.getLayer('point'))  map.current.removeLayer('point');
+                const coords = Object.keys(event.lngLat).map((key) => event.lngLat[key]);
+                const end = {
+                    type: 'FeatureCollection',
+                    features: [{
+                        type: 'Feature',
+                        properties: {},
+                        geometry: {
+                            type: 'Point',
+                            coordinates: coords
                         }
-                    },
-                    paint: {
-                        'circle-radius': 10,
-                        'circle-color': '#3887be'
-                    }
-                });
-            }
-        });
+                    }]
+                };
+
+                // end Changes based on the click
+                if (map.current.getLayer('end')) {
+                    map.current.getSource('end').setData(end);
+                    setLat(coords[1]);
+                    setLng(coords[0]);
+                }
+                else {
+                    map.current.addLayer({
+                        id: 'end',
+                        type: 'circle',
+                        source: {
+                            type: 'geojson',
+                            data: {
+                                type: 'FeatureCollection',
+                                features: [{
+                                    type: 'Feature',
+                                    properties: {},
+                                    geometry: {
+                                        type: 'Point',
+                                        coordinates: coords
+                                    }
+                                }]
+                            }
+                        },
+                        paint: {
+                            'circle-radius': 10,
+                            'circle-color': '#3887be'
+                        }
+                    });
+                }
+            });
         }
     }
 
