@@ -13,7 +13,7 @@ function SignUp() {
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
-    const [address, setAddress] = useState('');
+    // const [address, setAddress] = useState('');
     const [password, setPassword] = useState('');
     const [confirmpass, setConPassword] = useState('');
     const [dateOfBirth, setDob] = useState('');
@@ -28,7 +28,7 @@ function SignUp() {
         var lname = document.getElementById("lname").value;
         var mail = document.getElementById("mail").value;
         var phone = document.getElementById("phone").value;
-        var addr = document.getElementById("addr").value;
+        // var addr = document.getElementById("addr").value;
         var pwd = document.getElementById("pwd").value;
         var cpwd = document.getElementById("cpwd").value;
         var dob = document.getElementById("dob").value;
@@ -38,7 +38,7 @@ function SignUp() {
             lastName: lname,
             email: mail,
             phoneNumber: phone, 
-            address: addr,
+            // address: addr,
             password: pwd,
             dateOfBirth: dob,
             image: ''
@@ -56,7 +56,7 @@ function SignUp() {
                         setFirstName('');
                         setLastName('');
                         setEmail('');
-                        setAddress('');
+                        // setAddress('');
                         setPhoneNumber('');
                         setPassword('');
                         setConPassword('');
@@ -139,10 +139,10 @@ function SignUp() {
                                         <Form.Control required onChange={(e)=>setPhoneNumber(e.target.value)} type="text" name="phoneNumber" placeholder="Enter Phone" id="phone"/>
                                     </Form.Group>
 
-                                    <Form.Group className="mb-3" controlId="inputAddress">
-                                        <Form.Label>Address</Form.Label>
-                                        <Form.Control required onChange={(e)=>setAddress(e.target.value)} type="text" name="address" placeholder="Enter Address" id="addr"/>
-                                    </Form.Group>
+                                    {/*<Form.Group className="mb-3" controlId="inputAddress">*/}
+                                    {/*    <Form.Label>Address</Form.Label>*/}
+                                    {/*    <Form.Control required onChange={(e)=>setAddress(e.target.value)} type="text" name="address" placeholder="Enter Address" id="addr"/>*/}
+                                    {/*</Form.Group>*/}
 
                                     <Form.Group className="mb-3" controlId="inputPassword">
                                         <Form.Label>Password</Form.Label>

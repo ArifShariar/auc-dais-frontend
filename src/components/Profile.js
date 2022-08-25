@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from "react";
-import {Card, Col, Row} from "react-bootstrap";
+import {Button, Card, Col, Row} from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import "./Card.css"
 import axios from "axios";
 import {useAuth} from "./context/AuthProvider";
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {useNavigate} from "react-router-dom";
 
 function Profile () {
     let user_id = localStorage.getItem('user_id');
@@ -15,6 +16,7 @@ function Profile () {
     let [imageData, setImageData] = useState(null);
     let imageDir = null;
     const useauth = useAuth();
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -82,7 +84,7 @@ function Profile () {
                         useauth.setImage(response.data.image);
                         window.location.reload(false);
                     }
-                    else if (response.status == 403) {
+                    else if (response.status === 403) {
                         notify("Session Timeout");
                         event.preventDefault();
                         useauth.logout();
@@ -156,6 +158,10 @@ function Profile () {
         );
     }
 
+    const updateAddress = async (event) => {
+        navigate("/updateAddress");
+    }
+
 
     if(loader) {
     return (
@@ -211,8 +217,9 @@ function Profile () {
                                         </div>
 
                                         <div className="input-container">
-                                            <label htmlFor="address">Address</label>
-                                            <input type="text" className="form-control textarea" id="addr" placeholder={user.address}></input>
+                                            <label htmlFor="address" >Address</label>
+                                            <input type="text" className="form-control textarea" id="address" placeholder={user.address} readOnly={true}></input>
+                                            <Button className="btn btn-success btn-lg btn-block" onClick={updateAddress}> Update Address </Button>
                                         </div>
 
                                         <div className="form-group">

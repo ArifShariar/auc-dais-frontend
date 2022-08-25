@@ -1,12 +1,13 @@
 import React, {useEffect, useRef, useState} from 'react'
 import {Button, Card} from "react-bootstrap";
-
-
+import axios from 'axios';
+import {useNavigate} from "react-router-dom";
+import {toast} from 'react-toastify';
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 
 mapboxgl.accessToken = 'pk.eyJ1IjoicHAwMDYzeCIsImEiOiJjazhiNmZiMnkwNWw0M2RzMjJub2xhMXYwIn0.OssYldnMWVzFiQr0o24_iw';
 
-function Map() {
+function UpdateUserAddress() {
 
     const mapContainer = useRef(null);
     const map = useRef(null);
@@ -14,6 +15,12 @@ function Map() {
     const [lat, setLat] = useState(34.394593542);
     const [zoom, setZoom] = useState(1);
     let [clicked, setClicked] = useState(false);
+    const user_id = localStorage.getItem('user_id');
+    const user_token = localStorage.getItem('user');
+
+    const navigate = useNavigate();
+
+
     localStorage.setItem('userGPS', "false");
 
     useEffect(() => {
@@ -35,7 +42,7 @@ function Map() {
             style: {
                 right: 10,
                 top: 10
-              },
+            },
         }))
 
         if (!map.current) return; // wait for map to initialize
@@ -53,7 +60,7 @@ function Map() {
     const route = () => {
         navigator.permissions.query({
             name: 'geolocation'
-          }).then(permission =>
+        }).then(permission =>
             // is geolocation granted?
             permission.state === "granted"? localStorage.setItem('userGPS', "true") : localStorage.setItem('userGPS', "false")
         );
@@ -95,58 +102,67 @@ function Map() {
         }
 
         if(localStorage.getItem('userGPS') === "false" && map.current) {
-        map.current.on('click', (event) => {
-            setClicked(true);
-            if (map.current.getLayer('point'))  map.current.removeLayer('point');
-            const coords = Object.keys(event.lngLat).map((key) => event.lngLat[key]);
-            const end = {
-                type: 'FeatureCollection',
-                features: [{
-                    type: 'Feature',
-                    properties: {},
-                    geometry: {
-                        type: 'Point',
-                        coordinates: coords
-                    }
-                }]
-            };
-
-            // end Changes based on the click
-            if (map.current.getLayer('end')) {
-                map.current.getSource('end').setData(end);
-                setLat(coords[1]);
-                setLng(coords[0]);
-            }
-            else {
-                map.current.addLayer({
-                    id: 'end',
-                    type: 'circle',
-                    source: {
-                        type: 'geojson',
-                        data: {
-                            type: 'FeatureCollection',
-                            features: [{
-                                type: 'Feature',
-                                properties: {},
-                                geometry: {
-                                    type: 'Point',
-                                    coordinates: coords
-                                }
-                            }]
+            map.current.on('click', (event) => {
+                setClicked(true);
+                if (map.current.getLayer('point'))  map.current.removeLayer('point');
+                const coords = Object.keys(event.lngLat).map((key) => event.lngLat[key]);
+                const end = {
+                    type: 'FeatureCollection',
+                    features: [{
+                        type: 'Feature',
+                        properties: {},
+                        geometry: {
+                            type: 'Point',
+                            coordinates: coords
                         }
-                    },
-                    paint: {
-                        'circle-radius': 10,
-                        'circle-color': '#3887be'
-                    }
-                });
-            }
-        });
+                    }]
+                };
+
+                // end Changes based on the click
+                if (map.current.getLayer('end')) {
+                    map.current.getSource('end').setData(end);
+                    setLat(coords[1]);
+                    setLng(coords[0]);
+                }
+                else {
+                    map.current.addLayer({
+                        id: 'end',
+                        type: 'circle',
+                        source: {
+                            type: 'geojson',
+                            data: {
+                                type: 'FeatureCollection',
+                                features: [{
+                                    type: 'Feature',
+                                    properties: {},
+                                    geometry: {
+                                        type: 'Point',
+                                        coordinates: coords
+                                    }
+                                }]
+                            }
+                        },
+                        paint: {
+                            'circle-radius': 10,
+                            'circle-color': '#3887be'
+                        }
+                    });
+                }
+            });
         }
     }
 
     const getAddress = () => {
-        alert(`${lat}, ${lng}`);
+        let url = "http://localhost:8080/users/" + user_id +"/update/address/" + lat + "/" + lng + "/" + user_token;
+        axios.put(url).then(res => {
+            if (res.status === 200) {
+                toast.success("Address updated successfully");
+                navigate('/profile');
+            }
+            else{
+                toast.error("Address update failed");
+            }
+        })
     }
 
 
@@ -176,4 +192,4 @@ function Map() {
         </div>
     );
 }
-export default Map;
+export default UpdateUserAddress;
