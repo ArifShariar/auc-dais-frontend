@@ -1,12 +1,12 @@
 import React from "react";
-import {Card} from "react-bootstrap";
+import {Button, Card} from "react-bootstrap";
 import './Card.css'
 import {toast} from "react-toastify";
 class AddAuctionDetails extends React.Component{
     continue = e => {
         // check if all required fields are filled
-        const {product_name, product_description, minimum_price, address} = this.props.values;
-        if (product_name && product_description && minimum_price && address) {
+        const {product_name, product_description, minimum_price} = this.props.values;
+        if (product_name && product_description && minimum_price) {
             e.preventDefault();
             this.props.nextStep();
         }
@@ -51,11 +51,6 @@ class AddAuctionDetails extends React.Component{
                             <label htmlFor="minimum_price">Minimum Price*</label>
                             <input type="number" className="form-control" id="minimum_price" aria-describedby="minimum_price" placeholder="000000"
                                    name="minimum_price" onChange={handleChange('minimum_price')} defaultValue={values.minimum_price} required={true}/>
-                        </div>
-                        <div className="form-group">
-                            <label htmlFor="address">Address*</label>
-                            <input type="text" className="form-control" id="address" aria-describedby="address" placeholder="Address"
-                                   name="address" onChange={handleChange('address')} defaultValue={values.address} required={true}/>
                         </div>
                         <div className="form-group">
                             <label htmlFor="tags">Tags</label>

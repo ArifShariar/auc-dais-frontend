@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Card} from "react-bootstrap";
+import {Button, Card} from "react-bootstrap";
 import {useLocation, useNavigate} from "react-router-dom";
 import axios from "axios";
 import {toast} from "react-toastify";
@@ -14,6 +14,7 @@ function UpdateAuction () {
     let user_token = localStorage.getItem('user');
 
     let [auction, setAuction] = useState([]);
+
 
     const fetchAuction = () => {
         let url = "http://localhost:8080/auction_products/auction/" + auction_id;
@@ -70,6 +71,10 @@ function UpdateAuction () {
 
     }
 
+    const updateAddress = () => {
+        navigate("/updateAuctionAddress", {state: {auctionId: auction_id}});
+    }
+
     useEffect(() => {
         fetchAuction();
     },[]);
@@ -102,7 +107,8 @@ function UpdateAuction () {
                                         <div className="form-group">
                                             <label htmlFor="address">Address</label>
                                             <input type="text" className="form-control" id="address" aria-describedby="address" placeholder="Address"
-                                                   name="address" defaultValue={auction.address}/>
+                                                   name="address" defaultValue={auction.address} readOnly={true}/>
+                                            <Button className="btn btn-success btn-block" onClick={updateAddress}> Update Address </Button>
                                         </div>
                                         <div className="form-group">
                                             <label htmlFor="tags">Tags</label>

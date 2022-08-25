@@ -18,7 +18,6 @@ class AddAuction extends React.Component{
         end_date: "",
         end_time: "",
         is_online: "",
-        address: "",
         photos: [],
         tags:"",
 

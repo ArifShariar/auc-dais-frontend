@@ -9,7 +9,7 @@ class AddAuctionConfirm extends React.Component{
         let ownerId = localStorage.getItem("user_id");
         // alert("owner id: " + ownerId);
         const {values : {product_name, product_description, minimum_price, start_date, start_time, end_date, end_time,
-            address, photos, tags}} = this.props;
+            photos, tags}} = this.props;
         let auction_start_date = start_date + " " + start_time;
         let auction_end_date = end_date + " " + end_time;
         let product_photo = localStorage.getItem('product_image');
@@ -29,7 +29,6 @@ class AddAuctionConfirm extends React.Component{
                     auction_end_date: auction_end_date,
                     photos: product_photo,
                     tags: tags,
-                    address: address
 
                 }
             })
@@ -74,7 +73,6 @@ class AddAuctionConfirm extends React.Component{
                                         <ListGroup.Item>Start Time: {start_time}</ListGroup.Item>
                                         <ListGroup.Item>End Date: {end_date}</ListGroup.Item>
                                         <ListGroup.Item>End Time: {end_time}</ListGroup.Item>
-                                        <ListGroup.Item>Address: {address}</ListGroup.Item>
                                         <ListGroup.Item>Tags: {tags}</ListGroup.Item>
 
                                     </ListGroup>
