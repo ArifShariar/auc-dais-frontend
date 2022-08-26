@@ -10,6 +10,8 @@ export const AuthProvider = ({children}) => {
         localStorage.setItem('user_name', (response.data.user.firstName + " " + response.data.user.lastName));
         //console.log(typeof response.data.user.image);
         localStorage.setItem('user_image', response.data.user.image);
+        localStorage.setItem('lat', response.data.user.latitude);
+        localStorage.setItem('lng', response.data.user.longitude);
     }
 
     const logout = () => {
