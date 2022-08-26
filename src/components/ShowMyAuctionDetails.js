@@ -45,6 +45,8 @@ function ShowMyAuctionDetails() {
                                             src={auction.photos}
                                             alt="Product image"
                                             className={"text-center"}
+                                            height={"100%"}
+                                            width={"100%"}
                                         />
                                     </div>
                                     <div className="row">

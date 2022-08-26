@@ -138,6 +138,9 @@ function LiveAuction () {
                                 <img
                                     src={auction.photos}
                                     alt="product image"
+                                    className={"text-center"}
+                                    height={"150%"}
+                                    width={"150%"}
                                 />
                                 <div className="image-desc-container">
                                     <p>
