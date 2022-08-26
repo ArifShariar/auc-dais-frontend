@@ -1,12 +1,28 @@
 import React, {useEffect, useState} from "react";
 import {Card, Col, Row, Container} from "react-bootstrap";
 // import { ToggleSlider } from 'react-toggle-slider';
+import ToggleAucdais from "./ToggleAucdais";
 import "./Card.css";
 
 function UserSettings () {
 
     const [aucEmail, setAucEmail] = useState(false)
     const [promotional, setPromotional] = useState(false)
+    let checkbox1 = false;
+    let checkbox2 = false;
+    
+    const checkFirst = (event) => {
+        if (event.target)
+            checkbox1 = !checkbox1;
+        console.log("The checkbox1 value is: " + checkbox1);
+    }
+
+    const checkSecond = (event) => {
+        if (event.target)
+            checkbox2 = !checkbox2;
+        console.log("The checkbox2 value is: " + checkbox2);
+    }
+
     
     return (
         <div className="home-element-padding">
@@ -19,15 +35,15 @@ function UserSettings () {
                             <div className="">
                                 <div className="input-container">
                                     <span>
-                                        Do you like get email about ongoing auctions?
-                                        {/*<ToggleSlider onToggle={state => setAucEmail(state)}/>*/}
+                                        Do you like get email about ongoing auctions?&emsp;
+                                        <ToggleAucdais onChange={checkFirst}/>
                                     </span>
                                 </div>
 
                                 <div className="input-container">
-                                    {/* <button type="button" className="btn btn-outline-warning">Yes</button> ! */}
-                                    <label>Do you like to get promotional mail? </label>
-                                    {/*<ToggleSlider onToggle={state => setPromotional(state)}/>*/}
+                                    <label>Do you like to get promotional mail?&emsp;
+                                        <ToggleAucdais onChange={checkSecond}/>
+                                    </label>
                                 </div>
                             </div>
                         </Container>
