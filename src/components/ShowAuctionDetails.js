@@ -27,6 +27,33 @@ function ShowAuctionDetails() {
         navigate('message', {state: {user: user_id, other: seller_id}});
     }
 
+
+    function AddToSave(id){
+        let url = "http://localhost:8080/savedAuctions/create/user/" + user_id + "/auction/" + id + "/" + localStorage.getItem('user');
+        axios({
+            method: 'post',
+            url: url,
+            headers: {},
+            data: {
+                date: new Date(),
+            }
+        }).then(response => {
+            if (response.data!=null){
+                if (response.status === 200){
+                    toast.success("Auction added to saved auctions");
+                    document.getElementById(id).disabled = true;
+                }
+            }
+        }).catch(error => {
+            toast.error("Error adding auction to saved auctions");
+            document.getElementById(id).disabled = true;
+        });
+    }
+
+    const viewAndBid = (auction_id) => {
+        navigate("/liveAuction", {state: {auctionId: auction_id}});
+    }
+
     useEffect(() => {
         fetchAuction();
     }, []);
@@ -114,6 +141,16 @@ function ShowAuctionDetails() {
                                                     <div className="row  rounded-pill " >
                                                         <Button className="bg-danger bg-gradient text-white  rounded-pill  text-padding" onClick={() => messageSeller(auction.owner.id) }>Message the seller</Button>
                                                     </div>
+
+                                                    <div className="row  rounded-pill " >
+                                                        <Button className="bg-warning bg-gradient text-white  rounded-pill  text-padding" id={auction_id} onClick={() => AddToSave(auction_id) }>Save this auction</Button>
+                                                    </div>
+
+                                                    {auction.ongoing === true ?
+                                                        <div className="row  rounded-pill " >
+                                                            <Button className="bg-warning bg-gradient text-white  rounded-pill  text-padding" onClick={() => viewAndBid(auction_id) }>Bid in live auction</Button>
+                                                        </div>
+                                                        : null}
 
                                                 </Card.Body>
                                             </Card>
