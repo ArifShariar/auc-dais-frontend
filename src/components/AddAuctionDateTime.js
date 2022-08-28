@@ -8,8 +8,44 @@ class AddAuctionDateTime extends React.Component{
         // check if all required fields are filled
         const {start_date, start_time, end_date, end_time} = this.props.values;
         if (start_date && start_time && end_date && end_time) {
-            e.preventDefault();
-            this.props.nextStep();
+
+            // check if start date is before the current date
+            const start_date_split = start_date.split("-");
+            const start_date_year = start_date_split[0];
+            const start_date_month = start_date_split[1] - 1;
+            const start_date_day = start_date_split[2];
+            const start_date_obj = new Date(start_date_year, start_date_month, start_date_day);
+            const current_date_obj = new Date();
+            console.log("start date obj: " + start_date_obj);
+            console.log("current date obj: " + current_date_obj);
+
+
+            const end_date_split = end_date.split("-");
+            const end_date_year = end_date_split[0];
+            const end_date_month = end_date_split[1] - 1;
+            const end_date_day = end_date_split[2];
+            const end_date_obj = new Date(end_date_year, end_date_month, end_date_day);
+
+            if (start_date_obj < current_date_obj) {
+                toast.error("Start date cannot be before the current date");
+                e.preventDefault();
+            }
+
+            else if (end_date_obj < start_date_obj) {
+                toast.error("End date cannot be before the start date");
+                e.preventDefault();
+            }
+
+            else if (start_date_obj > end_date_obj) {
+                toast.error("Start date cannot be after the end date");
+                e.preventDefault();
+            }
+
+            else{
+                e.preventDefault();
+                this.props.nextStep();
+            }
+
         }
         else {
             e.preventDefault();

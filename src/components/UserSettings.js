@@ -4,6 +4,7 @@ import {Card, Col, Row, Container} from "react-bootstrap";
 import ToggleAucdais from "./ToggleAucdais";
 import "./Card.css";
 import axios from "axios";
+import {toast} from "react-toastify";
 
 function UserSettings () {
 
@@ -75,6 +76,10 @@ function UserSettings () {
                     if (response.status === 200) {
                         console.log("successful-message");
                         console.log(checkbox1);
+                        toast.success("Updated preferences");
+                    }
+                    else {
+                        alert("Failed to update");
                     }
                 }
             }
@@ -98,6 +103,10 @@ function UserSettings () {
                     if (response.status === 200) {
                         console.log("successful-saved");
                         console.log(checkbox2);
+                        toast.success("Updated preferences");
+                    }
+                    else {
+                        alert("Failed to update");
                     }
                 }
             }

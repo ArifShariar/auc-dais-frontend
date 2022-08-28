@@ -14,11 +14,12 @@ function SideBar() {
                 <Link to={"addAuction"} className={"nav-link text-white"}>Add Auction</Link>
                 <Link to={"liveAuctions"} className={"nav-link text-white"}>Live Auctions</Link>
                 <Link to={"savedAuctions"} className={"nav-link text-white"}>Saved Auctions</Link>
-                <Link to={"nearbyAuctions"} className={"nav-link text-white"}>Nearby Auctions</Link>
+                {/*<Link to={"nearbyAuctions"} className={"nav-link text-white"}>Nearby Auctions</Link>*/}
                 <Link to={"wonAuctions"} className={"nav-link text-white"}>Won Auctions</Link>
                 <Link to={"myAuctions"} className={"nav-link text-white"}>My Auctions</Link>
                 <Link to={"history"} className={"nav-link text-white"}>History</Link>
                 <Link to={"messages"} className={"nav-link text-white"}>Message</Link>
+                {/*<Link to={"myRatings"} className={"nav-link text-white"}>My Ratings</Link>*/}
                 <p className="nav-link text-white fixed-bottom">
                     Find us on<a href={githubLink} target="_blank" rel="noopener noreferrer"><img src={gitHubIcon} alt={"GitHub"}/></a>
                 </p>

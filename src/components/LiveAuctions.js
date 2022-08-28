@@ -66,7 +66,7 @@ function LiveAuctions (){
                     <div className=" col-sm-12">
                         <Card className=" bg-warning.bg-gradient">
                             <Card.Header className={"bg-warning text-white text-center"}> Live Auctions </Card.Header>
-                            {auctions.length === 0 ? <Card.Body> No live auctions </Card.Body> :
+                            {auctions.length === 0 ? <Card.Body className={"text-center"}> No live auctions </Card.Body> :
                                 auctions.map(auction => {
                                     return(
                                         <Card.Body key={auction.id}>

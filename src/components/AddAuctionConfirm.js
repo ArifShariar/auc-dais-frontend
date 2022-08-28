@@ -68,14 +68,20 @@ class AddAuctionConfirm extends React.Component{
                                     <ListGroup>
                                         <ListGroup.Item>Product Name: {product_name}</ListGroup.Item>
                                         <ListGroup.Item>Product Description: {product_description}</ListGroup.Item>
-                                        <ListGroup.Item>Minimum Bid: {minimum_price}</ListGroup.Item>
+                                        <ListGroup.Item>Minimum Bid: {minimum_price} $</ListGroup.Item>
                                         <ListGroup.Item>Start Date: {start_date}</ListGroup.Item>
                                         <ListGroup.Item>Start Time: {start_time}</ListGroup.Item>
                                         <ListGroup.Item>End Date: {end_date}</ListGroup.Item>
                                         <ListGroup.Item>End Time: {end_time}</ListGroup.Item>
                                         <ListGroup.Item>Tags: {tags}</ListGroup.Item>
-
                                     </ListGroup>
+
+                                    <div className="row">
+                                        <div className="col-sm-6 text-center">
+                                            <img src={localStorage.getItem('product_image')} alt={"product image"}/>
+                                        </div>
+                                    </div>
+
                                     <div className="d-grid gap-2 col-6 mx-auto text-container" style={marginTop}>
                                         <button type="submit" className="btn btn-primary" onClick={this.continue}>Confirm</button>
                                     </div>
