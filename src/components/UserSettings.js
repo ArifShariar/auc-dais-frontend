@@ -131,7 +131,7 @@ function UserSettings () {
                                 </div>
 
                                 <div className="input-container">
-                                    <label>Do you like to get promotional mail?&emsp;
+                                    <label>Do you like to get email when your saved auctions start?&emsp;
                                         {checkloader2 && <ToggleAucdais onChange={checkSecond} checkInfo={checkbox2}/>}
                                     </label>
                                 </div>
