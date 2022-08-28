@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {Button, Card} from "react-bootstrap";
-import RatingReviewAdd from "./RatingReviewAdd";
 import {useLocation, useNavigate} from "react-router-dom";
 import axios from "axios";
 import {toast} from "react-toastify";
@@ -136,6 +135,13 @@ function ShowAuctionDetails() {
                                                             End Time  </p> </div> <div className="col-md-4"> </div>
                                                         <div className="col-md-4"> <p className="bg-secondary bg-gradient text-white  rounded-pill  text-padding">
                                                             {auction.auction_end_date}  </p> </div>
+                                                    </div>
+
+                                                    <div className="row  rounded-pill " >
+                                                        <div className="col-md-4"> <p className="bg-secondary bg-gradient text-white  rounded-pill  text-padding">
+                                                            Address  </p> </div> <div className="col-md-4"> </div>
+                                                        <div className="col-md-4"> <p className="bg-secondary bg-gradient text-white  rounded-pill  text-padding">
+                                                            {auction.address}  </p> </div>
                                                     </div>
 
                                                     <div className="row  rounded-pill " >
