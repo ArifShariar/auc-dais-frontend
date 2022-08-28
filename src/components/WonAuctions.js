@@ -65,7 +65,11 @@ function WonAuctions (){
                                                         <p>Start Date: {auction.auctionProduct.auction_start_date}</p>
                                                         <p>End Date: {auction.auctionProduct.auction_end_date}</p>
                                                         <Button variant="secondary" onClick={()=>viewAndBid(auction.auctionProduct.id)} id={"view"}>View</Button>{' '}
-                                                        <Button variant="info" onClick={()=>payment(auction.id)} id={"payment"}>Proceed to Pay</Button>{' '}
+                                                        {auction.paid === false ?
+                                                            <Button variant="info" onClick={() => payment(auction.id)}
+                                                                    id={"payment"}>Proceed to Pay</Button> :
+                                                            null
+                                                        }
 
                                                     </div>
                                                 </div>

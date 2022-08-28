@@ -108,6 +108,15 @@ function ShowMyAuctionDetails() {
                                                         <div className="col-md-4"> <p className="bg-secondary bg-gradient text-white  rounded-pill  text-padding">
                                                             {auction.auction_end_date}  </p> </div>
                                                     </div>
+
+
+                                                    {auction.address !== null ?
+                                                        <div className="row  rounded-pill " >
+                                                            <div className="col-md-4"> <p className="bg-secondary bg-gradient text-white  rounded-pill  text-padding">
+                                                                Address  </p> </div> <div className="col-md-4"> </div>
+                                                            <div className="col-md-4"> <p className="bg-secondary bg-gradient text-white  rounded-pill  text-padding">
+                                                                {auction.address}  </p> </div>
+                                                        </div> : null}
                                                 </Card.Body>
                                             </Card>
                                         </div>
