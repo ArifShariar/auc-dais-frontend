@@ -19,6 +19,7 @@ function SideBar() {
                 <Link to={"myAuctions"} className={"nav-link text-white"}>My Auctions</Link>
                 <Link to={"history"} className={"nav-link text-white"}>History</Link>
                 <Link to={"messages"} className={"nav-link text-white"}>Message</Link>
+                {/*<Link to={"myRatings"} className={"nav-link text-white"}>My Ratings</Link>*/}
                 <p className="nav-link text-white fixed-bottom">
                     Find us on<a href={githubLink} target="_blank" rel="noopener noreferrer"><img src={gitHubIcon} alt={"GitHub"}/></a>
                 </p>

@@ -38,6 +38,7 @@ import Map from "./components/Map";
 import UpdateUserAddress from "./components/UpdateUserAddress";
 import UpdateAuctionAddress from "./components/UpdateAuctionAddress";
 import NearbyAuctions from "./components/NearbyAuctions";
+import ShowMyRatings from "./components/ShowMyRatings";
 
 // We may need to get rid of RequireAuth and use PersistLogin instead
 toast.configure();
@@ -80,6 +81,7 @@ function App() {
             <Route path="/nearbyAuctions" element={<RequireAuth><NearbyAuctions/></RequireAuth>}/>
             <Route path="/" element={<Home />} />
             <Route path="/statistics/:id" element={<AuctionStats/>} />
+            <Route path="/myRatings" element={<ShowMyRatings/>} />
         </Routes>
     </Router>
     </AuthProvider>
