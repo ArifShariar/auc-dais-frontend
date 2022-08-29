@@ -52,11 +52,24 @@ const Slider = styled.span`
     }
 `;
 
-const ToggleAucdais = ({ onChange }) => (
-    <InputWrapper>
-        <Input type="checkbox" onChange={onChange}/>
-        <Slider/>
-    </InputWrapper>
-);
+const ToggleAucdais = ({ onChange, checkInfo }) => {
+    console.log("IN CHILD COMPONENT: " + checkInfo)
+    if(checkInfo===true) {
+        return (
+            <InputWrapper>
+                <Input type="checkbox" onChange={onChange} checked/>
+                <Slider/>
+            </InputWrapper>
+        )
+    }
+    else {
+        return (
+            <InputWrapper>
+                <Input type="checkbox" onChange={onChange}/>
+                <Slider/>
+            </InputWrapper>
+        )
+    }
+};
 
 export default ToggleAucdais;
